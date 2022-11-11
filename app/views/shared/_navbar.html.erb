@@ -1,22 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <%= image_tag "logoo.png", style: "width: 2.5rem;", class: "rounded-3" %>
+<nav class="navbar navbar-expand-lg py-3 mb-2 navbar-light bg-light">
+  <div class="container px-3">
+    <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+    <%= image_tag "logoo.png", style: "width: 2rem;", class: "rounded-3" %>
+    <% end %>
+    <% if current_page?(root_path) %>
+      <p class= "m-0 fw-bolder">Home</p>
+    <% elsif current_page?(new_user_session_path) %>
+      <p class= "m-0 fw-bolder">Login</p>
+    <% elsif current_page?(new_user_registration_path) %>
+      <p class= "m-0 fw-bolder">Register</p>
+    <% end %>
     <button class="bg-light border-0" style="width: 2.5rem;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fa-solid fa-lg fa-bars text-primary" style="width: 2.5rem;"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link mt-3 text-center" %>
         </li>
-        <% else %>
+        <% if !user_signed_in? %>
+
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link mt-3 text-center" %>
         </li>
         <li class="nav-item">
           <%= link_to "Register", new_user_registration_path, class: "nav-link mt-3 text-center" %>
         </li>
+
+
         <% end %>
       </ul>
     </div>
