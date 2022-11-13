@@ -1,5 +1,6 @@
 input.picker[type="date"] {
   position: relative;
+  transform: scale(1.035);
 }
 
 input.picker[type="date"]::-webkit-calendar-picker-indicator {

@@ -1,7 +1,8 @@
 <div class="container p-3">
-  <div class="p-4 shadow-sm bg-white">
+  <div class="p-4 shadow-sm bg-white b">
     <%= simple_form_for @truck do |f| %>
       <%= f.input :loading_date, placeholder: "Loading date", html5: true, label: "Loading date", input_html: {class: "picker"} %>
+
       <%= f.simple_fields_for :pickups, [@truck.pickups.build] do |build| %>
 
         <%= build.input :place, label: "Pickup country/region/city",
@@ -10,13 +11,15 @@
           address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
         %>
       <% end %>
+
       <%= f.simple_fields_for :dropoffs, [@truck.dropoffs.build] do |build| %>
-        <%= build.input :place, label: "Pickup country/region/city",
+        <%= build.input :place, label: "Dropoff country/region/city",
           input_html: {data: {address_autocomplete_target: "address"}, class:"d-none"},
           wrapper_html: {data: {controller: "address-autocomplete",
           address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
         %>
       <% end %>
+
       <%= f.input :comment %>
       <%= f.submit class: "btn btn-primary w-100 text-white" %>
     <% end %>
