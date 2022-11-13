@@ -23,6 +23,6 @@ class TrucksController < ApplicationController
   private
 
   def truck_params
-    params.require(:truck).permit(:comment, :loading_date, pickups_attributes: [:place], dropoffs_attributes: [:place])
+    params.require(:truck).permit(:comment, :length, :loading_date, tag_list: [], pickups_attributes: [:place], dropoffs_attributes: [:place])
   end
 end

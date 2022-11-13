@@ -1,6 +1,12 @@
 input.picker[type="date"] {
   position: relative;
-  transform: scale(1.035);
+  transform: scale(1.03);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  max-width: 100%;
+  background-color: white;
+  border-style: none;
+  border: 0;
+  height: 2.75rem;
+  border-radius: 0.5rem;
 }
 
 input.picker[type="date"]::-webkit-calendar-picker-indicator {
@@ -12,4 +18,5 @@ input.picker[type="date"]::-webkit-calendar-picker-indicator {
   padding: 0;
   color: transparent;
   background: transparent;
+
 }

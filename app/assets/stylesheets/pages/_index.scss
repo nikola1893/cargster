@@ -5,3 +5,62 @@
 .senka {
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
+
+.form-select {
+  color: #757575;
+}
+
+
+
+.form-label, .col-form-label {
+  margin-left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.form-control {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  max-width: 100%;
+  background-color: white;
+  border-style: none;
+  border-radius: 0.5rem;
+  border: 0;
+  height: 2.75rem;
+}
+
+.btn-primary {
+  border-radius: 0.5rem;
+}
+
+.shadow-sm {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  max-width: 100%;
+
+}
+
+.tag-item {
+  display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  border-radius: 50rem;
+  padding: 0.2rem 0.7rem;
+  background-color: $light-green;
+  color: $green;
+  border: 1px solid $green;
+  margin-right: 0.6rem;
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+
+.tag-selector:checked + label {
+  background-color: $green;
+  color: white;
+}
