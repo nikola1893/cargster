@@ -32,9 +32,8 @@
   border-radius: 0.5rem;
 }
 
-.shadow-sm {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  max-width: 100%;
-
+.shadow .shadow-sm {
+  box-shadow: #F4F4F4, 5px 5px 5px 5px,
 }
 
 .tag-item {
@@ -63,4 +62,8 @@
 .tag-selector:checked + label {
   background-color: $green;
   color: white;
+}
+
+.rounded-sm {
+  border-radius: 0.5rem;
 }

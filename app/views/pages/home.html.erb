@@ -1,3 +1,27 @@
-<% @trucks.each do |t| %>
-  <p><%= t.comment %></p>
-<% end %>
+<div class="container p-3">
+  <% @trucks.each do |t| %>
+    <div class="bg-white rounded-sm p-4 mb-3 shadow-sm">
+      <div class="row">
+        <div class="col-6">
+          <p class="fw-bold"><%= t.user.email %></p>
+        </div>
+        <div class="col-6">
+          <p class="text-muted text-end"><small><%= t.ago %></small></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <% t.pickups.each do |pickup| %>
+            <p class="my-0"><span style="margin-right: 0.5rem;" class="flag-icon flag-icon-<%= pickup.country_code %> flag-icon-squared rounded-4"></span><%= pickup.place.split.first[0...-1] %></p>
+          <% end %>
+        </div>
+        <div class="col-6">
+          <% t.dropoffs.each do |dropoff| %>
+            <p class="m-0 text-end"><%= dropoff.place.split.first[0...-1] %><span style="margin-left: 0.5rem;" class="flag-icon flag-icon-<%= dropoff.country_code %> flag-icon-squared rounded-4"></span></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
