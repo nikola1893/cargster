@@ -56,7 +56,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 # Gems added later
 gem "geocoder"
 gem 'acts-as-taggable-on'
-gem 'flag-icon-sass'
+# gem 'flag-icon-sass'
 # gem "cocoon"
 
 group :development, :test do
