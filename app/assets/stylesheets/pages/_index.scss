@@ -67,3 +67,15 @@
 .rounded-sm {
   border-radius: 0.5rem;
 }
+
+.tag-pill {
+  font-size: 1rem;
+  border-radius: 50rem;
+  padding: 0.2rem 0.7rem;
+  background-color: $light-green;
+  color: $green;
+  border: 1px solid $green;
+  margin-right: 0.6rem;
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+}

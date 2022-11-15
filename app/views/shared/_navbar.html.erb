@@ -1,17 +1,12 @@
 <nav class="navbar shadow-sm navbar-expand-lg py-3 mb-0 navbar-light bg-light">
   <div class="container px-3">
-    <%= link_to "#", class: "navbar-brand d-flex align-items-center" do %>
     <%= image_tag "logoo.png", style: "width: 2rem;", class: "rounded-3" %>
-    <% end %>
     <% if current_page?(root_path) %>
-      <p class= "m-0 fw-bolder">Home</p>
-    <% elsif current_page?(new_user_session_path) %>
-      <p class= "m-0 fw-bolder">Login</p>
-    <% elsif current_page?(new_user_registration_path) %>
-      <p class= "m-0 fw-bolder">Register</p>
+      <p class="m-0 fw-bolder text-center">Home</p>
     <% elsif current_page?(new_truck_path) %>
-      <p class= "m-0 fw-bolder">Post new truck</p>
+      <p class="m-0 fw-bolder text-center">Post New Truck</p>
     <% end %>
+
     <button class="bg-light border-0" style="width: 2.5rem;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fa-solid fa-lg fa-bars text-primary" style="width: 2.5rem;"></i>
     </button>

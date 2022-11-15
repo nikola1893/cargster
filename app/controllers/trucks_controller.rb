@@ -1,6 +1,7 @@
 class TrucksController < ApplicationController
 
   def index
+    @trucks = Truck.includes(:pickups, :dropoffs).where(status: false).order(created_at: :desc)
   end
 
   def templates
@@ -24,6 +25,6 @@ class TrucksController < ApplicationController
   private
 
   def truck_params
-    params.require(:truck).permit(:comment, :length, :loading_date, tag_list: [], pickups_attributes: [:id, :_destroy, :place], dropoffs_attributes: [:id, :place, :_destroy])
+  params.require(:truck).permit(:comment, :length, :loading_date, tag_list: [], pickups_attributes: [:id, :_destroy, :place], dropoffs_attributes: [:id, :place, :_destroy])
   end
 end
