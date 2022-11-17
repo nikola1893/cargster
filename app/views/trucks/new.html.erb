@@ -20,9 +20,9 @@
         %>
       <% end %>
       <%= f.input :tag_list, label: "Truck types", as: :check_boxes, input_html: { class: "tag-selector" },
-                  item_wrapper_class: 'tag-item', collection: [ "Tautliner", "Mega", "Fridge", "Tanker", "Van", "ADR", "Tandem" ] %>
+                  item_wrapper_class: 'tag-item', collection: [ "Tautliner", "Mega", "Fridge", "Tanker", "Van", "Tandem", "ADR", "Truck(< 7.5t)" ] %>
       <%= f.input :length, placeholder: "Meters" %>
-      <%= f.input :comment, label:"Comment", placeholder: "Add more specifics about this post" %>
+      <%= f.input :comment, label:"Comment", id: "textarea", placeholder: "Add more specifics about this post" %>
       <%= f.submit 'Create', class: "btn btn-lg btn-primary w-100 text-white" %>
     <% end %>
 
