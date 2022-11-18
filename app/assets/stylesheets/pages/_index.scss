@@ -83,18 +83,20 @@ textarea.form-control {
   min-height: 6rem;
 }
 
-// .suggestions {
-//   z-index: 2000;
-// }
+.suggestions {
+  z-index: 2000;
+}
 
 .suggestions {
   top: auto !important;
   bottom: 100% !important;
 }
 
-ul {
-  transform: rotate(180deg);
-}
-ul > li {
-  transform: rotate(-180deg);
+.suggestions-wrapper {
+  ul {
+    transform: rotate(180deg);
+  }
+  ul > li {
+    transform: rotate(-180deg);
+  }
 }
