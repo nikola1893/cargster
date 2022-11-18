@@ -41,6 +41,7 @@
 .tag-selector {
   position: absolute;
   transform: scale(0);
+  margin-bottom: 0;
 }
 
 .tag-selector + label {
@@ -80,4 +81,20 @@
 
 textarea.form-control {
   min-height: 6rem;
+}
+
+// .suggestions {
+//   z-index: 2000;
+// }
+
+.suggestions {
+  top: auto !important;
+  bottom: 100% !important;
+}
+
+ul {
+  transform: rotate(180deg);
+}
+ul > li {
+  transform: rotate(-180deg);
 }
