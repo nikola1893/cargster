@@ -2,21 +2,19 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  max-width: 100%;
   width: 100%;
   background-color: white;
+  // width: %!important;
   border-style: none;
   border: 0px;
   height: 2.75rem;
   border-radius: 0.5rem;
-  // border-radius: 0.1rem;
-  // border: 1px solid #CED4D9;
-  // background-color: $light-gray;
-  // transform: scaleY(0.85);
-
 }
+
+
 
 .mapboxgl-ctrl-geocoder--input {
   font-family: Montserrat;
   // font-size: 1.15rem;
-  width: 100%;
+  // width: 50%!important;
   border: 0;
   background-color: transparent;
   margin-top: -0.125rem;
