@@ -8,7 +8,7 @@
 
       <%= f.input :length, placeholder: "Meters" %>
 
-      <%= f.simple_fields_for :pickups, [@truck.pickups.build] do |build| %>
+      <%= f.simple_fields_for :pickup, @truck.pickup do |build| %>
         <%= build.input :place, label: "Pickup",
           input_html: {data: {address_autocomplete_target: "address"}, class:"d-none"},
           wrapper_html: {data: {controller: "address-autocomplete",
@@ -16,7 +16,7 @@
         %>
       <% end %>
 
-      <%= f.simple_fields_for :dropoffs, [@truck.dropoffs.build] do |build| %>
+      <%= f.simple_fields_for :dropoff, @truck.dropoff do |build| %>
         <%= build.input :place, label: "Dropoff",
           input_html: {data: {address_autocomplete_target: "address"}, class:"d-none"},
           wrapper_html: {data: {controller: "address-autocomplete",

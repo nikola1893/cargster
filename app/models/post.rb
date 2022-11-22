@@ -1,9 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :pickups
-  has_many :dropoffs
-  accepts_nested_attributes_for :pickups, reject_if: :all_blank, allow_destroy: true
-  accepts_nested_attributes_for :dropoffs, reject_if: :all_blank, allow_destroy: true
+  has_one :pickup, class_name: "Pickup", dependent: :destroy
+  has_one :dropoff, class_name: "Dropoff", dependent: :destroy
+  accepts_nested_attributes_for :pickup
+  accepts_nested_attributes_for :dropoff
   acts_as_taggable_on :tags
 
   def ago
@@ -25,5 +25,9 @@ class Post < ApplicationRecord
     else
       "#{days.round} days ago"
     end
+  end
+
+  def tag_list
+    self.taggings
   end
 end

@@ -1,10 +1,13 @@
 <nav class="navbar shadow-sm navbar-expand-lg py-3 mb-0 navbar-light bg-light">
   <div class="container px-3">
     <%= image_tag "logoo.png", style: "width: 2rem;", class: "rounded-3" %>
+
     <% if current_page?(root_path) %>
       <p class="m-0 fw-bolder text-center">Home</p>
     <% elsif current_page?(new_truck_path) %>
       <p class="m-0 fw-bolder text-center">Post New Truck</p>
+    <% elsif current_page?(truck_templates_path) %>
+      <p class="m-0 fw-bolder text-center">Quick post</p>
     <% end %>
 
     <button class="bg-light border-0" style="width: 2.5rem;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
