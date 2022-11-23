@@ -5,11 +5,7 @@ class TrucksController < ApplicationController
   end
 
   def templates
-    # @trucks = Truck.left_outer_joins(:pickup, :dropoff, :tags).select('tags, geos.place, length, comment').distinct
-    # @trucks = Truck.eager_load(:pickup, :dropoff, :tags).select('pickup.place','length', 'comment').distinct.where(user_id: current_user.id)
-    # trucks = Truck.where(user_id: current_user.id)
-    joins = Truck.joins(:tags)
-    @trucks = joins.where(id: Truck.group(:comment, :length, :pickup_place, :dropoff_place, :tag_list).select("min(id)"), user_id: current_user.id)
+    @trucks = Truck.where(id: Truck.group('comment, length, pickup_place, dropoff_place, truck_type').select("min(id)"), user_id: current_user.id)
   end
 
   def new
@@ -22,7 +18,7 @@ class TrucksController < ApplicationController
     @truck = Truck.new(truck_params)
     @truck.pickup_place = @truck.pickup.place
     @truck.dropoff_place = @truck.dropoff.place
-    # @truck.tag_list = truck_params[:tag_list]
+    @truck.truck_type = truck_params[:tag_list]
     @truck.user_id = current_user.id
     @truck.status = false
     @truck.save
