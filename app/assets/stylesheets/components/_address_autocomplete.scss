@@ -5,7 +5,8 @@
   // width: %!important;
   border-style: none;
   border: 0px;
-  height: 2.75rem;
+  // height: 2.75rem;
+  // ma-top: 0.15rem;
   border-radius: 0.5rem;
 }
 
@@ -13,11 +14,12 @@
 
 .mapboxgl-ctrl-geocoder--input {
   font-family: Montserrat;
-  // font-size: 1.15rem;
+  font-size: 1.15rem;
   // width: 50%!important;
   border: 0;
   background-color: transparent;
-  margin-top: -0.125rem;
+  // padding-top: 1%;
+
   color: #404040;
   padding-left: 0.75rem;
   text-overflow: ellipsis;
@@ -28,9 +30,9 @@
   outline: none;
 }
 
-.mapboxgl-ctrl-geocoder--icon-close {
-  margin: 0.25rem;
-}
+// .mapboxgl-ctrl-geocoder--icon-close {
+//   margin: 0.25rem;
+// }
 
 
 .mapboxgl-ctrl-geocoder--icon-search {

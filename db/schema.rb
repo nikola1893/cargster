@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_23_161216) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_194932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,41 +34,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_161216) do
     t.date "loading_date"
     t.decimal "length"
     t.boolean "status"
-    t.string "pickup_place"
-    t.string "dropoff_place"
     t.text "truck_type", default: [], array: true
+    t.bigint "pickup_id"
+    t.bigint "dropoff_id"
+    t.index ["dropoff_id"], name: "index_posts_on_dropoff_id"
+    t.index ["pickup_id"], name: "index_posts_on_pickup_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
-  create_table "taggings", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.string "taggable_type"
-    t.bigint "taggable_id"
-    t.string "tagger_type"
-    t.bigint "tagger_id"
-    t.string "context", limit: 128
-    t.datetime "created_at", precision: nil
-    t.string "tenant", limit: 128
-    t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
-    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
-    t.index ["tagger_type", "tagger_id"], name: "index_taggings_on_tagger_type_and_tagger_id"
-    t.index ["tenant"], name: "index_taggings_on_tenant"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,5 +56,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_161216) do
 
   add_foreign_key "geos", "posts"
   add_foreign_key "posts", "users"
-  add_foreign_key "taggings", "tags"
 end

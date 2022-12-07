@@ -3,30 +3,30 @@
 en:
   devise:
     confirmations:
-      confirmed: "Your email address has been successfully confirmed."
-      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      confirmed: "Вашата лозинка е потврена успешно."
+      send_instructions: "Ке добиете е-маил со инструкција за потврда."
+      send_paranoid_instructions: "Ако вашата адреса за е-пошта постои во нашата база на податоци, за неколку минути ќе добиете е-пошта со инструкции како да ја потврдите вашата е-пошта."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account is not activated yet."
-      invalid: "Invalid %{authentication_keys} or password."
-      locked: "Your account is locked."
-      last_attempt: "You have one more attempt before your account is locked."
+      already_authenticated: "Веќе сте најавени."
+      inactive: "Вашиот акаунт сеуште не е активиран."
+      invalid: "Невалидна %{authentication_keys} или лозинка."
+      locked: "Вашиот акаунт е заклучен."
+      last_attempt: "Имате уште еден обид пред вашиот акаунт да биде заклучен."
       not_found_in_database: "Invalid %{authentication_keys} or password."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your email address before continuing."
+      timeout: "Сесијата истече. Најавете се одново."
+      unauthenticated: "Треба да бидете најавени пред да продолжите"
+      unconfirmed: "Треба да ја потврдите вашата е-пошта пред да продолжите."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Инструкции за конфирмација."
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Инструкции за промена на лозинка."
       unlock_instructions:
-        subject: "Unlock instructions"
+        subject: "Инструкции за отклучување."
       email_changed:
-        subject: "Email Changed"
+        subject: "Е-поштата е променета"
       password_change:
-        subject: "Password Changed"
+        subject: "Лозинката е променета"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
@@ -38,17 +38,17 @@ en:
       updated_not_active: "Your password has been changed successfully."
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
-      signed_up: "Welcome! You have signed up successfully."
+      signed_up: "🫡 Добредојде"
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
+      signed_up_but_unconfirmed: "Порака со линк за активација е испратена на вашата е-пошта."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address."
-      updated: "Your account has been updated successfully."
+      updated: "Вашиот акаунт е ажуриран."
       updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
-      already_signed_out: "Signed out successfully."
+      signed_in: "Успешно се најавивте."
+      signed_out: "Успешна одјава."
+      already_signed_out: "Успешно се одјавивте."
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."

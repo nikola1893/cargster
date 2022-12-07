@@ -51,11 +51,14 @@ gem "sassc-rails"
 gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
+# gem "font-awesome-sass", "~> 6.2.1"
 gem "simple_form", github: "heartcombo/simple_form"
 
 # Gems added later
 gem "geocoder"
-gem 'acts-as-taggable-on'
+# gem 'acts-as-taggable-on'
+# gem 'acts-as-taggable-on', '~> 9.0'
+gem "pundit"
 # gem 'flag-icon-sass'
 # gem "cocoon"
 
