@@ -1,7 +1,6 @@
 <div class="container px-4 mb-3">
   <%= render 'shared/tabs_new' %>
-
-  <%= simple_form_for @post do |f| %>
+  <%= simple_form_for @load do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -14,43 +13,15 @@
       <%= f.input :length, label: "Должина", placeholder: "Метри" %>
     </div>
 
-    <script>
-      // add d-none to suggestions-wrappers on window load
-      // window.addEventListener("load", function() {
-      //   document.querySelectorAll(".suggestions-wrapper").forEach(function(el) {
-      //     el.classList.add("d-none");
-      //   });
-      // });
-      // // when focusing on any input field, remove the d-none class from the suggestions-wrapper
-      // document.querySelectorAll("input").forEach(function(el) {
-      //   el.addEventListener("focus", function() {
-      //     el.closest(".form-group").querySelector(".suggestions-wrapper").classList.remove("d-none");
-      //   });
-      // });
-      addEventListener("load", () => {
-        var suggestionLists = document.getElementsByClassName("suggestions");
-        setTimeout(() => {
-          for (var i = 0; i < suggestionLists.length; i++) {
-            suggestionLists[i].style.display = "none"
-        }
-        }, 100);
-      });
-
-
-
-// zdr
-
-    </script>
-
-    <%= f.simple_fields_for :pickup, @post.pickup do |build| %>
+    <%= f.simple_fields_for :pickup, @load.pickup do |build| %>
       <%= build.input :place, label: "Преферирано место на утовар",
-        input_html: {data: {address_autocomplete_target: "address"}, class:"d-none", },
+        input_html: {data: {address_autocomplete_target: "address"}, class:"d-none"},
         wrapper_html: {data: {controller: "address-autocomplete",
         address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
       %>
     <% end %>
 
-    <%= f.simple_fields_for :dropoff, @post.dropoff do |build| %>
+    <%= f.simple_fields_for :dropoff, @load.dropoff do |build| %>
       <%= build.input :place, label: "Преферирано место на истовар",
         input_html: {data: {address_autocomplete_target: "address"}, class:"d-none"},
         wrapper_html: {data: {controller: "address-autocomplete",

@@ -2,10 +2,9 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one :pickup, class_name: "Pickup", dependent: :destroy
   has_one :dropoff, class_name: "Dropoff", dependent: :destroy
+  # has_many :geos
   accepts_nested_attributes_for :pickup
   accepts_nested_attributes_for :dropoff
-  acts_as_taggable_on :tags
-
   def ago
     # when the post was created - now
     miliseconds = (Time.now - created_at)
@@ -25,9 +24,5 @@ class Post < ApplicationRecord
     else
       "#{days.round} days ago"
     end
-  end
-
-  def tag_list
-    self.taggings
   end
 end

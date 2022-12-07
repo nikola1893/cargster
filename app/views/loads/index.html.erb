@@ -1,7 +1,7 @@
 <div class="container px-4">
   <%= render 'shared/tabs_index' %>
   <% @trucks.each do |t| %>
-    <%= link_to truck_path(t) do %>
+    <%= link_to load_path(t) do %>
     <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
       <div class="row">
         <div class="col-6">
@@ -21,7 +21,7 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <p class="my-0 text-truncate"><span><%= image_tag "countries/#{t.pickup.country}.svg", style: "width: 1.15rem; border-radius: 1rem; margin-bottom: 0.15rem;" %></span> <%= t.pickup.simple %></p>
+          <p class="my-0 text-truncate"><span><%= image_tag "countries/#{t.pickup.country || "un" }.svg", style: "width: 1.15rem; border-radius: 1rem; margin-bottom: 0.15rem;" %></span> <%= t.pickup.simple %></p>
         </div>
         <div class="col-6">
           <p class="m-0 text-end text-truncate"><%= t.dropoff.simple %><span> <%= image_tag "countries/#{t.dropoff.country}.svg", style: "width: 1.15rem; border-radius: 1rem; margin-bottom: 0.15rem;" %></span></p>

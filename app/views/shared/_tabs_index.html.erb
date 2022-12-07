@@ -1,0 +1,12 @@
+  <div class="row px-4">
+    <% if current_page?(loads_path) %>
+    <%= link_to "📦 Товар", loads_path, class: "col-6 btn mb-3 py-2 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
+    <% else %>
+    <%= link_to "📦 Товар", loads_path, class: "col-6 btn mb-3 py-2 px-3" %>
+    <% end %>
+    <% if current_page?(trucks_path) %>
+    <%= link_to "🚛 Камион", trucks_path, class: "col-6 btn mb-3 py-2 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
+    <% else %>
+    <%= link_to "🚛 Камион", trucks_path, class: "col-6 btn mb-3 py-2 px-3" %>
+    <% end %>
+  </div>

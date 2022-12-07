@@ -1,0 +1,97 @@
+<div class="px-4 mt-2 d-flex justify-content-center align-items-center">
+  <% if policy(@truck).edit? %>
+    <% if @truck.status? %>
+
+      <%= link_to edit_truck_path, class: "mx-3" do %>
+        <p class="actions-buttons"><span class="fa fa-solid fa-edit text-primary action-icon fa-lg"></span></p>
+        <p class="action-text"><small>Измени</small></p>
+      <% end %>
+      <%= link_to change_truck_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class: "mx-3" do %>
+        <p class="actions-buttons"><span class="fa fa-solid fa-hands-clapping text-danger action-icon fa-lg"></span></p>
+        <p class="action-text"><small>Реши</small></p>
+      <% end %>
+
+    <% end %>
+
+    <%= link_to new_truck_path(:truck_type => @truck.truck_type, :length => @truck.length, :comment => @truck.comment, :pickup => @truck.pickup.place, :dropoff => @truck.dropoff.place), class: "mx-3" do %>
+      <p class="actions-buttons"><span class="fa fa-solid fa-retweet text-primary action-icon fa-lg"></span></p>
+      <p class="action-text"><small>Репост</small></p>
+    <% end %>
+
+    <%= link_to edit_truck_path, class: "mx-3" do %>
+      <p class="actions-buttons"><span class="fa fa-solid fa-share-nodes text-primary action-icon fa-lg"></span></p>
+      <p class="action-text"><small>Сподели</small></p>
+    <% end %>
+
+  <% else %>
+
+    <%= link_to edit_truck_path, class: "mx-2" do %>
+      <p class="actions-buttons"><span class="fa fa-solid fa-phone text-primary action-icon fa-lg"></span></p>
+      <p class="action-text"><small>Јави се</small></p>
+    <% end %>
+    <%= link_to edit_truck_path, class: "mx-2" do %>
+      <p class="actions-buttons"><span class="fa fa-brands fa-solid fa-viber action-icon fa-lg" style="color: rgb(89, 38, 124)"></span></p>
+      <p class="action-text"><small>Viber</small></p>
+    <% end %>
+    <%= link_to edit_truck_path, class: "mx-2" do %>
+      <p class="actions-buttons"><span class="fa fa-brands fa-solid fa-whatsapp action-icon fa-lg" style="color: #128c7e"></span></p>
+      <p class="action-text"><small>WhatsApp</small></p>
+    <% end %>
+    <%= link_to edit_truck_path, class: "mx-2" do %>
+      <p class="actions-buttons"><span class="fa fa-solid fa-envelope text-primary action-icon fa-lg"></span></p>
+      <p class="action-text"><small>Е-маил</small></p>
+    <% end %>
+    <%= link_to edit_truck_path, class: "mx-2" do %>
+      <p class="actions-buttons"><span class="fa fa-solid fa-share-nodes text-primary action-icon fa-lg"></span></p>
+      <p class="action-text"><small>Сподели</small></p>
+    <% end %>
+  <% end %>
+</div>
+<div class="px-4">
+  <% if policy(@truck).edit? && @truck.status? %>
+    <%= link_to "Види потенцијален товар", "#", class: "btn btn-outline-primary bg-white mb-3 shadow-sm border-0 w-100 text-primary" %>
+  <% end %>
+  <p class="fw-bolder" style= "margin-left: 2.5rem;"><small>Опис</small></p>
+
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-calendar-days text-primary"></span></p>
+    <p class="mx-3"><%= @truck.loading_date.try(:strftime, "%B %m") %></p>
+  </div>
+
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary"></span></p>
+    <p class="mx-3"><%= @truck.pickup.place %></p>
+  </div>
+
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary" style="transform: scaleX(-1);"></span></p>
+    <p class="mx-3"><%= @truck.dropoff.place %></p>
+  </div>
+
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck text-primary"></span></p>
+    <p class="mx-3">
+      <% @truck.truck_type.drop(1).each do |type| %>
+        <%= type %>;
+      <% end %>
+    </p>
+  </div>
+
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-ruler-horizontal text-primary"></span></p>
+    <p class="mx-3"><%= @truck.length %> метри</p>
+  </div>
+
+  <% if @truck.comment? %>
+  <p class="fw-bolder" style= "margin-left: 2.5rem;"><small>Забелешка</small></p>
+  <p><span class="mx-2 fa fa-solid fa-comment text-primary"></span>
+    <%= @truck.comment %>
+  </p>
+  <% end %>
+  <% if @truck.user != current_user %>
+    <p class="fw-bolder" style= "margin-left: 2.5rem;"><small>Контакт</small></p>
+    <p><span class="mx-2 fa fa-solid fa-user text-primary"></span>
+      <%= @truck.user.email %>
+    </p>
+  <% end %>
+</div>

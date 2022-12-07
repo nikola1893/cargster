@@ -11,11 +11,21 @@ export default class extends Controller {
   connect() {
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
-      placeholder: 'Place',
+      placeholder: 'Држава/Регион/Град',
       types: "country,region,place,postcode,locality,neighborhood,address"
     })
     this.geocoder.addTo(this.element)
-    this.geocoder.on("result", event => this.#setInputValue(event))
+    this.geocoder.setInput(this.addressTarget.value)
+    this.geocoder.on("loading", () =>console.log("on load event") )
+    this.geocoder.on("results", (res, e) => {
+      console.log("on results event")
+      console.log(res)
+      console.log(e)
+    })
+    this.geocoder.on("result", event => {
+      this.#setInputValue(event)
+      console.log('result event test  ');
+    })
     this.geocoder.on("clear", () => this.#clearInputValue())
   }
 
@@ -24,7 +34,6 @@ export default class extends Controller {
   }
 
   #setInputValue(event) {
-    console.log("Hello")
     const selectedPlace = event.result.place_name
     this.addressTarget.value = selectedPlace
   }

@@ -2,10 +2,6 @@
 @import "home";
 @import "shared/navbar";
 
-.senka {
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-}
-
 .form-select {
   color: #757575;
 }
@@ -29,6 +25,9 @@
 .btn-primary {
   border-radius: 0.5rem;
 }
+.btn-outline-primary {
+  border-radius: 0.5rem;
+}
 
 .shadow .shadow-sm {
   box-shadow: #F4F4F4, 5px 5px 5px 5px,
@@ -47,7 +46,7 @@
 .tag-selector + label {
   cursor: pointer;
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.15rem;
   border-radius: 50rem;
   padding: 0.2rem 0.7rem;
   background-color: $light-green;
@@ -68,15 +67,15 @@
 }
 
 .tag-pill {
-  font-size: 1rem;
+  font-size: 1.15rem;
   border-radius: 50rem;
   padding: 0.2rem 0.7rem;
-  background-color: $light-green;
-  color: $green;
-  border: 1px solid $green;
+  background-color: $light-gray;
+  color: $secondary;
+  // border: 1px solid $secondary;
   margin-right: 0.6rem;
   overflow: hidden;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 textarea.form-control {
@@ -99,4 +98,41 @@ textarea.form-control {
   ul > li {
     transform: rotate(-180deg);
   }
+}
+
+.mapboxgl-ctrl-geocoder--powered-by {
+  transform: rotate(180deg);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.actions-buttons {
+  width: 3rem;
+  background-color: white;
+  margin: auto;
+  // padding: auto;
+  height: 3rem;
+  border-radius: 25%;
+}
+
+.action-icon {
+  padding-top: 50%;
+  padding-left: 25%
+}
+
+.action-text {
+  font-size: 0.75rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.n-top {
+  margin-top: -1rem;
+}
+
+.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
+  color: inherit;
 }
