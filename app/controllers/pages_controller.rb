@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :todays_trucks ]
+  skip_before_action :authenticate_user!, only: [ :todays_trucks, :todays_loads ]
 
   def todays_loads
     if user_signed_in?
