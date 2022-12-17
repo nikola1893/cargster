@@ -1,1 +1,6 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Rails app for simple freight forwarding. 
+
+ • Mobile first design with Bootstrap.
+ • Address autocomplete with Mapbox Geocoder.
+ • Gems used: Devise, Pundit, Geocoder.
+
