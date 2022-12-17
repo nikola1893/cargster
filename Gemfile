@@ -57,6 +57,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 # Gems added later
 gem "geocoder"
 gem "rake"
+gem "matrix"
 # gem 'acts-as-taggable-on'
 # gem 'acts-as-taggable-on', '~> 9.0'
 gem 'kaminari'
