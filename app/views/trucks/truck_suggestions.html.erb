@@ -1,0 +1,77 @@
+<div class="shadow-sm rounded-3 sticky-top bg-white px-4 py-3">
+  <div class="d-flex justify-content-between align-items-center">
+    <%= link_to truck_path(@truck) do %>
+      <i class="fa fa-lg text-primary mx-1 fa-solid fa-chevron-left"></i>
+    <% end %>
+    <p class="fw-bolder m-0"><%= @page_name ||
+      if current_page?(new_user_session_path)
+        "Најава"
+      elsif current_page?(new_user_registration_path)
+        "Регистрација"
+      elsif current_page?(new_user_password_path)
+        "Заборавена лозинка"
+      elsif current_page?(edit_user_registration_path)
+        "Подесувања"
+      end
+    %></p>
+    <button class="border-0 bg-white" style="background-color: rgb(244,244,244);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <i class="fa-solid fa-lg fa-bars text-primary" style=""></i>
+    </button>
+  </div>
+</div>
+<div class="collapse mx-3" id="collapseExample">
+  <%= link_to "Почетна", root_path, class: "btn w-100 my-4" %>
+  <% if !user_signed_in? %>
+    <%= link_to "Најава", new_user_session_path, class: "btn mb-4 w-100" %>
+    <%= link_to "Регистрација", new_user_registration_path, class: "btn mb-4 w-100" %>
+  <% else %>
+    <% if current_user.posts.count == 0 %>
+      <%= link_to "Нов оглас", new_truck_path, class: "btn mb-4 w-100" %>
+    <% else %>
+      <%= link_to "Нов оглас", truck_templates_path, class: "btn mb-4 w-100" %>
+    <% end %>
+    <%= link_to "Мои огласи", trucks_path, class: "btn mb-4 w-100" %>
+    <%= link_to "Подесувања", profile_path, class: "btn mb-4 w-100" %>
+    <hr>
+  <% end %>
+</div>
+
+<div class="container px-3 mt-4">
+  <% if @suggested_loads.length == 0 %>
+    <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
+      <p class="text-center">Нема ниеден товар што одговара на вашиот камион.</p>
+    </div>
+  <% end %>
+  <% @suggested_loads.each do |t| %>
+    <%= link_to load_path(t) do %>
+    <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
+      <div class="row">
+        <div class="col-6">
+          <p class="fw-bold text-truncate"><%= t.user.email %></p>
+        </div>
+        <div class="col-6">
+          <p class="text-muted text-end"><small><%= t.ago %></small></p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="d-flex text-truncate" style="width: 40%">
+          <p class="m-0"><%= image_tag "countries/#{t.pickup.country}.svg", style: "width: 1.15rem; border-radius: 2rem; margin-bottom: 0.15rem; margin-right: 0.3rem;" %></p>
+          <p class="my-0 text-truncate"><%= t.pickup.simple %></p>
+        </div>
+        <div class="d-flex justify-content-end text-truncate" style="width: 40%">
+          <p class="m-0 text-end text-truncate"><%= t.dropoff.simple %></p>
+          <p class="m-0"><%= image_tag "countries/#{t.dropoff.country}.svg", style: "width: 1.15rem; border-radius: 1rem; margin-bottom: 0.15rem; margin-left: 0.3rem;" %></p>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap mt-3">
+      <p class="tag-pill"><small><%= t.loading_date.try(:strftime, ("%b %e, %a")) %></small></p>
+      <% t.truck_type.drop(1).each do |truck| %>
+        <p class="tag-pill"><small><%= truck %></small></p>
+      <% end %>
+      <p class="tag-pill"><small><%= t.length %><%= "m" %></small></p>
+      <p class="tag-pill"><small><%= number_with_delimiter(t.distance, delimiter: ".") %> km</small></p>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>

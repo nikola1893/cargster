@@ -2,9 +2,21 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one :pickup, class_name: "Pickup", dependent: :destroy
   has_one :dropoff, class_name: "Dropoff", dependent: :destroy
-  # has_many :geos
+  delegate :place, to: :pickup, prefix: true, allow_nil: true
+  delegate :place, to: :dropoff, prefix: true, allow_nil: true
   accepts_nested_attributes_for :pickup
   accepts_nested_attributes_for :dropoff
+
+  def distance
+    if self.class == Load
+      d = Geocoder::Calculations.distance_between(self.pickup.place, self.dropoff.place)
+      by_road = d*1.275
+      return by_road.round
+    else
+      nil
+    end
+  end
+
   def ago
     # when the post was created - now
     miliseconds = (Time.now - created_at)
@@ -16,13 +28,17 @@ class Post < ApplicationRecord
     days = hours / 24
     # display minutes if less than 60 minutes
     if minutes < 60
-      "#{minutes.round} minutes ago"
+      "Пред #{minutes.round} мин."
     # display hours if less than 24 hours
     elsif hours < 24
-      "#{hours.round} hours ago"
+      "Пред #{hours.round} часа"
       # else display days
     else
-      "#{days.round} days ago"
+      if days < 2
+      return  "Вчера"
+      else
+      return "Пред #{days.round} дена"
+      end
     end
   end
 end

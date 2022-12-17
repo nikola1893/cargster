@@ -1,12 +1,12 @@
-  <div class="row px-4">
+  <div class="row px-4 py-2">
     <% if current_page?(new_load_path) %>
-    <%= link_to "📦 Товар", new_load_path, class: "col-6 btn mb-3 py-2 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
+    <%= link_to "📦 Товар", new_load_path, class: "col-6 btn mb-2 py-3 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
     <% else %>
-    <%= link_to "📦 Товар", new_load_path, class: "col-6 btn mb-3 py-2 px-3" %>
+    <%= link_to "📦 Товар", new_load_path, class: "col-6 btn mb-2 py-3 px-3 border-bottom border-3 border-light-gray border-top-0 border-start-0 border-end-0" %>
     <% end %>
     <% if current_page?(new_truck_path) %>
-    <%= link_to "🚛 Камион", new_truck_path, class: "col-6 btn mb-3 py-2 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
+    <%= link_to "🚛 Камион", new_truck_path, class: "col-6 btn mb-2 py-3 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
     <% else %>
-    <%= link_to "🚛 Камион", new_truck_path, class: "col-6 btn mb-3 py-2 px-3" %>
+    <%= link_to "🚛 Камион", new_truck_path, class: "col-6 btn mb-2 py-3 px-3 border-bottom border-3 border-light-gray border-top-0 border-start-0 border-end-0" %>
     <% end %>
   </div>

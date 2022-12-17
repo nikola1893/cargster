@@ -1,0 +1,12 @@
+  <div class="row px-4 py-2">
+    <% if current_page?(load_templates_path) %>
+    <%= link_to "📦 Товар", load_templates_path, class: "col-6 btn my-2 py-3 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
+    <% else %>
+    <%= link_to "📦 Товар", load_templates_path, class: "col-6 btn my-2 py-3 px-3 border-bottom border-3 border-light-gray border-top-0 border-start-0 border-end-0" %>
+    <% end %>
+    <% if current_page?(truck_templates_path) %>
+    <%= link_to "🚛 Камион", truck_templates_path, class: "col-6 btn my-2 py-3 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
+    <% else %>
+    <%= link_to "🚛 Камион", truck_templates_path, class: "col-6 btn my-2 py-3 px-3" %>
+    <% end %>
+  </div>

@@ -58,7 +58,10 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "geocoder"
 # gem 'acts-as-taggable-on'
 # gem 'acts-as-taggable-on', '~> 9.0'
+gem 'kaminari'
 gem "pundit"
+gem 'prawn'
+gem 'cyrillizer'
 # gem 'flag-icon-sass'
 # gem "cocoon"
 

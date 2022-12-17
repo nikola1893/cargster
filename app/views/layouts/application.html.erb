@@ -14,9 +14,10 @@
   </head>
 
   <body>
-      <%= render "shared/flashes" %>
+    <%= render "shared/flashes" %>
+    <div class="d-none d-lg-block" style="height: 2rem;">
+    </div>
     <div class="col-lg-5 mx-auto mb-5">
-      <%= render "shared/navbar" %>
       <%= yield %>
     </div>
   </body>

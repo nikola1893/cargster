@@ -1,9 +1,9 @@
 class Geo < ApplicationRecord
   belongs_to :post
   has_one :user, through: :post
-  # belongs_to :user, through: :post
   geocoded_by :place
   after_validation :geocode, if: :will_save_change_to_place?
+
   def country
     # if the coumtry name is present in the images/countries folder, return the country name
     # else return the country code
@@ -12,6 +12,17 @@ class Geo < ApplicationRecord
       return country
     else
       return "un"
+    end
+  end
+
+  # get region from a geo object
+  def region
+    # return the administrative area level 1
+    # if the region is not present, return the country
+    if self.country == self.place
+      self.country
+    else
+      self.place.split(',').last(2)[0].strip
     end
   end
 

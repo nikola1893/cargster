@@ -1,0 +1,53 @@
+<%= render "shared/navbar" %>
+<div class="container px-3 mb-3">
+<% if user_signed_in? %>
+  <%= render 'shared/tabs_home' %>
+  <p class="text-muted px-3"><small>Објави за камион во последните 24 часа кои одговараат на вашите објави за превоз.</small></p>
+  <% if @suggested_trucks.length == 0 %>
+    <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
+      <p class="text-center">Нема ниту една објава што одговара на вашиот камион.</p>
+      <% if current_user.posts.length == 0 %>
+        <%= link_to "Креирај објава за товар", new_load_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+      <% else %>
+        <%= link_to "Креирај објава за товар", load_templates_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+      <% end %>
+    </div>
+  <% end %>
+  <% @suggested_trucks.each do |t| %>
+    <%= link_to truck_path(t) do %>
+    <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="text-truncate fw-bold"><%= t.user.email %></p>
+        <p class="text-muted text-end text-truncate"><small><%= t.ago %></small></p>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="d-flex text-truncate" style="width: 40%">
+          <p class="m-0"><%= image_tag "countries/#{t.pickup.country}.svg", style: "width: 1.15rem; border-radius: 2rem; margin-bottom: 0.15rem; margin-right: 0.3rem;" %></p>
+          <p class="my-0 text-truncate"><%= t.pickup.simple %></p>
+        </div>
+        <div class="d-flex justify-content-end text-truncate" style="width: 40%">
+          <p class="m-0 text-end text-truncate"><%= t.dropoff.simple %></p>
+          <p class="m-0"><%= image_tag "countries/#{t.dropoff.country}.svg", style: "width: 1.15rem; border-radius: 1rem; margin-bottom: 0.15rem; margin-left: 0.3rem;" %></p>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap mt-3">
+      <p class="tag-pill"><small><%= t.loading_date.try(:strftime, ("%b %e, %a")) %></small></p>
+      <% t.truck_type.drop(1).each do |truck| %>
+        <p class="tag-pill"><small><%= truck %></small></p>
+      <% end %>
+      <p class="tag-pill"><small><%= t.length %><%= "m" %></small></p>
+      <p class="tag-pill"><small><%= number_with_delimiter(t.distance, :delimiter => '.') %> km</small></p>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+  <%= paginate @suggested_trucks %>
+<% else %>
+<div class="bg-white rounded-sm mt-4 pt-4 pb-3 px-3 mb-3 shadow-sm">
+  <p class="text-center fw-bolder">Едноставна шпедиција.</p>
+  <%= link_to "Регистрација", new_user_registration_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+</div>
+<%= image_tag "home_pic", class: "w-100 mt-5 px-4" %>
+<p class="text-muted text-center fixed-bottom my-5"><small>Направено со ❤️ во Македонија</small></p>
+<% end %>
+</div>

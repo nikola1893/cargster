@@ -1,20 +1,10 @@
-<div class="px-5 mt-2 d-flex justify-content-between align-items-center">
-  <%= link_to edit_user_registration_path do %>
-    <p class="actions-buttons"><span class="fa fa-solid fa-edit text-primary action-icon fa-lg"></span></p>
-    <p class="action-text"><small>Измени</small></p>
-  <% end %>
-  <%= link_to "#" do %>
-    <p class="actions-buttons"><span class="fa fa-solid fa-file-arrow-up mx-1 text-primary action-icon fa-lg"></span></p>
-    <p class="action-text"><small>Прикачи документ</small></p>
-  <% end %>
-  <%= link_to destroy_user_session_path,  data: { turbo_method: :delete } do %>
-    <p class="actions-buttons"><span class="fa fa-solid fa-right-from-bracket text-danger action-icon fa-lg"></span></p>
-    <p class="action-text"><small>Одјава</small></p>
-  <% end %>
-</div>
-<div class="px-4">
-  <p class="fw-bolder" style= "margin-left: 2rem;"><small>Инфо</small></p>
+<%= render "shared/navbar" %>
+<div class="px-4 py-3">
+  <p class="fw-bolder" style= "margin-left: 2rem;"><small>За мене:</small></p>
   <p><span class="mx-1 fa fa-solid fa-envelope text-primary"></span>
     <%= @user.email %>
   </p>
+</div>
+<div class="container px-4">
+  <%= link_to "Одјава", destroy_user_session_path, class: "btn bg-white rounded-4 text-danger w-100",  data: { turbo_method: :delete } %>
 </div>

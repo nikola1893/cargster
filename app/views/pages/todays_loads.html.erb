@@ -1,27 +1,24 @@
 <%= render "shared/navbar" %>
-<div class="container px-3">
-  <%= render 'shared/tabs_index' %>
-  <% if @trucks.length == 0 %>
+<div class="container px-3 mb-3">
+<% if user_signed_in? %>
+  <%= render 'shared/tabs_home' %>
+  <p class="text-muted px-3"><small>Објави за товар во последните 24 часа кои одговараат на вашите објави за камион.</small></p>
+  <% if @suggested_loads.length == 0 %>
     <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
-      <p class="text-center">Немате ниту една објава за товар.</p>
-
-      <%= link_to "Креирај објава", new_load_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+      <p class="text-center">Нема ниту една објава што одговара на вашиот превоз</p>
+      <% if current_user.posts.length == 0 %>
+        <%= link_to "Креирај објава за камион", new_truck_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+      <% else %>
+        <%= link_to "Креирај објава за камион", truck_templates_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+      <% end %>
     </div>
   <% end %>
-  <% @trucks.each do |t| %>
+  <% @suggested_loads.each do |t| %>
     <%= link_to load_path(t) do %>
     <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
       <div class="d-flex justify-content-between align-items-center">
-        <div class="">
-          <% if t.status? %>
-          <p class="tag-pill-status fw-bold text-black bg-info border border-primary border-1"><small>АКТИВЕН</small></p>
-          <% else %>
-          <p class="tag-pill-status fw-bold text-black bg-warning border border-danger border-1"><small>РЕШЕН</small></p>
-          <% end %>
-        </div>
-        <div class="">
-          <p class="text-muted text-end"><small><%= t.ago %></small></p>
-        </div>
+        <p class="text-truncate fw-bold"><%= t.user.email %></p>
+        <p class="text-muted text-end text-truncate"><small><%= t.ago %></small></p>
       </div>
       <div class="d-flex justify-content-between">
         <div class="d-flex text-truncate" style="width: 40%">
@@ -44,4 +41,13 @@
     </div>
     <% end %>
   <% end %>
+  <%= paginate @suggested_loads %>
+<% else %>
+<div class="bg-white rounded-sm mt-4 pt-4 pb-3 px-3 mb-3 shadow-sm">
+  <p class="text-center fw-bolder">Едноставна шпедиција.</p>
+  <%= link_to "Регистрација", new_user_registration_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+</div>
+<%= image_tag "home_pic", class: "w-100 mt-5 px-4" %>
+<p class="text-muted text-center fixed-bottom my-5"><small>Направено со ❤️ во Македонија</small></p>
+<% end %>
 </div>

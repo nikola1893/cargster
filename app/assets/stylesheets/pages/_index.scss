@@ -29,9 +29,9 @@
   border-radius: 0.5rem;
 }
 
-.shadow .shadow-sm {
-  box-shadow: #F4F4F4, 5px 5px 5px 5px,
-}
+// .shadoww {
+//   box-shadow: rgba(46, 240, 185, 0.4) 5px 5px, rgba(46, 240, 185, 0.4) 10px 10px, rgba(46, 240, 185, 0.4) 15px 15px, rgba(46, 240, 185, 0.4) 20px 20px, rgba(46, 240, 185, 0.4) 25px 25px;
+// }
 
 .tag-item {
   display: inline-block;
@@ -68,7 +68,7 @@
 
 .tag-pill {
   font-size: 1.15rem;
-  border-radius: 50rem;
+  border-radius: 2rem;
   padding: 0.2rem 0.7rem;
   background-color: $light-gray;
   color: $secondary;
@@ -76,6 +76,16 @@
   margin-right: 0.6rem;
   overflow: hidden;
   margin-bottom: 0.5rem;
+}
+
+.tag-pill-status {
+  font-size: 1rem;
+  border-radius: 2rem;
+  padding: 0.2rem 0.7rem;
+  // border: 1px solid $secondary;
+  // margin-right: 0.6rem;
+  overflow: hidden;
+  // margin-bottom: 0.5rem;
 }
 
 textarea.form-control {
@@ -118,15 +128,10 @@ a {
   border-radius: 25%;
 }
 
-.action-icon {
-  padding-top: 50%;
-  padding-left: 25%
-}
-
 .action-text {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: -0.5rem;
 }
 
 .n-top {
