@@ -50,7 +50,7 @@
 
     <% end %>
 
-    <%= link_to new_truck_path(:truck_type => @truck.truck_type, :length => @truck.length, :comment => @truck.comment, :pickup => @truck.pickup.place, :dropoff => @truck.dropoff.place), "data-turbo" => "false", class: "mx-2" do %>
+    <%= link_to new_truck_path(:truck_type => @truck.truck_type, :length => @truck.length, :weight => @truck.weight, :comment => @truck.comment, :pickup => @truck.pickup.place, :dropoff => @truck.dropoff.place), "data-turbo" => "false", class: "mx-2" do %>
       <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-retweet text-primary fa-lg"></span></p>
       <p class="action-text"><small>Одново</small></p>
     <% end %>

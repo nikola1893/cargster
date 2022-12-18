@@ -10,7 +10,14 @@
     <%= f.input :truck_type, label: "Тип на возило", as: :check_boxes, input_html: { class: "tag-selector" },
                 item_wrapper_class: 'tag-item', collection: [ "Церада", "Мега", "Хладнњача", "Цистерна", "Комбе", "Тандем", "АДР", "Камион(под 7.5т)" ] %>
 
-    <%= f.input :length, label: "Должина", placeholder: "Метри" %>
+    <div class="row">
+      <div class="col-6 n-top">
+        <%= f.input :length, label: "Должина", placeholder: "Метри" %>
+      </div>
+      <div class="col-6 n-top">
+        <%= f.input :weight, label: "Тежина", placeholder: "Тони" %>
+      </div>
+    </div>
 
     <%= f.simple_fields_for :pickup do |build| %>
       <%= build.input :place, label: "Преферирано место на утовар",

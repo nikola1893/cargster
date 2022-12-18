@@ -5,7 +5,7 @@
   <%= link_to "Креирај нова објава", new_load_path, class: "mb-3 mt-1 btn btn-lg btn-primary w-100 text-white" %>
   <p class="text-muted text-center"><small>Шаблони</small></p>
   <% @trucks.each do |t| %>
-    <%= link_to new_load_path(:truck_type => t.truck_type, :length => t.length, :comment => t.comment, :pickup => t.pickup.place, :dropoff => t.dropoff.place), "data-turbo" => "false" do %>
+    <%= link_to new_load_path(:truck_type => t.truck_type, :length => t.length, :weight => t.weight, :comment => t.comment, :pickup => t.pickup.place, :dropoff => t.dropoff.place), "data-turbo" => "false" do %>
     <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
 
       <div class="d-flex justify-content-between">

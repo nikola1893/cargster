@@ -10,7 +10,7 @@ class TrucksController < ApplicationController
     @post = Truck.new
     @post.build_pickup
     @post.build_dropoff
-    @post = Truck.new(truck_type: params[:truck_type], length: params[:length], comment: params[:comment], pickup_attributes: {place: params[:pickup]}, dropoff_attributes: {place: params[:dropoff]})
+    @post = Truck.new(truck_type: params[:truck_type], length: params[:length], weight: params[:weight], comment: params[:comment], pickup_attributes: {place: params[:pickup]}, dropoff_attributes: {place: params[:dropoff]})
     authorize @post
   end
 
@@ -65,7 +65,7 @@ class TrucksController < ApplicationController
 
   def truck_templates
     @page_name = "Брза објава"
-    @trucks = Truck.where(id: Truck.group(:comment, :length, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
+    @trucks = Truck.where(id: Truck.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
   end
 
   def download_truck_pdf
@@ -84,7 +84,7 @@ class TrucksController < ApplicationController
   private
 
   def truck_params
-    params.require(:truck).permit(:comment, :length, :loading_date, {truck_type: []}, pickup_attributes: [:id, :place], dropoff_attributes: [:id, :place])
+    params.require(:truck).permit(:comment, :length, :weight, :loading_date, {truck_type: []}, pickup_attributes: [:id, :place], dropoff_attributes: [:id, :place])
   end
 
   def generate_pdf(client)
@@ -107,6 +107,7 @@ class TrucksController < ApplicationController
       text " "
       text "Tip kamion: #{client.truck_type.drop(1).join("; ").to_lat.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')}"
       text "Dolzina: #{client.length} m"
+      text "Tezina: #{client.weignt} t"
       text " "
       text "Komentar: #{client.comment.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')}"
       end
