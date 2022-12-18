@@ -32,7 +32,6 @@
     <% end %>
     <%= link_to "Мои огласи", trucks_path, class: "btn mb-4 w-100" %>
     <%= link_to "Подесувања", profile_path, class: "btn mb-4 w-100" %>
-    <hr>
   <% end %>
 </div>
 
@@ -121,7 +120,7 @@
 
   <% if policy(@truck).edit? && @truck.status? %>
   <div class="text-center">
-  <%= link_to "Потенцијален товар", load_suggestions_path(@truck), class: "btn btn-lg btn-primary shadow-sm mb-3 mt-2 rounded-4 w-100 text-white" %>
+  <%= link_to "Потенцијално возило", load_suggestions_path(@truck), class: "btn btn-lg btn-primary shadow-sm mb-3 mt-2 rounded-4 w-100 text-white" %>
   </div>
 <% end %>
 

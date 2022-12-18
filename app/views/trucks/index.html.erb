@@ -3,7 +3,7 @@
   <%= render 'shared/tabs_index' %>
   <% if @trucks.length == 0 %>
     <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
-      <p class="text-center">Немате ниту една објава за камион.</p>
+      <p class="text-center">Немате ниту една објава за возило.</p>
       <%= link_to "Креирај објава", new_truck_path, class: "mb-2 btn btn-primary w-100 text-white" %>
     </div>
   <% end %>

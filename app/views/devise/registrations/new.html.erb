@@ -1,28 +1,31 @@
-<%= render "shared/navbar" %>
-<div class="container px-4 my-3">
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-  <%= f.error_notification %>
+<div class="container p-4 mt-2">
+  <div class="bg-white rounded-4 shadow-sm p-4">
+  <p class="display-6 fw-bolder">Регистрација</p>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                label: "Емаил",
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                label: "Лозинка",
-                required: true,
-                hint: ("#{@minimum_password_length} карактери минимум" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                label: "Потврди лозинка",
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  label: "Емаил",
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  label: "Лозинка",
+                  required: true,
+                  hint: ("#{@minimum_password_length} карактери минимум" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  label: "Потврди лозинка",
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Регистрација", class: "btn btn-primary w-100 text-white btn-lg my-3" %>
+    <div class="form-actions">
+      <%= f.button :submit, "Регистрација", class: "btn btn-primary w-100 text-white btn-lg mt-3 mb-4" %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+  <div class="text-center mt-4"><%= link_to "Почетна", root_path %></div>
   </div>
-<% end %>
-<%= render "devise/shared/links" %>
 </div>

@@ -32,7 +32,6 @@
     <% end %>
     <%= link_to "Мои огласи", trucks_path, class: "btn mb-4 w-100" %>
     <%= link_to "Подесувања", profile_path, class: "btn mb-4 w-100" %>
-    <hr>
   <% end %>
 </div>
 
@@ -45,11 +44,11 @@
 
   <%= simple_form_for @post do |f| %>
     <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.error_notification alert: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <%= f.input :loading_date, placeholder: "Loading date", html5: true, label: "Датум на утовар", input_html: {class: "picker"} %>
 
-    <%= f.input :truck_type, label: "Тип на камион", as: :check_boxes, input_html: { class: "tag-selector" },
+    <%= f.input :truck_type, label: "Тип на возило", as: :check_boxes, input_html: { class: "tag-selector" },
                 item_wrapper_class: 'tag-item', collection: [ "Церада", "Мега", "Хладнњача", "Цистерна", "Комбе", "Тандем", "АДР", "Камион(под 7.5т)" ] %>
 
     <div class="n-top">

@@ -6,6 +6,11 @@ class Post < ApplicationRecord
   delegate :place, to: :dropoff, prefix: true, allow_nil: true
   accepts_nested_attributes_for :pickup
   accepts_nested_attributes_for :dropoff
+  validates :loading_date, presence: true
+  validates :truck_type, presence: true
+  validates :pickup, presence: true
+  validates :dropoff_place, presence: true
+  validates :length, presence: true
 
   def distance
     if self.class == Load

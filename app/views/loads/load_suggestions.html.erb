@@ -32,14 +32,14 @@
     <% end %>
     <%= link_to "Мои огласи", trucks_path, class: "btn mb-4 w-100" %>
     <%= link_to "Подесувања", profile_path, class: "btn mb-4 w-100" %>
-    <hr>
+    >
   <% end %>
 </div>
 
 <div class="container px-3 mt-4">
   <% if @suggested_loads.length == 0 %>
     <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
-      <p class="text-center">Нема ниеден камион што одговара на вашиот товар.</p>
+      <p class="text-center">Нема ниедено возило што одговара на вашиот товар.</p>
     </div>
   <% end %>
   <% @suggested_loads.each do |t| %>

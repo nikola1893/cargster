@@ -33,7 +33,7 @@ class LoadsController < ApplicationController
     # set dropoff_place to dropoff place
     @post.dropoff_place = @post.dropoff.place
     if @post.save
-      redirect_to loads_path, notice: "Објавата за товар е успешна!"
+      redirect_to load_suggestions_path(@post), notice: "Објавата за товар е успешна!"
     else
       render :new
     end
@@ -67,7 +67,7 @@ class LoadsController < ApplicationController
 
   def load_templates
     @page_name = "Брза објава"
-    @trucks = Load.where(id: Load.group(:comment, :length, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id)
+    @trucks = Load.where(id: Load.group(:comment, :length, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
   end
 
   def download_load_pdf
@@ -78,7 +78,7 @@ class LoadsController < ApplicationController
   end
 
   def load_suggestions
-    @page_name = "Предлози за камион"
+    @page_name = "Предлози за возило"
     @truck = Load.find(params[:id])
     @suggested_loads = @truck.truck_matches
   end

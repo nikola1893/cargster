@@ -17,9 +17,9 @@ class TrucksController < ApplicationController
   def show
     @truck = Truck.find(params[:id])
     if @truck.user == current_user
-      @page_name = "Мој камион"
+      @page_name = "Мое возило"
     else
-      @page_name = "Преглед на камион"
+      @page_name = "Преглед на возило"
     end
     authorize @truck
   end
@@ -33,7 +33,7 @@ class TrucksController < ApplicationController
     # set dropoff_place to dropoff place
     @post.dropoff_place = @post.dropoff.place
     if @post.save
-      redirect_to trucks_path, notice: "Објавата за камион е успешна!"
+      redirect_to truck_suggestions_path(@post), notice: "Објавата за возило е успешна!"
     else
       render :new
     end
@@ -65,7 +65,7 @@ class TrucksController < ApplicationController
 
   def truck_templates
     @page_name = "Брза објава"
-    @trucks = Truck.where(id: Truck.group(:comment, :length, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id)
+    @trucks = Truck.where(id: Truck.group(:comment, :length, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
   end
 
   def download_truck_pdf

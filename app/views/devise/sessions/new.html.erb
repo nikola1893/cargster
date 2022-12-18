@@ -1,23 +1,25 @@
-<%= render "shared/navbar" %>
-<div class="container px-4 my-3">
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                label: "Емаил",
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                label: "Лозинка",
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, label: "Запамти ме", as: :boolean if devise_mapping.rememberable? %>
-  </div>
+<div class="container p-4 mt-2">
+  <div class="bg-white rounded-4 shadow-sm p-4">
+  <p class="display-6 fw-bolder">Најава</p>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  label: "Емаил",
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  label: "Лозинка",
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, label: "Запамти ме", as: :boolean if devise_mapping.rememberable? %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Најава", class: "btn btn-lg btn-primary w-100 text-white mb-3" %>
+    <div class="form-actions">
+      <%= f.button :submit, "Најава", class: "btn btn-lg btn-primary w-100 text-white mb-3" %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+  <div class="text-center mt-3"><%= link_to "Почетна", root_path %></div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
 </div>

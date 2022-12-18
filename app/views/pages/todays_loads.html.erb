@@ -1,15 +1,17 @@
+<% if user_signed_in? %>
 <%= render "shared/navbar" %>
+<% end %>
 <div class="container px-3 mb-3">
 <% if user_signed_in? %>
   <%= render 'shared/tabs_home' %>
-  <p class="text-muted px-3"><small>Објави за товар во последните 24 часа кои одговараат на вашите објави за камион.</small></p>
+  <p class="text-muted px-3"><small>Објави за товар во последните 24 часа кои одговараат на вашите објави за возило.</small></p>
   <% if @suggested_loads.length == 0 %>
     <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
       <p class="text-center">Нема ниту една објава што одговара на вашиот превоз</p>
       <% if current_user.posts.length == 0 %>
-        <%= link_to "Креирај објава за камион", new_truck_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+        <%= link_to "Креирај објава за возило", new_truck_path, class: "mb-2 btn btn-primary w-100 text-white" %>
       <% else %>
-        <%= link_to "Креирај објава за камион", truck_templates_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+        <%= link_to "Креирај објава за возило", truck_templates_path, class: "mb-2 btn btn-primary w-100 text-white" %>
       <% end %>
     </div>
   <% end %>
@@ -43,11 +45,6 @@
   <% end %>
   <%= paginate @suggested_loads %>
 <% else %>
-<div class="bg-white rounded-sm mt-4 pt-4 pb-3 px-3 mb-3 shadow-sm">
-  <p class="text-center fw-bolder">Едноставна шпедиција.</p>
-  <%= link_to "Регистрација", new_user_registration_path, class: "mb-2 btn btn-primary w-100 text-white" %>
-</div>
-<%= image_tag "home_pic.svg", class: "w-100 mt-5 px-4" %>
-<p class="text-muted text-center fixed-bottom my-5"><small>Направено со ❤️ во Македонија</small></p>
+<%= render "shared/value_proposition" %>
 <% end %>
 </div>
