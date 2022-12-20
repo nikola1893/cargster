@@ -23,6 +23,9 @@
         <p class="tag-pill"><small><%= truck %></small></p>
       <% end %>
       <p class="tag-pill"><small><%= t.length %><%= "m" %></small></p>
+      <% if t.weight? %>
+      <p class="tag-pill"><small><%= t.weight %><%= "t" %></small></p>
+      <% end %>
       </div>
     </div>
     <% end %>

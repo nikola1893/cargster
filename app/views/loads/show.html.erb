@@ -1,6 +1,6 @@
 <div class="shadow-sm rounded-3 sticky-top bg-white px-4 py-3">
   <div class="d-flex justify-content-between align-items-center">
-    <%= link_to loads_path do %>
+    <%= link_to :back do %>
       <i class="fa fa-lg text-primary mx-1 fa-solid fa-chevron-left"></i>
     <% end %>
     <p class="fw-bolder m-0"><%= @page_name ||
@@ -55,11 +55,6 @@
       <p class="action-text"><small>Одново</small></p>
     <% end %>
 
-    <%= link_to download_load_pdf_path(@truck), class: "mx-2" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-paperclip text-primary fa-lg"></span></p>
-      <p class="action-text"><small>PDF</small></p>
-    <% end %>
-
   <% else %>
 
     <%= link_to edit_truck_path, class: "mx-2" do %>
@@ -78,10 +73,6 @@
       <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-envelope text-primary fa-lg"></span></p>
       <p class="action-text"><small>Е-маил</small></p>
     <% end %>
-    <%= link_to download_load_pdf_path(@truck), class: "mx-2" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-paperclip text-primary fa-lg"></span></p>
-      <p class="action-text"><small>PDF</small></p>
-    <% end %>
   <% end %>
 </div>
 
@@ -91,17 +82,17 @@
 
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-calendar-days text-primary"></span></p>
-    <p class="mx-3"><%= @truck.loading_date.try(:strftime, "%B %m") %></p>
+    <p class="mx-3"><%= @truck.loading_date.try(:strftime, "%d %B") %></p>
   </div>
 
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary"></span></p>
-    <p class="mx-3"><%= @truck.pickup.place %></p>
+    <p class="mx-3"><%= @truck.pickup_place %></p>
   </div>
 
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary" style="transform: scaleX(-1);"></span></p>
-    <p class="mx-3"><%= @truck.dropoff.place %></p>
+    <p class="mx-3"><%= @truck.dropoff_place %></p>
   </div>
 
   <div class="d-flex">
@@ -117,6 +108,19 @@
     <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-ruler-horizontal text-primary"></span></p>
     <p class="mx-3"><%= @truck.length %> метри</p>
   </div>
+
+  <% if @truck.weight? %>
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-weight-scale text-primary"></span></p>
+    <p class="mx-3"><%= @truck.weight %> тони</p>
+  </div>
+  <% end %>
+
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-map text-primary"></span></p>
+    <p class="mx-3"><%= number_with_delimiter(@truck.distance, :delimiter => '.') %> км</p>
+  </div>
+
 
   <% if policy(@truck).edit? && @truck.status? %>
   <div class="text-center">

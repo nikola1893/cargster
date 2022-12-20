@@ -3,6 +3,7 @@ class Geo < ApplicationRecord
   has_one :user, through: :post
   geocoded_by :place
   after_validation :geocode, if: :will_save_change_to_place?
+  validates :place, presence: true
 
   def country
     # if the coumtry name is present in the images/countries folder, return the country name

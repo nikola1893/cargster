@@ -8,8 +8,6 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :dropoff
   validates :loading_date, presence: true
   validates :truck_type, presence: true
-  validates :pickup, presence: true
-  validates :dropoff_place, presence: true
   validates :length, presence: true
 
   def distance

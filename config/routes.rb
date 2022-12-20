@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   get "profile", to: "pages#profile"
   get "todays_trucks", to: "pages#todays_trucks"
   get "todays_loads", to: "pages#todays_loads"
-  get ":id/download_truck_pdf", to: "trucks#download_truck_pdf", as: "download_truck_pdf"
-  get ":id/download_load_pdf", to: "loads#download_load_pdf", as: "download_load_pdf"
   get '/truck_templates', to: 'trucks#truck_templates'
   get '/load_templates', to: 'loads#load_templates'
   get '/trucks/:id/truck_suggestions', to: 'trucks#truck_suggestions', as: 'truck_suggestions'

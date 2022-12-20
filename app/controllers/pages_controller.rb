@@ -15,7 +15,6 @@ class PagesController < ApplicationController
              my_truck.dropoff.region == potential_load.dropoff.region) &&
             [-3,-2,-1,0,1,2,3].include?((potential_load.loading_date - my_truck.loading_date).to_i) &&
             potential_load.length <= my_truck.length*1.05 &&
-            potential_load.weight <= my_truck.weight*1.05 &&
             potential_load.truck_type & my_truck.truck_type != []
             @suggested_loads << potential_load unless @suggested_loads.include?(potential_load)
           end
@@ -42,7 +41,6 @@ class PagesController < ApplicationController
              my_load.dropoff.region == potential_truck.dropoff.region) &&
             [-3,-2,-1,0,1,2,3].include?((potential_truck.loading_date - my_load.loading_date).to_i) &&
             potential_truck.length <= my_load.length*1.05 &&
-            potential_truck.weight <= my_load.weight*1.05 &&
             potential_truck.truck_type & my_load.truck_type != []
             @suggested_trucks << potential_truck unless @suggested_trucks.include?(potential_truck)
           end

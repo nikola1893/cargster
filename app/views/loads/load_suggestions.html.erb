@@ -38,9 +38,7 @@
 
 <div class="container px-3 mt-4">
   <% if @suggested_loads.length == 0 %>
-    <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
-      <p class="text-center">Нема ниедено возило што одговара на вашиот товар.</p>
-    </div>
+    <%= render 'shared/change_parameters' %>
   <% end %>
   <% @suggested_loads.each do |t| %>
     <%= link_to truck_path(t) do %>
@@ -69,6 +67,7 @@
         <p class="tag-pill"><small><%= truck %></small></p>
       <% end %>
       <p class="tag-pill"><small><%= t.length %><%= "m" %></small></p>
+      <p class="tag-pill"><small><%= t.weight %><%= "t" %></small></p>
       </div>
     </div>
     <% end %>

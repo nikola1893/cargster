@@ -68,13 +68,6 @@ class TrucksController < ApplicationController
     @trucks = Truck.where(id: Truck.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
   end
 
-  def download_truck_pdf
-    client = Truck.find(params[:id])
-    send_data generate_pdf(client),
-              filename: "Cargster_Truck_#{client.id}.pdf",
-              type: "application/pdf"
-  end
-
   def truck_suggestions
     @page_name = "Предлози за товар"
     @truck = Truck.find(params[:id])
@@ -85,33 +78,6 @@ class TrucksController < ApplicationController
 
   def truck_params
     params.require(:truck).permit(:comment, :length, :weight, :loading_date, {truck_type: []}, pickup_attributes: [:id, :place], dropoff_attributes: [:id, :place])
-  end
-
-  def generate_pdf(client)
-    Prawn::Document.new do
-      # add margin to the left
-      indent(30) do
-      text "Cargster", size: 20, style: :bold
-      text "Jednostavna spedicija"
-      text "www.cargster.co"
-      text " "
-      text "Objava za kamion", style: :bold
-      text " "
-      text "Objaveno od: #{client.user.email.encode}"
-      text "na: #{client.created_at.strftime("%d/%m/%Y %H:%M")}"
-      text " "
-      text "Utovar: #{client.pickup_place.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')}"
-      text "Datum utovar: #{client.loading_date.strftime("%d/%m/%Y")}"
-      text " "
-      text "Istovar: #{client.dropoff_place.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')}"
-      text " "
-      text "Tip kamion: #{client.truck_type.drop(1).join("; ").to_lat.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')}"
-      text "Dolzina: #{client.length} m"
-      text "Tezina: #{client.weignt} t"
-      text " "
-      text "Komentar: #{client.comment.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')}"
-      end
-    end.render
   end
 
 end

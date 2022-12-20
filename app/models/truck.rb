@@ -13,7 +13,6 @@ class Truck < Post
         self.dropoff.region == geo_dropoff.region) &&
         [-3,-2,-1,0,1,2,3].include?((geo.loading_date - self.loading_date).to_i) &&
         geo.length <= self.length*1.05 &&
-        geo.weight <= self.weight*1.05 &&
         geo.truck_type & self.truck_type != []
         matches << geo
       end
