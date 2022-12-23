@@ -1,0 +1,39 @@
+<div class="px-4 mt-4 mb-1 d-flex justify-content-center align-items-center">
+  <% if policy(@truck).edit? %>
+    <% if @truck.status? %>
+
+      <%= link_to change_truck_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class: "mx-2" do %>
+        <p class="bg-white shadow-sm text-center p-3 rounded-4"><i class="fa fa-solid fa-trash text-danger fa-lg"></i></p>
+        <p class="action-text"><small>Избриши</small></p>
+      <% end %>
+      <%= link_to edit_truck_path, "data-turbo" => "false", class: "mx-2" do %>
+        <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-pen text-primary fa-lg"></span></p>
+        <p class="action-text"><small>Измени</small></p>
+      <% end %>
+
+    <% end %>
+    <%= link_to new_truck_path(:truck_type => @truck.truck_type, :length => @truck.length, :weight => @truck.weight, :comment => @truck.comment, :pickup => @truck.pickup.place, :dropoff => @truck.dropoff.place), "data-turbo" => "false", class: "mx-2" do %>
+      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-retweet text-primary fa-lg"></span></p>
+      <p class="action-text"><small>Одново</small></p>
+    <% end %>
+
+  <% else %>
+
+    <%= link_to edit_truck_path, class: "mx-2" do %>
+      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-phone text-primary fa-lg"></span></p>
+      <p class="action-text"><small>Јави се</small></p>
+    <% end %>
+    <%= link_to edit_truck_path, class: "mx-2" do %>
+      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-viber fa-lg" style="color: rgb(89, 38, 124)"></span></p>
+      <p class="action-text"><small>Viber</small></p>
+    <% end %>
+    <%= link_to edit_truck_path, class: "mx-2" do %>
+      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-whatsapp fa-lg" style="color: #128c7e"></span></p>
+      <p class="action-text"><small>WhatsApp</small></p>
+    <% end %>
+    <%= link_to edit_truck_path, class: "mx-2" do %>
+      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-envelope text-primary fa-lg"></span></p>
+      <p class="action-text"><small>Е-маил</small></p>
+    <% end %>
+  <% end %>
+</div>

@@ -1,20 +1,7 @@
-<% if user_signed_in? %>
-<%= render "shared/navbar" %>
-<% end %>
 <div class="container px-3 mb-3">
 <% if user_signed_in? %>
   <%= render 'shared/tabs_home' %>
   <p class="text-muted px-3"><small>Објави за возило во последните 24 часа кои одговараат на вашите објави за превоз.</small></p>
-  <% if @suggested_trucks.length == 0 %>
-    <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
-      <p class="text-center">Нема ниту една објава што одговара на вашиот камион.</p>
-      <% if current_user.posts.length == 0 %>
-        <%= link_to "Креирај објава за товар", new_load_path, class: "mb-2 btn btn-primary w-100 text-white" %>
-      <% else %>
-        <%= link_to "Креирај објава за товар", load_templates_path, class: "mb-2 btn btn-primary w-100 text-white" %>
-      <% end %>
-    </div>
-  <% end %>
   <% @suggested_trucks.each do |t| %>
     <%= link_to truck_path(t) do %>
     <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
@@ -23,11 +10,11 @@
         <p class="text-muted text-end text-truncate"><small><%= t.ago %></small></p>
       </div>
       <div class="d-flex justify-content-between">
-        <div class="d-flex text-truncate" style="width: 40%">
+        <div class="d-flex text-truncate" style="width: 50%">
           <p class="m-0"><%= image_tag "countries/#{t.pickup.country}.svg", style: "width: 1.15rem; border-radius: 2rem; margin-bottom: 0.15rem; margin-right: 0.3rem;" %></p>
           <p class="my-0 text-truncate"><%= t.pickup.simple %></p>
         </div>
-        <div class="d-flex justify-content-end text-truncate" style="width: 40%">
+        <div class="d-flex justify-content-end text-truncate" style="width: 50%">
           <p class="m-0 text-end text-truncate"><%= t.dropoff.simple %></p>
           <p class="m-0"><%= image_tag "countries/#{t.dropoff.country}.svg", style: "width: 1.15rem; border-radius: 1rem; margin-bottom: 0.15rem; margin-left: 0.3rem;" %></p>
         </div>

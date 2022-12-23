@@ -1,19 +1,25 @@
-<%= render "shared/navbar" %>
 <div class="container px-3">
-  <%= render 'shared/tabs_templates' %>
 
-  <%= link_to "Креирај нова објава", new_truck_path, "data-turbo" => "false", class: "mb-3 mt-1 btn btn-lg btn-primary w-100 text-white" %>
-  <p class="text-muted text-center"><small>Шаблони</small></p>
+   <%= link_to new_truck_path do %>
+  <div class="bg-white rounded-sm px-4 py-3 mb-3 shadow-sm">
+    <div class="d-flex">
+      <p class="mb-0" style="margin-right: 0.5rem;"><span class="fa fa-solid fa-add text-primary"></span></p>
+      <p class="my-0 text-truncate text-primary">Креирај нова објава за возило</p>
+    </div>
+  </div>
+  <% end %>
+  <p class="text-muted mx-3"><small>Или изберете објава од долу сугестираните, само додадете датум </small></p>
+
   <% @trucks.each do |t| %>
     <%= link_to new_truck_path(:truck_type => t.truck_type, :length => t.length, :weight => t.weight, :comment => t.comment, :pickup => t.pickup.place, :dropoff => t.dropoff.place), "data-turbo" => "false" do %>
     <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
 
       <div class="d-flex justify-content-between">
-        <div class="d-flex text-truncate" style="width: 40%">
+        <div class="d-flex text-truncate" style="width: 50%">
           <p class="m-0"><%= image_tag "countries/#{t.pickup.country}.svg", style: "width: 1.15rem; border-radius: 2rem; margin-bottom: 0.15rem; margin-right: 0.3rem;" %></p>
           <p class="my-0 text-truncate"><%= t.pickup.simple %></p>
         </div>
-        <div class="d-flex justify-content-end text-truncate" style="width: 40%">
+        <div class="d-flex justify-content-end text-truncate" style="width: 50%">
           <p class="m-0 text-end text-truncate"><%= t.dropoff.simple %></p>
           <p class="m-0"><%= image_tag "countries/#{t.dropoff.country}.svg", style: "width: 1.15rem; border-radius: 1rem; margin-bottom: 0.15rem; margin-left: 0.3rem;" %></p>
         </div>

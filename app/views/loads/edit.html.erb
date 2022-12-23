@@ -1,5 +1,16 @@
 <div class="container px-4 mb-3">
 
+<script>
+  addEventListener("load", () => {
+    var suggestionLists = document.getElementsByClassName("suggestions");
+    setTimeout(() => {
+      for (var i = 0; i < suggestionLists.length; i++) {
+        suggestionLists[i].style.display = "none"
+    }
+    }, 300);
+  });
+</script>
+
   <%= simple_form_for(@post, method: :patch, multipart: true) do |f| %>
 
     <%= f.error_notification %>

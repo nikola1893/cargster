@@ -1,7 +1,20 @@
-<div class="shadow-sm rounded-3 sticky-top bg-white px-4 py-3">
+<div class=" my-3 rounded-3 sticky-top px-4 py-3" style="background-color: #F4F4F4">
   <div class="d-flex justify-content-between align-items-center">
+    <% if current_page?(load_templates_path) ||
+          current_page?(truck_templates_path) ||
+          current_page?(todays_trucks_path) ||
+          current_page?(todays_loads_path) ||
+          current_page?(root_path) ||
+          current_page?(trucks_path) ||
+          current_page?(loads_path) ||
+          current_page?(profile_path) %>
     <%= link_to root_path do %>
       <%= image_tag "logoo.png", style: "width: 2rem; border-radius: 0.5rem;", class: "" %>
+    <% end %>
+    <% else %>
+    <%= link_to :back do %>
+      <p class="m-0" style="width: 2rem;"><span class="fa fa-solid fa-arrow-left text-primary"></span></p>
+    <% end %>
     <% end %>
     <p class="fw-bolder m-0"><%= @page_name ||
       if current_page?(new_user_session_path)
@@ -14,23 +27,28 @@
         "Подесувања"
       end
     %></p>
-    <button class="border-0 bg-white" style="background-color: rgb(244,244,244);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <button class="border-0" style="background-color: rgb(244,244,244);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       <i class="fa-solid fa-lg fa-bars text-primary" style=""></i>
     </button>
   </div>
-</div>
   <div class="collapse mx-3" id="collapseExample">
     <%= link_to "Почетна", root_path, class: "btn w-100 my-4" %>
     <% if !user_signed_in? %>
       <%= link_to "Најава", new_user_session_path, class: "btn mb-4 w-100" %>
       <%= link_to "Регистрација", new_user_registration_path, class: "btn mb-2 w-100" %>
     <% else %>
-      <% if current_user.posts.count == 0 %>
-        <%= link_to "Нов оглас", new_truck_path, class: "btn mb-4 w-100" %>
+      <% if current_user.posts.where(type: "Truck").empty? %>
+        <%= link_to "Објави возило 🚛", new_truck_path, class: "btn mb-4 w-100" %>
       <% else %>
-        <%= link_to "Нов оглас", truck_templates_path, class: "btn mb-4 w-100" %>
+        <%= link_to "Објави возило 🚛", truck_templates_path, class: "btn mb-4 w-100" %>
+      <% end %>
+      <% if current_user.posts.where(type: "Load").empty? %>
+        <%= link_to "Објави товар 📦", new_load_path, class: "btn mb-4 w-100" %>
+      <% else %>
+        <%= link_to "Објави товар 📦", load_templates_path, class: "btn mb-4 w-100" %>
       <% end %>
       <%= link_to "Мои огласи", trucks_path, class: "btn mb-4 w-100" %>
-      <%= link_to "Подесувања", profile_path, class: "btn mb-3 w-100" %>
+      <%= link_to "Подесувања", profile_path, class: "btn mb-2 w-100" %>
     <% end %>
   </div>
+</div>

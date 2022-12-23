@@ -1,4 +1,4 @@
-<div class="container p-4">
+<div class="container px-3">
   <div class="d-flex justify-content-between align-items-center">
     <%= link_to truck_path(@post) do %>
       <i class="fa fa-lg text-primary mx-1 fa-solid fa-chevron-left"></i>
@@ -54,14 +54,14 @@
         <%= f.input :weight, label: "Тежина", placeholder: "Тони" %>
       </div>
     </div>
-      <script>
+    <script>
       addEventListener("load", () => {
         var suggestionLists = document.getElementsByClassName("suggestions");
         setTimeout(() => {
           for (var i = 0; i < suggestionLists.length; i++) {
             suggestionLists[i].style.display = "none"
         }
-        }, 200);
+        }, 300);
       });
     </script>
     <%= f.simple_fields_for :pickup, @post.pickup do |build| %>

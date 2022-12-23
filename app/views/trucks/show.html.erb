@@ -1,80 +1,5 @@
-<div class="shadow-sm rounded-3 sticky-top bg-white px-4 py-3">
-  <div class="d-flex justify-content-between align-items-center">
-    <%= link_to :back do %>
-      <i class="fa fa-lg text-primary mx-1 fa-solid fa-chevron-left"></i>
-    <% end %>
-    <p class="fw-bolder m-0"><%= @page_name ||
-      if current_page?(new_user_session_path)
-        "Најава"
-      elsif current_page?(new_user_registration_path)
-        "Регистрација"
-      elsif current_page?(new_user_password_path)
-        "Заборавена лозинка"
-      elsif current_page?(edit_user_registration_path)
-        "Подесувања"
-      end
-    %></p>
-    <button class="border-0 bg-white" style="background-color: rgb(244,244,244);" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      <i class="fa-solid fa-lg fa-bars text-primary" style=""></i>
-    </button>
-  </div>
-</div>
-<div class="collapse mx-3" id="collapseExample">
-  <%= link_to "Почетна", root_path, class: "btn w-100 my-4" %>
-  <% if !user_signed_in? %>
-    <%= link_to "Најава", new_user_session_path, class: "btn mb-4 w-100" %>
-    <%= link_to "Регистрација", new_user_registration_path, class: "btn mb-4 w-100" %>
-  <% else %>
-    <% if current_user.posts.count == 0 %>
-      <%= link_to "Нов оглас", new_truck_path, class: "btn mb-4 w-100" %>
-    <% else %>
-      <%= link_to "Нов оглас", truck_templates_path, class: "btn mb-4 w-100" %>
-    <% end %>
-    <%= link_to "Мои огласи", trucks_path, class: "btn mb-4 w-100" %>
-    <%= link_to "Подесувања", profile_path, class: "btn mb-4 w-100" %>
-  <% end %>
-</div>
 
-<div class="px-4 mt-4 mb-1 d-flex justify-content-center align-items-center">
-  <% if policy(@truck).edit? %>
-    <% if @truck.status? %>
-
-      <%= link_to change_truck_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class: "mx-2" do %>
-        <p class="bg-white shadow-sm text-center p-3 rounded-4"><i class="fa fa-solid fa-trash text-danger fa-lg"></i></p>
-        <p class="action-text"><small>Избриши</small></p>
-      <% end %>
-      <%= link_to edit_truck_path, "data-turbo" => "false", class: "mx-2" do %>
-        <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-pen text-primary fa-lg"></span></p>
-        <p class="action-text"><small>Измени</small></p>
-      <% end %>
-
-    <% end %>
-    <%= link_to new_truck_path(:truck_type => @truck.truck_type, :length => @truck.length, :weight => @truck.weight, :comment => @truck.comment, :pickup => @truck.pickup.place, :dropoff => @truck.dropoff.place), "data-turbo" => "false", class: "mx-2" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-retweet text-primary fa-lg"></span></p>
-      <p class="action-text"><small>Одново</small></p>
-    <% end %>
-
-  <% else %>
-
-    <%= link_to edit_truck_path, class: "mx-2" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-phone text-primary fa-lg"></span></p>
-      <p class="action-text"><small>Јави се</small></p>
-    <% end %>
-    <%= link_to edit_truck_path, class: "mx-2" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-viber fa-lg" style="color: rgb(89, 38, 124)"></span></p>
-      <p class="action-text"><small>Viber</small></p>
-    <% end %>
-    <%= link_to edit_truck_path, class: "mx-2" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-whatsapp fa-lg" style="color: #128c7e"></span></p>
-      <p class="action-text"><small>WhatsApp</small></p>
-    <% end %>
-    <%= link_to edit_truck_path, class: "mx-2" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-envelope text-primary fa-lg"></span></p>
-      <p class="action-text"><small>Е-маил</small></p>
-    <% end %>
-  <% end %>
-</div>
-
+<%= render "shared/actions" %>
 <div class="px-4">
   <div class="mx-1">
   <p class="fw-bolder" style= "margin-left: 2.5rem;"><small>Опис</small></p>
@@ -117,7 +42,7 @@
 
   <% if policy(@truck).edit? && @truck.status? %>
   <div class="text-center">
-  <%= link_to "Потенцијален товар", truck_suggestions_path(@truck), class: "btn btn-lg btn-primary shadow-sm mb-3 mt-2 rounded-4 w-100 text-white" %>
+  <% link_to "Потенцијален товар", truck_suggestions_path(@truck), class: "btn btn-lg btn-primary shadow-sm mb-3 mt-2 rounded-4 w-100 text-white" %>
   </div>
 <% end %>
 

@@ -6,7 +6,7 @@ class TrucksController < ApplicationController
   end
 
   def new
-    @page_name = "Нова објава"
+    @page_name = "Објави возило"
     @post = Truck.new
     @post.build_pickup
     @post.build_dropoff
@@ -33,7 +33,7 @@ class TrucksController < ApplicationController
     # set dropoff_place to dropoff place
     @post.dropoff_place = @post.dropoff.place
     if @post.save
-      redirect_to truck_suggestions_path(@post), notice: "Објавата за возило е успешна!"
+      redirect_to todays_loads_path, notice: "Објавата за возило е успешна!"
     else
       render :new
     end

@@ -1,12 +1,12 @@
   <div class="row px-4 py-2">
     <% if current_page?(todays_loads_path) || current_page?(root_path) %>
-    <%= link_to "Барај Товар 📦", todays_loads_path, style: "font-size: 1rem", class: "col-6 btn my-2 py-3 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
+    <%= link_to "Барај Товар", todays_loads_path, style: "font-size: 1rem", class: "col-6 btn mb-2 pb-3 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
     <% else %>
-    <%= link_to "Барај Товар 📦", todays_loads_path, style: "font-size: 1rem", class: "col-6 btn my-2 py-3 px-3 border-bottom border-3 border-light-gray border-top-0 border-start-0 border-end-0" %>
+    <%= link_to "Барај Товар", todays_loads_path, style: "font-size: 1rem", class: "col-6 btn mb-2 pb-3 px-3 border-bottom border-3 border-light-gray border-top-0 border-start-0 border-end-0" %>
     <% end %>
     <% if current_page?(todays_trucks_path) %>
-    <%= link_to "Барај Возило 🚛", todays_trucks_path,style: "font-size: 1rem", class: "col-6 btn my-2 py-3 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
+    <%= link_to "Барај Возило", todays_trucks_path,style: "font-size: 1rem", class: "col-6 btn mb-2 pb-3 px-3 border-bottom border-3 border-primary border-top-0 border-start-0 border-end-0" %>
     <% else %>
-    <%= link_to "Барај Возило 🚛", todays_trucks_path,style: "font-size: 1rem", class: "col-6 btn my-2 py-3 px-3 border-bottom border-3 border-light-gray border-top-0 border-start-0 border-end-0" %>
+    <%= link_to "Барај Возило", todays_trucks_path,style: "font-size: 1rem", class: "col-6 btn mb-2 pb-3 px-3 border-bottom border-3 border-light-gray border-top-0 border-start-0 border-end-0" %>
     <% end %>
   </div>
