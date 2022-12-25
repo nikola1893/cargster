@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 ActionMailer::Base.smtp_settings = {
   :user_name => 'apikey',
   :password => ENV['SENDGRID_API_KEY'],
-  :domain => 'cargster.co',
+  :domain => 'www.cargster.co',
   :address => 'smtp.sendgrid.net',
   :port => 465,
   :authentication => :plain,
@@ -11,7 +11,7 @@ ActionMailer::Base.smtp_settings = {
 }
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "https://cargster.co" }
+  config.action_mailer.default_url_options = { host: "https://www.cargster.co" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
