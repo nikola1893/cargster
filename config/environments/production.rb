@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 ActionMailer::Base.smtp_settings = {
   :user_name => 'apikey',
   :password => ENV['SENDGRID_API_KEY'],
-  :domain => 'www.cargster.co',
+  :domain => 'cargster.co',
   :address => 'smtp.sendgrid.net',
   :port => 465,
   :authentication => :plain,
