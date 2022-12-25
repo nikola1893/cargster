@@ -1,7 +1,20 @@
 require "active_support/core_ext/integer/time"
 
+ActionMailer::Base.smtp_settings = {
+  :user_name => 'apikey',
+  :password => ENV['SENDGRID_API_KEY'],
+  :domain => 'cargster.co',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://localhost:3000" }
+  # RendGrid setup
+  # end RendGrid setup
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.default_url_options = { host: "cargster.co" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time

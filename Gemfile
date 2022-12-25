@@ -64,6 +64,7 @@ gem 'kaminari'
 gem "pundit"
 gem 'prawn'
 gem 'cyrillizer'
+# gem 'sendgrid-ruby'
 # gem 'flag-icon-sass'
 # gem "cocoon"
 
