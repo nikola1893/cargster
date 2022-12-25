@@ -1,6 +1,10 @@
-<h2>Resend confirmation instructions</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+<div class="container px-3 py-4 mt-2">
+  <div class="bg-white rounded-4 shadow-sm p-4">
+  <%= link_to root_path do %>
+    <p class="" style="width: 2rem;"><span class="fa fa-solid fa-arrow-left text-primary"></span></p>
+  <% end %>
+  <p class="display-6 fw-bolder">Препрати линк</p>
+  <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
   <%= f.full_error :confirmation_token %>
 
@@ -13,8 +17,10 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
+    <%= f.button :submit, "Прати линк", class: "btn btn-primary w-100 text-white btn-lg mt-3 mb-4" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+</div>
