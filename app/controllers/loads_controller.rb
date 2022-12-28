@@ -1,8 +1,9 @@
 class LoadsController < ApplicationController
+  require 'pagy/extras/bootstrap'
 
   def index
     @page_name = "Мои објави"
-    @trucks = Load.includes(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
+    @pagy, @loads = pagy(Load.includes(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc), items: 5)
   end
 
   def new
@@ -21,6 +22,7 @@ class LoadsController < ApplicationController
     else
       @page_name = "Преглед на товар"
     end
+    @suggested_trucks = @truck.truck_matches
     authorize @truck
   end
 
@@ -67,15 +69,8 @@ class LoadsController < ApplicationController
 
   def load_templates
     @page_name = "Брза објава"
-    @trucks = Load.where(id: Load.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
+    @pagy, @trucks = pagy(Load.includes(:pickup, :dropoff).where(id: Load.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc), items: 5)
   end
-
-  def load_suggestions
-    @page_name = "Предлози за возило"
-    @truck = Load.find(params[:id])
-    @suggested_loads = @truck.truck_matches
-  end
-
 
   private
 

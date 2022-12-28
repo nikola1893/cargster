@@ -1,40 +1,21 @@
 <div class="container px-3 mb-3">
-<% if user_signed_in? %>
-  <%= render 'shared/tabs_home' %>
-  <p class="text-muted px-3"><small>Објави за возило во последните 24 часа кои одговараат на вашите објави за превоз.</small></p>
-  <% @suggested_loads.each do |t| %>
-    <%= link_to load_path(t) do %>
-    <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
-      <div class="d-flex justify-content-between align-items-center">
-        <p class="text-truncate fw-bold"><%= t.user.email %></p>
-        <p class="text-muted text-end text-truncate"><small><%= t.ago %></small></p>
-      </div>
-      <div class="d-flex justify-content-between">
-        <div class="d-flex text-truncate" style="width: 50%">
-          <p class="m-0"><%= image_tag "countries/#{t.pickup.country}.svg", style: "width: 1.15rem; border-radius: 2rem; margin-bottom: 0.15rem; margin-right: 0.3rem;" %></p>
-          <p class="my-0 text-truncate"><%= t.pickup.simple %></p>
-        </div>
-        <div class="d-flex justify-content-end text-truncate" style="width: 50%">
-          <p class="m-0 text-end text-truncate"><%= t.dropoff.simple %></p>
-          <p class="m-0"><%= image_tag "countries/#{t.dropoff.country}.svg", style: "width: 1.15rem; border-radius: 1rem; margin-bottom: 0.15rem; margin-left: 0.3rem;" %></p>
-        </div>
-      </div>
-      <div class="d-flex flex-wrap mt-3">
-      <p class="tag-pill"><small><%= t.loading_date.try(:strftime, ("%b %e, %a")) %></small></p>
-      <% t.truck_type.drop(1).each do |truck| %>
-        <p class="tag-pill"><small><%= truck %></small></p>
-      <% end %>
-      <p class="tag-pill"><small><%= t.length %><%= "m" %></small></p>
-       <% if t.weight? %>
-      <p class="tag-pill"><small><%= t.weight %><%= "t" %></small></p>
-      <% end %>
-      <p class="tag-pill"><small><%= number_with_delimiter(t.distance, :delimiter => '.') %> km</small></p>
+  <% if user_signed_in? %>
+    <%= render 'shared/tabs_home' %>
+    <%= link_to truck_templates_path do %>
+    <div class="bg-white rounded-sm px-4 py-3 mb-3 shadow-sm">
+      <div class="d-flex">
+        <p class="mb-0" style="margin-right: 0.75rem;"><span class="fa fa-solid fa-magnifying-glass text-primary"></span></p>
+        <p class="my-0 text-truncate text-primary">Детално барање</p>
       </div>
     </div>
     <% end %>
+    <p class="text-muted px-3"><small>Последни објави за товар</small></p>
+    <% @active_loads.each do |t| %>
+      <%= link_to load_path(t) do %>
+        <%= render 'shared/post', t: t %>
+      <% end %>
+    <% end %>
+  <% else %>
+  <%= render "shared/value_proposition" %>
   <% end %>
-  <%= paginate @suggested_loads %>
-<% else %>
-<%= render "shared/value_proposition" %>
-<% end %>
 </div>

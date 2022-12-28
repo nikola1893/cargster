@@ -58,12 +58,15 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "geocoder"
 gem "rake"
 gem "matrix"
+# gem "will_paginate"
 # gem 'acts-as-taggable-on'
 # gem 'acts-as-taggable-on', '~> 9.0'
-gem 'kaminari'
+# gem 'kaminari'
+gem 'pagy'
 gem "pundit"
 gem 'prawn'
 gem 'cyrillizer'
+gem 'faker'
 # gem 'sendgrid-ruby'
 # gem 'flag-icon-sass'
 # gem "cocoon"

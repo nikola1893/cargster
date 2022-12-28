@@ -11,13 +11,9 @@ class Post < ApplicationRecord
   validates :length, presence: true
 
   def distance
-    if self.class == Load
-      d = Geocoder::Calculations.distance_between(self.pickup.place, self.dropoff.place)
-      by_road = d*1.275
-      return by_road.round
-    else
-      nil
-    end
+    d = Geocoder::Calculations.distance_between(self.pickup.place, self.dropoff.place)
+    by_road = d*1.275
+    return by_road.round
   end
 
   def ago

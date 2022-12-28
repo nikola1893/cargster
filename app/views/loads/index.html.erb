@@ -1,50 +1,15 @@
-
 <div class="container px-3">
   <%= render 'shared/tabs_index' %>
-  <% if @trucks.length == 0 %>
+  <% if @loads.length == 0 %>
     <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
       <p class="text-center">Немате ниту една објава за товар.</p>
-
       <%= link_to "Креирај објава", new_load_path, class: "mb-2 btn btn-primary w-100 text-white" %>
     </div>
   <% end %>
-  <% @trucks.each do |t| %>
+  <% @loads.each do |t| %>
     <%= link_to load_path(t) do %>
-    <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="">
-          <% if t.status? %>
-          <p class="tag-pill-status fw-bold text-black bg-info border border-primary border-1"><small>АКТИВЕН</small></p>
-          <% else %>
-          <p class="tag-pill-status fw-bold text-black bg-warning border border-danger border-1"><small>РЕШЕН</small></p>
-          <% end %>
-        </div>
-        <div class="">
-          <p class="text-muted text-end"><small><%= t.ago %></small></p>
-        </div>
-      </div>
-      <div class="d-flex justify-content-between">
-        <div class="d-flex text-truncate" style="width: 50%">
-          <p class="m-0"><%= image_tag "countries/#{t.pickup.country}.svg", style: "width: 1.15rem; border-radius: 2rem; margin-bottom: 0.15rem; margin-right: 0.3rem;" %></p>
-          <p class="my-0 text-truncate"><%= t.pickup.simple %></p>
-        </div>
-        <div class="d-flex justify-content-end text-truncate" style="width: 50%">
-          <p class="m-0 text-end text-truncate"><%= t.dropoff.simple %></p>
-          <p class="m-0"><%= image_tag "countries/#{t.dropoff.country}.svg", style: "width: 1.15rem; border-radius: 1rem; margin-bottom: 0.15rem; margin-left: 0.3rem;" %></p>
-        </div>
-      </div>
-      <div class="d-flex flex-wrap mt-3">
-      <p class="tag-pill"><small><%= t.loading_date.try(:strftime, ("%b %e, %a")) %></small></p>
-      <% t.truck_type.drop(1).each do |truck| %>
-        <p class="tag-pill"><small><%= truck %></small></p>
-      <% end %>
-      <p class="tag-pill"><small><%= t.length %><%= "m" %></small></p>
-      <% if t.weight.present? %>
-      <p class="tag-pill"><small><%= t.weight.to_i %><%= "t" %></small></p>
-      <% end %>
-      <p class="tag-pill"><small><%= number_with_delimiter(t.distance, :delimiter => '.') %> km</small></p>
-      </div>
-    </div>
+      <%= render 'shared/my_post', t: t %>
     <% end %>
   <% end %>
+  <%== pagy_bootstrap_nav(@pagy) %>
 </div>

@@ -1,9 +1,8 @@
 class Truck < Post
 
   def loading_matches
-    active_loads = Load.where('created_at > ?', 48.hours.ago).where.not(user_id: self.user_id, status: false)
+    active_loads = Load.where.not(user_id: self.user_id, status: false)
     matches = []
-
     active_loads.each do |geo|
       geo_pickup = Pickup.find_by(post_id: geo.id)
       geo_dropoff = Dropoff.find_by(post_id: geo.id)

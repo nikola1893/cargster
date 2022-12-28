@@ -1,69 +1,13 @@
 <%= render 'shared/actions' %>
-
-<div class="px-4">
-  <div class="mx-1">
-  <p class="text-muted" style= "margin-left: 2.5rem;"><small>Опис</small></p>
-
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-calendar-days text-primary"></span></p>
-    <p class="mx-3"><%= @truck.loading_date.try(:strftime, "%d %B") %></p>
-  </div>
-
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary"></span></p>
-    <p class="mx-3"><%= @truck.pickup_place %></p>
-  </div>
-
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary" style="transform: scaleX(-1);"></span></p>
-    <p class="mx-3"><%= @truck.dropoff_place %></p>
-  </div>
-
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck text-primary"></span></p>
-    <p class="mx-3">
-      <% @truck.truck_type.drop(1).each do |type| %>
-        <%= type %>;
-      <% end %>
-    </p>
-  </div>
-
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-ruler-horizontal text-primary"></span></p>
-    <p class="mx-3"><%= @truck.length %> метри</p>
-  </div>
-
-  <% if @truck.weight? %>
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-weight-scale text-primary"></span></p>
-    <p class="mx-3"><%= @truck.weight %> тони</p>
-  </div>
-  <% end %>
-
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-map text-primary"></span></p>
-    <p class="mx-3"><%= number_with_delimiter(@truck.distance, :delimiter => '.') %> км</p>
-  </div>
-
-
-  <% if policy(@truck).edit? && @truck.status? %>
-  <div class="text-center">
-  <% link_to "Потенцијално возило", load_suggestions_path(@truck), class: "btn btn-lg btn-primary shadow-sm mb-3 mt-2 rounded-4 w-100 text-white" %>
-  </div>
+<%= render 'shared/post_show' %>
+<p class="text-muted px-4" style= "margin-left: 2.5rem;"><small>Предлози за товар</small></p>
+<% if @suggested_trucks.empty? %>
+<p class="text-muted px-4" style= "margin-left: 2.5rem;"><small>Нема ниедно возило што одговара на оваа објава</small></p>
+<% else %>
+<p class="text-muted px-4" style= "margin-left: 2.5rem;"><small>Предлози за товар</small></p>
 <% end %>
-
-
-  <% if @truck.comment? %>
-  <p class="text-muted" style= "margin-left: 2.5rem;"><small>Забелешка</small></p>
-  <p><span class="mx-2 fa fa-solid fa-comment text-primary"></span>
-    <%= @truck.comment %>
-  </p>
+<% @suggested_trucks.each do |t| %>
+  <%= link_to truck_path(t) do %>
+    <div class="px-3"><%= render 'shared/post', t: t %></div>
   <% end %>
-  <% if @truck.user != current_user %>
-    <p class="text-muted" style= "margin-left: 2.5rem;"><small>Контакт</small></p>
-    <p><span class="mx-2 fa fa-solid fa-user text-primary"></span>
-      <%= @truck.user.email %>
-    </p>
-  <% end %>
-  </div>
-</div>
+<% end %>
