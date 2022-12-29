@@ -1,18 +1,17 @@
 require "active_support/core_ext/integer/time"
 
-ActionMailer::Base.smtp_settings = {
-  :user_name => 'apikey',
-  :password => ENV['SENDGRID_API_KEY'],
-  :domain => 'cargster.co',
-  :address => 'smtp.sendgrid.net',
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
-}
 
 Rails.application.configure do
-  # RendGrid setup
-  # end RendGrid setup
+  # set smtp settings for development
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.postmarkapp.com",
+    :port                 => 587,
+    :user_name            => "f97404b9-0a63-4b31-90f3-709dcf9e70ef",
+    :password             => "f97404b9-0a63-4b31-90f3-709dcf9e70ef",
+    :authentication       => :cram_md5,
+    :enable_starttls_auto => true
+  }
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # config.action_mailer.default_url_options = { host: "cargster.co" }
   # Settings specified here will take precedence over those in config/application.rb.

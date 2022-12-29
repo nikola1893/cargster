@@ -58,6 +58,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "geocoder"
 gem "rake"
 gem "matrix"
+gem 'postmark-rails'
 # gem "will_paginate"
 # gem 'acts-as-taggable-on'
 # gem 'acts-as-taggable-on', '~> 9.0'
