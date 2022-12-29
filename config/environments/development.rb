@@ -7,8 +7,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.postmarkapp.com",
     :port                 => 587,
-    :user_name            => "f97404b9-0a63-4b31-90f3-709dcf9e70ef",
-    :password             => "f97404b9-0a63-4b31-90f3-709dcf9e70ef",
+    :user_name            => ENV['POSTMARK_API_KEY'],
+    :password             => ENV['POSTMARK_API_KEY'],
     :authentication       => :cram_md5,
     :enable_starttls_auto => true
   }
