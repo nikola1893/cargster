@@ -4,7 +4,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => "smtp.postmarkapp.com",
-    :port                 => 587,
+    :port                 => 2525,
     :user_name            => ENV['POSTMARK_API_KEY'],
     :password             => ENV['POSTMARK_API_KEY'],
     :authentication       => :cram_md5,
