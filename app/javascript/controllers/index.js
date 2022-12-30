@@ -9,6 +9,3 @@ application.register("address-autocomplete", AddressAutocompleteController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
-
-import LazyLoadingController from "./lazy_loading_controller"
-application.register("lazy-loading", LazyLoadingController)
