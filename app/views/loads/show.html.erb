@@ -1,13 +1,16 @@
 <%= render 'shared/actions' %>
 <%= render 'shared/post_show' %>
-<p class="text-muted px-4" style= "margin-left: 2.5rem;"><small>Предлози за товар</small></p>
-<% if @suggested_trucks.empty? %>
-<p class="text-muted px-4" style= "margin-left: 2.5rem;"><small>Нема ниедно возило што одговара на оваа објава</small></p>
-<% else %>
-<p class="text-muted px-4" style= "margin-left: 2.5rem;"><small>Предлози за товар</small></p>
-<% end %>
-<% @suggested_trucks.each do |t| %>
-  <%= link_to truck_path(t) do %>
-    <div class="px-3"><%= render 'shared/post', t: t %></div>
+<% if @truck.user == current_user %>
+
+  <% if @suggested_trucks.empty? %>
+    <div class="px-4"><p class="text-danger bg-warning rounded-4 py-2 px-4"><span></span>Нема ниедно возило што одговара на оваа објава</p></div>
+  <% else %>
+  <p class="text-muted px-4" style= "margin-left: 2.5rem;"><small>Предлози за товар</small></p>
   <% end %>
+  <% @suggested_trucks.each do |t| %>
+    <%= link_to truck_path(t) do %>
+      <div class="px-3"><%= render 'shared/post', t: t %></div>
+    <% end %>
+  <% end %>
+
 <% end %>

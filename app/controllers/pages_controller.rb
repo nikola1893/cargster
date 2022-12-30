@@ -3,7 +3,15 @@ class PagesController < ApplicationController
   def todays_loads
     if user_signed_in?
       @page_name = "Почетна"
-      @active_loads = Load.includes(:pickup, :dropoff, :user).where.not(user_id: current_user.id).where(status: true).last(5)
+      @my_trucks = Truck.includes(:pickup, :dropoff, :user).where(['user_id = ? AND status = ?', current_user.id, true])
+      # @active_loads = Load.where(['user_id != ? AND status = ?', current_user.id, true])
+      @suggested_loads = []
+      # match loads with trucks
+      @my_trucks.each do |t|
+         @suggested_loads << t.loading_matches
+      end
+      @suggested_loads.flatten!
+      @suggested_loads.uniq!
     else
       @page_name = "Каргстер"
     end
@@ -12,7 +20,15 @@ class PagesController < ApplicationController
   def todays_trucks
     if user_signed_in?
       @page_name = "Почетна"
-      @active_trucks = Truck.includes(:pickup, :dropoff, :user).where.not(user_id: current_user.id).where(status: true).last(5)
+      @my_loads = Load.includes(:pickup, :dropoff, :user).where(['user_id = ? AND status = ?', current_user.id, true])
+      # @active_loads = Load.where(['user_id != ? AND status = ?', current_user.id, true])
+      @suggested_trucks = []
+      # match loads with trucks
+      @my_loads.each do |t|
+         @suggested_trucks << t.truck_matches
+      end
+      @suggested_trucks.flatten!
+      @suggested_trucks.uniq!
     else
       @page_name = "Каргстер"
     end

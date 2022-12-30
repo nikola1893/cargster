@@ -1,7 +1,8 @@
 <%= render "shared/actions" %>
 <%= render 'shared/post_show' %>
+<% if @truck.user == current_user %>
 <% if @suggested_loads.empty? %>
-<p class="text-muted px-4" style= "margin-left: 2.5rem;"><small>Нема ниеден товар што одговара на оваа објава</small></p>
+<div class="px-4"><p class="text-danger bg-warning rounded-4 py-2 px-4"><span></span>Нема ниеден товар што одговара на оваа објава</p></div>
 <% else %>
 <p class="text-muted px-4" style= "margin-left: 2.5rem;"><small>Предлози за товар</small></p>
 <% end %>
@@ -9,4 +10,5 @@
   <%= link_to load_path(t) do %>
     <div class="px-3"><%= render 'shared/post', t: t %></div>
   <% end %>
+<% end %>
 <% end %>

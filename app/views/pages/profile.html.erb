@@ -1,9 +1,31 @@
 <div class="px-4">
-  <p class="fw-bolder" style= "margin-left: 2rem;"><small>За мене:</small></p>
-  <p><span class="mx-1 fa fa-solid fa-envelope text-primary"></span>
-    <%= @user.email %>
-  </p>
+  <p class="text-muted" style= "margin-left: 2.5rem;"><small>За мене:</small></p>
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-user text-primary"></span></p>
+    <p class="mx-3"><%= @user.first_name %> <%= @user.last_name %></p>
+  </div>
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-building text-primary"></span></p>
+    <p class="mx-3"><%= @user.company %></p>
+  </div>
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-envelope text-primary"></span></p>
+    <p class="mx-3"><%= @user.email %></p>
+  </div>
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-phone text-primary"></span></p>
+    <p class="mx-3"><%= @user.phone_number %></p>
+  </div>
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-location-arrow text-primary"></span></p>
+    <p class="mx-3"><%= @user.address %></p>
+  </div>
+  <div class="d-flex">
+    <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-book text-primary"></span></p>
+    <p class="mx-3"><%= @user.coc %> (MБ) <br> <%= @user.vat %> (ДБ)</p>
+  </div>
 </div>
-<div class="container px-4">
-  <%= link_to "Одјава", destroy_user_session_path, class: "btn rounded-4 text-danger w-100",  data: { turbo_method: :delete } %>
+<div class="container px-4 mt-2">
+  <%= link_to "Измени", edit_user_registration_path, class: "btn rounded-4 text-primary bg-info mb-3 w-100" %>
+  <%= link_to "Одјава", destroy_user_session_path, class: "btn rounded-4 text-danger bg-warning w-100",  data: { turbo_method: :delete } %>
 </div>

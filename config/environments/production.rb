@@ -1,6 +1,15 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.postmarkapp.com",
+    :port                 => 465,
+    :user_name            => ENV['POSTMARK_API_KEY'],
+    :password             => ENV['POSTMARK_API_KEY'],
+    :authentication       => :cram_md5,
+    :enable_starttls_auto => true
+  }
   config.action_mailer.default_url_options = { host: "https://www.cargster.co" }
   # Settings specified here will take precedence over those in config/application.rb.
 

@@ -161,7 +161,6 @@ GEM
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (6.0.0)
     pdf-core (0.9.0)
     pg (1.4.5)
     postmark (1.22.2)
@@ -286,7 +285,6 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   matrix
-  pagy
   pg (~> 1.1)
   postmark-rails
   prawn
