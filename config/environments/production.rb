@@ -10,7 +10,7 @@ Rails.application.configure do
     :authentication       => :cram_md5,
     :enable_starttls_auto => true
   }
-  config.action_mailer.default_url_options = { host: "https://www.cargster.co" }
+  config.action_mailer.default_url_options = { host: "www.cargster.co" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
