@@ -1,11 +1,38 @@
-<%= render "shared/navbar" %>
 <div class="container px-4 my-3">
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
-
+      <div class="row">
+        <div class="col-6">
+          <%= f.input :first_name,
+                      label: "Име",
+                      required: true,
+                      autofocus: true %>
+        </div>
+        <div class="col-6">
+          <%= f.input :last_name,
+                      label: "Презиме",
+                      required: true %>
+        </div>
+      </div>
+      <%= f.input :phone_number,
+                  label: "Телефонски број",
+                  required: true,
+                  hint: "Почнувајки со +" %>
+      <%= f.input :company,
+                  label: "Компанија",
+                  required: true %>
+      <%= f.input :address,
+                  label: "Целосна адреса",
+                  required: true %>
+      <%= f.input :coc,
+                  label: "Матичен фрој на компанија",
+                  required: true %>
+      <%= f.input :vat,
+                  label: "Даночен број на компанија",
+                  required: true %>
       <%= f.input :current_password,
                   label: "Тековна лозинка",
                   hint: "ни треба вашата сегашна лозинка за да се зачуваат промените",

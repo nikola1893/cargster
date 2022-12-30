@@ -20,10 +20,13 @@ class Geo < ApplicationRecord
   def region
     # return the administrative area level 1
     # if the region is not present, return the country
-    if self.country == self.place
-      self.country
+    result = Geocoder.search(self.place).first
+    if !result.state.nil?
+      return result.state
+    elsif !result.county.nil?
+      return result.county
     else
-      self.place.split(',').last(2)[0].strip
+      return result.country
     end
   end
 

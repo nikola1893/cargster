@@ -11,7 +11,7 @@
   </div>
   <% end %>
   <p class="text-muted px-3"><small>Последни објави за товар.</small></p>
-  <% @active_trucks.each do |t| %>
+  <% @suggested_trucks.each do |t| %>
     <%= link_to truck_path(t) do %>
       <%= render 'shared/post', t: t %>
     <% end %>

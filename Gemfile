@@ -63,7 +63,7 @@ gem 'postmark-rails'
 # gem 'acts-as-taggable-on'
 # gem 'acts-as-taggable-on', '~> 9.0'
 # gem 'kaminari'
-gem 'pagy'
+# gem 'pagy'
 gem "pundit"
 gem 'prawn'
 gem 'cyrillizer'

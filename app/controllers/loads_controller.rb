@@ -1,9 +1,8 @@
 class LoadsController < ApplicationController
-  require 'pagy/extras/bootstrap'
 
   def index
     @page_name = "Мои објави"
-    @pagy, @loads = pagy(Load.includes(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc), items: 5)
+    @loads = Load.includes(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def new
@@ -35,7 +34,7 @@ class LoadsController < ApplicationController
     # set dropoff_place to dropoff place
     @post.dropoff_place = @post.dropoff.place
     if @post.save
-      redirect_to todays_trucks_path, notice: "Објавата за товар е успешна!"
+      redirect_to load_path(@post), notice: "Објавата за товар е успешна!"
     else
       render :new
     end
@@ -68,8 +67,12 @@ class LoadsController < ApplicationController
   end
 
   def load_templates
-    @page_name = "Брза објава"
-    @pagy, @trucks = pagy(Load.includes(:pickup, :dropoff).where(id: Load.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc), items: 5)
+    if current_user.posts.where(type: "Load").count != 0
+      @page_name = "Брза објава"
+      @trucks = Load.includes(:pickup, :dropoff).where(id: Load.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
+    else
+      redirect_to new_load_path
+    end
   end
 
   private
