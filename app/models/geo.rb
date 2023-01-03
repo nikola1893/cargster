@@ -30,6 +30,25 @@ class Geo < ApplicationRecord
     end
   end
 
+  # get the bounding box coordinates
+  def bounding_box
+    # return the bounding box coordinates
+    result = Geocoder.search(self.place).first
+    return result.boundingbox
+  end
+
+  # # check if dwo bounding boxes overlaps
+  def overlap?(box)
+    box1 = Geocoder.search(box.place).first.boundingbox
+    box2 = self.bounding_box
+    lat_overlap = (box1[0] <= box2[0] && box1[2] >= box2[2])
+    # Check if box1's longitude range overlaps with box2's longitude range
+    long_overlap = (box1[1] <= box2[1] && box1[3] >= box2[3])
+    lat_overlap && long_overlap
+  end
+
+  # get the simple place name
+
   def simple
     # if the place is a country, return the country
     # else return the city

@@ -4,17 +4,17 @@
 
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-calendar-days text-primary"></span></p>
-    <p class="mx-3"><%= @truck.loading_date.try(:strftime, "%d %B") %> <% if @truck.user == current_user %><span class="text-muted">(+/- 3 дена)</span><% end %></p>
+    <p class="mx-3"><%= @truck.loading_date.try(:strftime, "%d %B") %></p>
   </div>
 
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary"></span></p>
-    <p class="mx-3"><%= @truck.pickup.place %> <% if @truck.user == current_user %><span class="text-muted">(+/- 50 km)</span><% end %></p>
+    <p class="mx-3"><%= @truck.pickup.place %> </p>
   </div>
 
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary" style="transform: scaleX(-1);"></span></p>
-    <p class="mx-3"><%= @truck.dropoff.place %><% if @truck.user == current_user %> <span class="text-muted">(+/- 50 km)</span><% end %></p>
+    <p class="mx-3"><%= @truck.dropoff.place %></p>
   </div>
 
   <div class="d-flex">

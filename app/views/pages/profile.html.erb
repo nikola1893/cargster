@@ -1,3 +1,13 @@
+<div class="px-4 mt-4 mb-1 d-flex justify-content-center align-items-center">
+  <%= link_to edit_user_registration_path, class: "mx-2" do %>
+    <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-edit text-primary fa-lg"></span></p>
+    <p class="action-text"><small>Измени</small></p>
+  <% end %>
+  <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "mx-2" do %>
+    <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-right-from-bracket text-danger fa-lg"></span></p>
+    <p class="action-text"><small>Одјава</small></p>
+  <% end %>
+</div>
 <div class="px-4">
   <p class="text-muted" style= "margin-left: 2.5rem;"><small>За мене:</small></p>
   <div class="d-flex">
@@ -24,8 +34,4 @@
     <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-book text-primary"></span></p>
     <p class="mx-3"><%= @user.coc %> (MБ) <br> <%= @user.vat %> (ДБ)</p>
   </div>
-</div>
-<div class="container px-4 mt-2">
-  <%= link_to "Измени", edit_user_registration_path, class: "btn rounded-4 text-primary bg-info mb-3 w-100" %>
-  <%= link_to "Одјава", destroy_user_session_path, class: "btn rounded-4 text-danger bg-warning w-100",  data: { turbo_method: :delete } %>
 </div>

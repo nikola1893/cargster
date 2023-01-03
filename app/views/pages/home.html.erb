@@ -1,0 +1,45 @@
+<div class="container px-3">
+  <% if user_signed_in? %>
+  <nav>
+    <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+      <button class="nav-link  active w-50" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Mој товар</button>
+      <button class="nav-link  w-50" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Мои возила</button>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+       <% if @loads.length == 0 %>
+        <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
+          <p class="text-center text-muted"><small>Немате ниту една објава за товар</small></p>
+          <%= link_to "Креирај објава", load_templates_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+        </div>
+        <% else %>
+        <%= link_to "Креирај објава за товар", load_templates_path, class: "mb-3 btn btn-lg btn-primary w-100 text-white" %>
+        <% @loads.each do |t| %>
+          <%= link_to load_path(t) do %>
+            <%= render 'shared/my_post', t: t %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <% if @trucks.length == 0 %>
+        <div class="bg-white rounded-sm pt-4 pb-3 px-4 mb-3 shadow-sm">
+          <p class="text-center text-muted"><small>Немате ниту една објава за возило</small></p>
+          <%= link_to "Креирај објава", truck_templates_path, class: "mb-2 btn btn-primary w-100 text-white" %>
+        </div>
+        <% else %>
+        <%= link_to "Креирај објава за возило", truck_templates_path, class: "mb-3 btn btn-lg btn-primary w-100 text-white" %>
+        <% @trucks.each do |t| %>
+          <%= link_to truck_path(t) do %>
+            <%= render 'shared/my_post', t: t %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <% else %>
+    <%= render 'shared/value_proposition' %>
+  <% end %>
+
+</div>

@@ -28,7 +28,7 @@
                   label: "Целосна адреса",
                   required: true %>
       <%= f.input :coc,
-                  label: "Матичен фрој на компанија",
+                  label: "Матичен број на компанија",
                   required: true %>
       <%= f.input :vat,
                   label: "Даночен број на компанија",
@@ -38,7 +38,7 @@
                   hint: "ни треба вашата сегашна лозинка за да се зачуваат промените",
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
-      <a href="#collapse" class="btn text-center w-100 text-primary" data-bs-toggle="collapse">Промени лозинка</a>
+      <a href="#collapse" class="btn text-center w-100 text-muted" data-bs-toggle="collapse">Промени лозинка</a>
       <div class="collapse" id="collapse">
       <%= f.input :password,
                   label: "Нова лозинка",

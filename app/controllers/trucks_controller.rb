@@ -1,10 +1,5 @@
 class TrucksController < ApplicationController
 
-  def index
-    @page_name = "Мои објави"
-    @trucks = Truck.includes(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
-  end
-
   def new
     @page_name = "Објави возило"
     @post = Truck.new
@@ -18,10 +13,10 @@ class TrucksController < ApplicationController
     @truck = Truck.find(params[:id])
     if @truck.user == current_user
       @page_name = "Мое возило"
+      @suggested_loads = @truck.loading_matches
     else
       @page_name = "Преглед на возило"
     end
-    @suggested_loads = @truck.loading_matches
     authorize @truck
   end
 
@@ -34,7 +29,7 @@ class TrucksController < ApplicationController
     # set dropoff_place to dropoff place
     @post.dropoff_place = @post.dropoff.place
     if @post.save
-      redirect_to truck_path(@post), notice: "Објавата за возило е успешна!"
+      redirect_to trucks_path, notice: "Објавата за возило е успешна!"
     else
       render :new
     end
@@ -66,7 +61,7 @@ class TrucksController < ApplicationController
 
   def truck_templates
     if current_user.posts.where(type: "Truck").count != 0
-      @page_name = "Брза објава"
+      @page_name = "Објави возило"
       @trucks = Truck.includes(:pickup, :dropoff).where(id: Truck.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
     else
       redirect_to new_truck_path
