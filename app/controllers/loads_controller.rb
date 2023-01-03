@@ -34,7 +34,7 @@ class LoadsController < ApplicationController
     # set dropoff_place to dropoff place
     @post.dropoff_place = @post.dropoff.place
     if @post.save
-      redirect_to loads_path, notice: "Објавата за товар е успешна!"
+      redirect_to load_path(@post), notice: "Објавата за товар е успешна!"
     else
       render :new
     end

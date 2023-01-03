@@ -29,7 +29,7 @@ class TrucksController < ApplicationController
     # set dropoff_place to dropoff place
     @post.dropoff_place = @post.dropoff.place
     if @post.save
-      redirect_to trucks_path, notice: "Објавата за возило е успешна!"
+      redirect_to truck_path(@post), notice: "Објавата за возило е успешна!"
     else
       render :new
     end
