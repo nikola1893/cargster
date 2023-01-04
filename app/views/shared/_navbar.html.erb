@@ -6,7 +6,7 @@
 
     <p class="fw-bolder m-0"><%= @page_name ||
       if current_page?(new_user_session_path)
-        "Најава"
+        "Најави се"
       elsif current_page?(new_user_registration_path)
         "Регистрација"
       elsif current_page?(new_user_password_path)
@@ -22,7 +22,7 @@
   <div class="collapse mx-3" id="collapseExample">
     <%= link_to "Почетна", root_path, class: "btn w-100 my-4" %>
     <% if !user_signed_in? %>
-      <%= link_to "Најава", new_user_session_path, class: "btn mb-4 w-100" %>
+      <%= link_to "Најави се", new_user_session_path, class: "btn mb-4 w-100" %>
       <%= link_to "Регистрација", new_user_registration_path, class: "btn mb-2 w-100" %>
     <% else %>
       <%= link_to "Објави возило 🚛", truck_templates_path, class: "btn mb-4 w-100" %>

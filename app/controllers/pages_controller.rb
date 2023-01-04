@@ -2,8 +2,11 @@ class PagesController < ApplicationController
   def home
     if user_signed_in?
       @page_name = "Почетна"
-      @trucks = Truck.includes(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
-      @loads = Load.includes(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
+      posts = Post.eager_load(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
+      # @trucks = Truck.eager_load(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
+      # @loads = Load.includes(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
+      @trucks = posts.where(type: "Truck")
+      @loads = posts.where(type: "Load")
     else
       @page_name = "Kаргстер"
     end
