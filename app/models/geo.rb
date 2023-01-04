@@ -41,10 +41,19 @@ class Geo < ApplicationRecord
   def overlap?(box)
     box1 = Geocoder.search(box.place).first.boundingbox
     box2 = self.bounding_box
-    lat_overlap = (box1[0] <= box2[0] && box1[2] >= box2[2])
-    # Check if box1's longitude range overlaps with box2's longitude range
-    long_overlap = (box1[1] <= box2[1] && box1[3] >= box2[3])
-    lat_overlap && long_overlap
+    # check if the bounding boxes overlap
+    if ((box1[0].between?(box2[0], box2[1]) ||
+        box1[1].between?(box2[0], box2[1])) &&
+        (box1[2].between?(box2[2], box2[3]) ||
+        box1[3].between?(box2[2], box2[3]))) ||
+        ((box2[0].between?(box1[0], box1[1]) ||
+        box2[1].between?(box1[0], box1[1])) &&
+        (box2[2].between?(box1[2], box1[3]) ||
+        box2[3].between?(box1[2], box1[3])))
+      return true
+    else
+      return false
+    end
   end
 
   # get the simple place name

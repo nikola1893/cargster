@@ -1,10 +1,5 @@
 class LoadsController < ApplicationController
 
-  def index
-    @page_name = "Почетна"
-    @loads = Load.includes(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
-  end
-
   def new
     @page_name = "Објави товар"
     @post = Load.new

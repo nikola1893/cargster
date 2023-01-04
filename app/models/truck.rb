@@ -1,14 +1,12 @@
 class Truck < Post
 
   def loading_matches
-    active_loads = Load.includes(:pickup, :dropoff, :user).where(['user_id != ? AND status = ?', self.user_id, true])
+    active_loads = Load.eager_load(:pickup, :dropoff).where(['user_id != ? AND status = ?', self.user_id, true])
     l_matches = []
     active_loads.each do |l|
-      if (self.pickup.distance_to(l.pickup) < 50 ||
-        self.pickup.region == l.pickup.region ||
+      if (self.pickup.distance_to(l.pickup) <= 50 ||
         self.pickup.overlap?(l.pickup)) &&
-        (self.dropoff.distance_to(l.dropoff) < 50 ||
-        self.dropoff.region == l.dropoff.region ||
+        (self.dropoff.distance_to(l.dropoff) <= 50 ||
         self.dropoff.overlap?(l.dropoff)) &&
         [-3,-2,-1,0,1,2,3].include?((l.loading_date - self.loading_date).to_i) &&
         l.length <= self.length &&
