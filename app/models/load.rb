@@ -8,7 +8,7 @@ class Load < Post
         self.pickup.overlap?(t.pickup)) &&
         (self.dropoff.distance_to(t.dropoff) < 50 ||
         self.dropoff.region == t.dropoff.region ||
-        self.dropoff.overlap?(l.dropoff)) &&
+        self.dropoff.overlap?(t.dropoff)) &&
         [-3,-2,-1,0,1,2,3].include?((t.loading_date - self.loading_date).to_i) &&
         t.length <= self.length &&
         t.truck_type & self.truck_type != []
