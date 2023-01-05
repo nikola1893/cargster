@@ -1,6 +1,16 @@
 <div class="px-4">
   <div class="mx-1">
-  <p class="text-muted" style= "margin-left: 2.5rem;"><small>Опис</small></p>
+  <hr style="margin-top: -0.15rem;">
+  <p class="fw-bolder" style= "margin-left: 2.5rem;"><small>ОПИС</small></p>
+  <div class="d-flex">
+    <% if @truck.status == true %>
+      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-circle text-primary"></span></p>
+      <p class="mx-3 text-primary">Огласот е активен</p>
+    <% else %>
+      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-circle text-danger"></span></p>
+      <p class="mx-3 text-danger">Огласот е неактивен</p>
+    <% end %>
+  </div>
 
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-calendar-days text-primary"></span></p>
@@ -45,7 +55,8 @@
   </div>
   <% end %>
   <% if @truck.user != current_user %>
-    <p class="text-muted" style= "margin-left: 2.5rem;"><small>Контакт</small></p>
+    <hr style="margin-top: 0.3rem;">
+    <p class="fw-bolder" style= "margin-left: 2.5rem;"><small>НАЛОГОДАВАЧ</small></p>
     <div class="d-flex">
       <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-user text-primary"></span></p>
       <p class="mx-3"><%= @truck.user.first_name %> <%= @truck.user.last_name %></p>

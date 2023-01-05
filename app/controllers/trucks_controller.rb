@@ -56,7 +56,7 @@ class TrucksController < ApplicationController
   def change_status
     @post = Truck.find(params[:id])
     @post.update!(status: false)
-    redirect_to truck_path(@post), notice: "Статусот е променет"
+    redirect_to truck_path(@post), notice: "Објавата е деактивирана"
   end
 
   def truck_templates

@@ -6,9 +6,9 @@ class Post < ApplicationRecord
   delegate :place, to: :dropoff, prefix: true, allow_nil: true
   accepts_nested_attributes_for :pickup
   accepts_nested_attributes_for :dropoff
-  validates :loading_date, presence: true
-  validates :truck_type, presence: true
-  validates :length, presence: true
+  validates :loading_date, :truck_type, :length, presence: true
+  validates :length, numericality: { greater_than: 0, less_than: 16 }
+  validates :weight, numericality: { greater_than: 0, less_than: 25 }
 
   def distance
     d = Geocoder::Calculations.distance_between(self.pickup.place, self.dropoff.place)
@@ -40,4 +40,5 @@ class Post < ApplicationRecord
       end
     end
   end
+
 end

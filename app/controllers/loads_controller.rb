@@ -58,7 +58,7 @@ class LoadsController < ApplicationController
   def change_status
     @post = Load.find(params[:id])
     @post.update!(status: false)
-    redirect_to load_path(@post), notice: "Статусот е променет"
+    redirect_to load_path(@post), notice: "Објавата е деактивирана"
   end
 
   def load_templates

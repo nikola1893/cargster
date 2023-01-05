@@ -5,13 +5,14 @@ class TruckPolicy < ApplicationPolicy
     # user: the `current_user` signed in with Devise
   end
 
-  def show?
-    if record.status == false
-      record.user == user
-    else
-      true
-    end
-  end
+  # def show?
+  #   if record.status == false
+  #     record.user == user
+  #   else
+  #     true
+  #   end
+  # end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
