@@ -15,7 +15,7 @@
           <%= link_to "Креирај објава", load_templates_path, class: "mb-2 btn rounded-4 btn-primary w-100 text-white" %>
         </div>
         <% else %>
-        <%= link_to "Креирај објава за товар", load_templates_path, class: "mb-3 btn btn-lg btn-primary w-100 text-white" %>
+        <%= link_to "Креирај објава за товар", load_templates_path, class: "mb-3 btn btn-lg bg-white text-primary w-100 rounded-4 shadow-sm" %>
         <% @loads.each do |t| %>
           <%= link_to load_path(t) do %>
             <%= render 'shared/my_post', t: t %>

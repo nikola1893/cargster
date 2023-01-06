@@ -4,9 +4,11 @@ class Load < Post
     truck_matches = []
     active_trucks.each do |t|
       if (self.pickup.distance_to(t.pickup) <= 50 ||
-        self.pickup.overlap?(t.pickup)) &&
+        self.pickup.overlap?(t.pickup) ||
+        self.pickup.region == t.pickup.region) &&
         (self.dropoff.distance_to(t.dropoff) <= 50 ||
-        self.dropoff.overlap?(t.dropoff)) &&
+        self.dropoff.overlap?(t.dropoff) ||
+        self.dropoff.region == t.dropoff.region) &&
         [-3,-2,-1,0,1,2,3].include?((t.loading_date - self.loading_date).to_i) &&
         t.length <= self.length &&
         t.truck_type & self.truck_type != []

@@ -39,21 +39,42 @@ class Geo < ApplicationRecord
 
   # # check if dwo bounding boxes overlaps
   def overlap?(box)
-    box1 = Geocoder.search(box.place).first.boundingbox
+    box1 = box.bounding_box
     box2 = self.bounding_box
-    # check if the bounding boxes overlap
-    if ((box1[0].between?(box2[0], box2[1]) ||
-        box1[1].between?(box2[0], box2[1])) &&
-        (box1[2].between?(box2[2], box2[3]) ||
-        box1[3].between?(box2[2], box2[3]))) ||
-        ((box2[0].between?(box1[0], box1[1]) ||
-        box2[1].between?(box1[0], box1[1])) &&
-        (box2[2].between?(box1[2], box1[3]) ||
-        box2[3].between?(box1[2], box1[3])))
+    # > ["47.2701114", "50.5647142", "8.9763654", "13.8396495"]
+    #  Bavaria
+    x1 = box1[0].to_f.round(2)
+    x2 = box1[1].to_f.round(2)
+
+    x3 = box2[0].to_f.round(2)
+    x4 = box2[1].to_f.round(2)
+    # => ["48.0616244", "48.2481162", "11.360777", "11.7229099"]
+    # Munich
+    y1 = box1[2].to_f.round(2)
+    y2 = box1[3].to_f.round(2)
+
+    y3 = box2[2].to_f.round(2)
+    y4 = box2[3].to_f.round(2)
+    # check if the boxes overlap
+    if (x1.between?(x3, x4) ||
+        x2.between?(x3, x4) ||
+        x3.between?(x1, x2) ||
+        x4.between?(x1, x2)) &&
+        (y1.between?(y3, y4) ||
+        y2.between?(y3, y4) ||
+        y3.between?(y1, y2) ||
+        y4.between?(y1, y2))
       return true
     else
       return false
     end
+
+    # if (x1 <= x4 && x2 >= x3) && (y1 <= y4 && y2 >= y3)
+    #   return true
+    # else
+    #   return false
+    # end
+
   end
 
   # get the simple place name
