@@ -9,7 +9,9 @@
   <% end %>
 </div>
 <div class="px-4">
-  <p class="text-muted" style= "margin-left: 2.5rem;"><small>За мене:</small></p>
+  <hr style="margin-top: -0.15rem;">
+  <p class="fw-bolder" style= "margin-left: 2.5rem;"><small>ЗА МЕНЕ</small></p>
+  <% if current_user.profile_complete? %>
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-user text-primary"></span></p>
     <p class="mx-3"><%= @user.first_name %> <%= @user.last_name %></p>
@@ -18,10 +20,12 @@
     <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-building text-primary"></span></p>
     <p class="mx-3"><%= @user.company %></p>
   </div>
+  <% end %>
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-envelope text-primary"></span></p>
     <p class="mx-3"><%= @user.email %></p>
   </div>
+  <% if current_user.profile_complete? %>
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-phone text-primary"></span></p>
     <p class="mx-3"><%= @user.phone_number %></p>
@@ -34,4 +38,5 @@
     <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-book text-primary"></span></p>
     <p class="mx-3"><%= @user.coc %> (MБ) <br> <%= @user.vat %> (ДБ)</p>
   </div>
+  <% end %>
 </div>

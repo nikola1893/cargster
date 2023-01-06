@@ -143,3 +143,32 @@ a {
 .was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
   color: inherit;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination .page {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-right: 0.25rem;
+  line-height: 1.5;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.pagination .page.active {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.pagination .page.disabled {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: auto;
+  background-color: #fff;
+  border-color: #dee2e6;
+}

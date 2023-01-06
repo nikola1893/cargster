@@ -5,8 +5,8 @@ class PagesController < ApplicationController
       posts = Post.eager_load(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
       # @trucks = Truck.eager_load(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
       # @loads = Load.includes(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc)
-      @trucks = posts.where(type: "Truck")
-      @loads = posts.where(type: "Load")
+      @trucks = posts.where(type: "Truck").paginate(page: params[:page], per_page: 5)
+      @loads = posts.where(type: "Load").paginate(page: params[:page], per_page: 5)
     else
       @page_name = "Kаргстер"
     end

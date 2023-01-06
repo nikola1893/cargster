@@ -59,11 +59,12 @@ gem "geocoder"
 gem "rake"
 gem "matrix"
 gem 'postmark-rails'
-# gem "will_paginate"
+gem "will_paginate"
 # gem 'acts-as-taggable-on'
 # gem 'acts-as-taggable-on', '~> 9.0'
 # gem 'kaminari'
 # gem 'pagy'
+gem 'will_paginate-bootstrap-style'
 gem "pundit"
 # gem 'prawn'
 # gem 'cyrillizer'
