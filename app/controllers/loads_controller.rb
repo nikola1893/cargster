@@ -62,13 +62,9 @@ class LoadsController < ApplicationController
   end
 
   def load_templates
-    if !current_user.posts.where(type: "Load") == []
+    if current_user.posts.where(type: "Load").count != 0
       @page_name = "Објави товар"
-      @loads = Load.eager_load(:pickup, :dropoff)
-      .where(id: Load
-        .group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type)
-        .select("min(id)"), user_id: current_user.id)
-        .order(created_at: :desc)
+      @trucks = Load.includes(:pickup, :dropoff).where(id: Load.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
     else
       redirect_to new_load_path
     end

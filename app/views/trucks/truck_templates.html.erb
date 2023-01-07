@@ -1,7 +1,6 @@
 <div class="container px-3">
   <%= link_to "Креирај нова објава", new_truck_path, class: "mb-3 btn btn-lg btn-primary w-100 text-white rounded-4" %>
   <p class="text-muted mx-3"><small>Или изберете објава од долу сугестираните, само додадете датум </small></p>
-  <p><%= @trucks %></p>
   <% @trucks.each do |t| %>
     <%= link_to new_truck_path(:truck_type => t.truck_type, :length => t.length, :weight => t.weight, :comment => t.comment, :pickup => t.pickup.place, :dropoff => t.dropoff.place), "data-turbo" => "false" do %>
       <%= render 'shared/post_template', t: t %>

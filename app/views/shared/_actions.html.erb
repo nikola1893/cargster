@@ -39,7 +39,7 @@
       <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-phone text-primary fa-lg"></span></p>
       <p class="action-text"><small>Јави се</small></p>
     <% end %>
-    <%= link_to "viber://contact?number=%2B#{@truck.user.phone_number[1..-1]}", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
+    <%= link_to "viber://add?number=#{@truck.user.phone_number}", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
       <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-viber fa-lg" style="color: rgb(89, 38, 124)"></span></p>
       <p class="action-text"><small>Viber</small></p>
     <% end %>
