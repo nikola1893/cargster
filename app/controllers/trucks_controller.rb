@@ -60,7 +60,7 @@ class TrucksController < ApplicationController
   end
 
   def truck_templates
-    if current_user.posts.where(type: "Truck").count != 0
+    if !current_user.posts.where(type: "Truck") == []
       @page_name = "Објави возило"
       @trucks = Truck.includes(:pickup, :dropoff).where(id: Truck.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
     else
