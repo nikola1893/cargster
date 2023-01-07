@@ -16,11 +16,13 @@
             <%= link_to "Креирај објава", load_templates_path, class: "mb-2 btn rounded-4 btn-primary w-100 text-white" %>
           </div>
           <% else %>
-          <%= link_to "Креирај објава за товар", load_templates_path, class: "mb-3 btn btn-lg bg-white text-primary w-100 rounded-4 shadow-sm" %>
+          <%= link_to load_templates_path do %>
+            <p class="text-truncate btn btn-primary w-100 btn-lg rounded-4 text-white" style="width: 1.5rem;"><span class="fa fa-solid fa-plus text-white"></span> Креирај објава за товар</p>
+          <% end %>
           <% @loads.each do |t| %>
-            <%= link_to load_path(t) do %>
-              <%= render 'shared/my_post', t: t %>
-            <% end %>
+              <%= link_to load_path(t) do %>
+                <%= render 'shared/my_post', t: t %>
+              <% end %>
           <% end %>
           <%= will_paginate @loads, list_classes: %w(pagination justify-content-center) %>
         <% end %>
@@ -32,7 +34,9 @@
             <%= link_to "Креирај објава", truck_templates_path, class: "mb-2 rounded-4 btn btn-primary w-100 text-white" %>
           </div>
           <% else %>
-          <%= link_to "Креирај објава за возило", truck_templates_path, class: "mb-3 btn btn-lg bg-white text-primary w-100 rounded-4 shadow-sm" %>
+          <%= link_to truck_templates_path do %>
+            <p class="text-truncate btn btn-primary w-100 btn-lg rounded-4 text-white" style="width: 1.5rem;"><span class="fa fa-solid fa-plus text-white"></span> Креирај објава за возило</p>
+          <% end %>
           <% @trucks.each do |t| %>
             <%= link_to truck_path(t) do %>
               <%= render 'shared/my_post', t: t %>
