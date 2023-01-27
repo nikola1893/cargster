@@ -11,7 +11,6 @@
       <%= f.input :email,
                   label: "Емаил",
                   required: true,
-                  autofocus: true,
                   input_html: { autocomplete: "email" }%>
       <%= f.input :password,
                   label: "Лозинка",
@@ -23,6 +22,8 @@
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
     </div>
+
+    <p><small>Со креирање на сметка вие се согласувате со нашите <%= link_to "Услови за користење", terms_path, class:"text-primary" %></small></p>
 
     <div class="form-actions">
       <%= f.button :submit, "Регистрација", class: "btn btn-primary w-100 text-white btn-lg mt-3 mb-4" %>

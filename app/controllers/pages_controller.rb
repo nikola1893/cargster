@@ -15,4 +15,10 @@ class PagesController < ApplicationController
     @page_name = "Подесувања"
     @user = current_user
   end
+
+  def privacy
+  end
+
+  def terms
+  end
 end
