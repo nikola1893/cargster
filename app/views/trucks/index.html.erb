@@ -1,0 +1,15 @@
+<div class="px-3">
+  <%= render 'shared/home_tabs' %>
+  <% if !current_user.profile_complete? %>
+    <%= render 'shared/messages/complete_profile' %>
+  <% elsif @trucks.length == 0 %>
+    <%= render 'shared/messages/you_dont_have_any_posts_yet' %>
+  <% else %>
+    <% @trucks.each do |t| %>
+      <%= link_to truck_path(t) do %>
+        <%= render 'shared/my_post', t: t %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= will_paginate @trucks, list_classes: %w(pagination justify-content-center) %>
+</div>

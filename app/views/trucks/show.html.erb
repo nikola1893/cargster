@@ -1,15 +1,14 @@
 <%= render "shared/actions" %>
 <%= render 'shared/post_show' %>
+<hr class="mx-4" style="margin-top: -0.15rem;">
+<p class="fw-bolder px-4" style= "margin-left: 2.5rem;"><small>Пронајдени товари</small></p>
 <% if @truck.user == current_user && @truck.status == true %>
-<% if @suggested_loads.empty? %>
-<div class="px-4"><p class="text-danger bg-warning rounded-4 py-3 mt-2 px-4"><span></span>Нема ниеден товар што одговара на оваа објава</p></div>
-<% else %>
-<hr style="margin-top: -0.15rem;">
-<p class="fw-bolder px-4" style= "margin-left: 2.5rem;"><small>ПРЕДЛОЗИ ЗА ТОВАР</small></p>
-<% end %>
-<% @suggested_loads.each do |t| %>
-  <%= link_to load_path(t) do %>
-    <div class="px-3"><%= render 'shared/post', t: t %></div>
+  <% if @suggested_loads.empty? %>
+    <%= render 'shared/messages/no_matches_found' %>
   <% end %>
-<% end %>
+  <% @suggested_loads.each do |t| %>
+    <%= link_to load_path(t) do %>
+      <div class="px-3"><%= render 'shared/post', t: t %></div>
+    <% end %>
+  <% end %>
 <% end %>
