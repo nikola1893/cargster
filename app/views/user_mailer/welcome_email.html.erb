@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      You have successfully signed up and your account is now active.
+    </p>
+    <p>
+      Thanks for joining us!
+    </p>
+    <%= mail_to '', 'Сподели по е-маил', subject: 'Hello', body: 'How are you?', class:"btn btn-primary text-white w-100" %>
+  </body>
+</html>

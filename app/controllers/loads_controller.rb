@@ -20,6 +20,12 @@ class LoadsController < ApplicationController
     authorize @truck
   end
 
+  def index
+    @page_name = "Мои огласи"
+    @loads = Load.eager_load(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+  end
+
+
   def create
     @post = Load.new(truck_params)
     @post.user_id = current_user.id
@@ -58,16 +64,12 @@ class LoadsController < ApplicationController
   def change_status
     @post = Load.find(params[:id])
     @post.update!(status: false)
-    redirect_to load_path(@post), notice: "Објавата е деактивирана"
+    redirect_to loads_path, notice: "Објавата е деактивирана"
   end
 
   def load_templates
-    if current_user.posts.where(type: "Load").count != 0
-      @page_name = "Објави товар"
-      @trucks = Load.includes(:pickup, :dropoff).where(id: Load.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
-    else
-      redirect_to new_load_path
-    end
+    @page_name = "Шаблони за товар"
+    @trucks = Load.includes(:pickup, :dropoff).where(id: Load.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
   end
 
   private

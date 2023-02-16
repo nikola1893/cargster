@@ -18,7 +18,7 @@ en:
       unconfirmed: "Треба да ја потврдите вашата е-пошта пред да продолжите."
     mailer:
       confirmation_instructions:
-        subject: "Линк за потврда"
+        subject: "Потврдете го вашиот е-маил"
       reset_password_instructions:
         subject: "Линк за промена на лозинка"
       unlock_instructions:
