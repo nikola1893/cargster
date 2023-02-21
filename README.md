@@ -59,7 +59,7 @@ Optionally:
 
 <img width="100%" alt="Search_new_cargster" src="https://user-images.githubusercontent.com/76739673/220422281-34a62505-4d07-4c6f-a74f-f833ff2aecef.png">
 
-### Quick post
+### Quick search
 - Most of the carriers and shippers are making the same searches but only the date is different, so with this feature they can create a search easily and only adjust the loading date.
 - Some shippers need the same truck multiple times over different dates.
 
