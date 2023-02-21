@@ -1,10 +1,12 @@
 # Cargster
 *"Effortlessly find the right carrier or forwarder for your specific needs"*
+
+www.cargster.co
 ## Intro & Goal
-The Goal of this app is to revolutionize the freight forwarding industry with a simple, user-friendly web app that connects carriers with shippers in the Balkans. Our app is more than just a listing page for trucks and loads. We are working on creating a community of industry professionals, where they can easily connect and collaborate.
+The Goal of this app is to revolutionize the freight forwarding industry on the Balkans with a simple, user-friendly web app that connects carriers with shippers. Our app is more than just a listing page for trucks and loads. We are working on creating a community of industry professionals, where they can easily connect and collaborate.
 ## Who’s it for?
-- **Small carriers** - companies and individuals providing shipping services with small fleets of trucks or vans, operating primarily in the Balkans region.
-- **Shippers** - businesses that need to transport goods in the Balkans region, mostly SME’s
+- **Small carriers** - companies and individuals providing shipping services with small fleets of trucks or vans.
+- **Shippers** - businesses that need to transport goods, mostly SME’s.
 ## Why build it?
 - Nowadays, most of the freight-forwarding operations are done the old way by email and word of mouth, which is highly inefficient.
 - I have personally experienced the inefficiencies of the current process, having been in the industry since I was young and knowing all the pain points for the users and what they want.
@@ -15,7 +17,7 @@ The Goal of this app is to revolutionize the freight forwarding industry with a 
 - **Truck search** - a posting for available truck
 - **Load search** - a posting for available load
 ### User types
-- **Registered users** - people that have registered, completed their profile, they can search for both available trucks and loads.
+- **Registered users** - people that have registered and completed their profile, they can search for both available trucks and loads.
 ### Index View
 The Index View (homepage) displays the list of the current user recent searches, both active and inactive ones. 
 
@@ -65,4 +67,10 @@ Optionally:
 
 <img width="100%" alt="Quick_search_cargster" src="https://user-images.githubusercontent.com/76739673/220422853-84462b4e-91d5-4f0e-b3d5-0be83cc12a38.png">
 
+### Registration
+Every user must register with Email
 
+Additionally, they must complete their profile with:
+- Full name
+- Mobile number
+- Company Name, full address, VAT, company id.
