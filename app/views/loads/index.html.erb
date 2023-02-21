@@ -1,13 +1,17 @@
-<div class="px-3">
+<div class="px-3 col-lg-5 mx-auto">
   <%= render 'shared/home_tabs' %>
   <% if !current_user.profile_complete? %>
     <%= render 'shared/messages/complete_profile' %>
-  <% elsif @loads.length == 0 %>
-    <%= render 'shared/messages/you_dont_have_any_posts_yet' %>
   <% else %>
-    <% @loads.each do |t| %>
-      <%= link_to load_path(t) do %>
-        <%= render 'shared/my_post', t: t %>
+    <%= link_to new_load_path do %>
+      <p class="w-100 btn mb-3 text-white btn-primary"><i class="fa fa-solid fa-search"></i> Барај возило</p>
+    <% end %>
+    <% if @loads.length != 0 %>
+      <p class="text-center text-muted"><small>—— Неодамнешни барања ——</small></p>
+      <% @loads.each do |t| %>
+        <%= link_to load_path(t) do %>
+          <%= render 'shared/my_post', t: t %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

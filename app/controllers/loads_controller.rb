@@ -1,7 +1,7 @@
 class LoadsController < ApplicationController
 
   def new
-    @page_name = "Објави товар"
+    @page_name = "Барај возило"
     @post = Load.new
     @post.build_pickup
     @post.build_dropoff
@@ -12,16 +12,20 @@ class LoadsController < ApplicationController
   def show
     @truck = Load.find(params[:id])
     if @truck.user == current_user
-      @page_name = "Мој товар"
+      @page_name = "Барај возило"
       @suggested_trucks = @truck.truck_matches
     else
       @page_name = "Преглед на товар"
+    end
+    if !@truck.status?
+      # alert user that post is inactive
+      flash.now[:alert] = "Барањето не е активно"
     end
     authorize @truck
   end
 
   def index
-    @page_name = "Мои огласи"
+    @page_name = "Пребарувај"
     @loads = Load.eager_load(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
   end
 
@@ -35,7 +39,7 @@ class LoadsController < ApplicationController
     # set dropoff_place to dropoff place
     @post.dropoff_place = @post.dropoff.place
     if @post.save
-      redirect_to load_path(@post), notice: "Објавата за товар е успешна!"
+      redirect_to load_path(@post), notice: "Активно барање за возило"
     else
       render :new
     end
@@ -43,7 +47,7 @@ class LoadsController < ApplicationController
   end
 
   def edit
-    @page_name = "Измени објава"
+    @page_name = "Барај возило"
     @post = Load.find(params[:id])
     authorize @post
     # @post.build_pickup
@@ -68,7 +72,7 @@ class LoadsController < ApplicationController
   end
 
   def load_templates
-    @page_name = "Шаблони за товар"
+    @page_name = "Најчести барања"
     @trucks = Load.includes(:pickup, :dropoff).where(id: Load.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
   end
 

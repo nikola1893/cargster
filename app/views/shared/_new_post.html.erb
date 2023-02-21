@@ -1,4 +1,4 @@
-<div class="container px-4 my-3">
+<div class="container px-4 mt-1 mb-5">
   <%= simple_form_for @post do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification alert: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -41,7 +41,7 @@
         address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
       %>
     <% end %>
-    <%= f.input :comment, label:"Коментар", id: "textarea", placeholder: "Нешто вовеќе во врска со објавата" %>
-    <%= f.submit 'Креирај', class: "btn btn-lg btn-primary w-100 text-white" %>
+    <%= f.input :comment, label:"Коментар", id: "textarea", placeholder: "Нешто повеќе во врска со објавата" %>
+    <%= f.submit 'Барај', class: "btn btn-lg btn-primary w-100 text-white" %>
   <% end %>
 </div>

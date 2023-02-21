@@ -1,4 +1,4 @@
-<div class="container px-3 mt-4">
+<div class="container col-lg-5 mx-auto px-3 mt-4">
   <% if @suggested_loads.length == 0 %>
     <%= render 'shared/change_parameters' %>
   <% end %>
@@ -30,8 +30,6 @@
       <% end %>
       <p class="tag-pill"><small><%= t.length %><%= "m" %></small></p>
       <p class="tag-pill"><small><%= t.weight %><%= "t" %></small></p>
-
-      <p class="tag-pill"><small><%= number_with_delimiter(t.distance, delimiter: ".") %> km</small></p>
       </div>
     </div>
     <% end %>

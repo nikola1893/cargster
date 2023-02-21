@@ -1,0 +1,12 @@
+<div class="d-flex">
+  <p class="text-center text-truncate pb-3 w-50 border-bottom border-3
+    <% if current_page?(truck_templates_path) %> border-primary
+    <% end %>">
+    <%= link_to "Товар", truck_templates_path %>
+  </p>
+  <p class="text-center text-truncate pb-3 w-50 border-bottom border-3
+    <% if current_page?(load_templates_path) %> border-primary
+    <% end %>">
+    <%= link_to "Возило", load_templates_path %>
+  </p>
+</div>

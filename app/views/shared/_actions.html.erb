@@ -1,55 +1,18 @@
 <div class="px-4 mt-2 mb-1 d-flex justify-content-center align-items-center">
-  <% if policy(@truck).edit? %>
-
-    <% if @truck.status? %>
-      <% if @truck.type == "Truck" %>
-        <%= link_to change_truck_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class: "mx-2", style: "width: 3.75rem;" do %>
-          <p class="bg-white shadow-sm text-center p-3 rounded-4"><i class="fa fa-solid fa-trash text-danger fa-lg"></i></p>
-          <p class="action-text"><small>Избриши</small></p>
-        <% end %>
-        <%= link_to edit_truck_path, "data-turbo" => "false", class: "mx-2", style: "width: 3.75rem;" do %>
-          <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-pen text-primary fa-lg"></span></p>
-          <p class="action-text"><small>Измени</small></p>
-        <% end %>
-      <% else %>
-        <%= link_to change_load_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class: "mx-2", style: "width: 3.75rem;" do %>
-          <p class="bg-white shadow-sm text-center p-3 rounded-4"><i class="fa fa-solid fa-trash text-danger fa-lg"></i></p>
-          <p class="action-text"><small>Избриши</small></p>
-        <% end %>
-        <%= link_to edit_load_path, "data-turbo" => "false", class: "mx-2", style: "width: 3.75rem;" do %>
-          <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-pen text-primary fa-lg"></span></p>
-          <p class="action-text"><small>Измени</small></p>
-        <% end %>
-      <% end %>
-    <% end %>
-    <% if @truck.type == "Truck" %>
-    <%= link_to new_truck_path(:truck_type => @truck.truck_type, :length => @truck.length, :weight => @truck.weight, :comment => @truck.comment, :pickup => @truck.pickup.place, :dropoff => @truck.dropoff.place), "data-turbo" => "false", class: "mx-2", style: "width: 3.75rem;" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-retweet text-primary fa-lg"></span></p>
-      <p class="action-text"><small>Одново</small></p>
-    <% end %>
-    <% else %>
-      <%= link_to new_load_path(:truck_type => @truck.truck_type, :length => @truck.length, :weight => @truck.weight, :comment => @truck.comment, :pickup => @truck.pickup.place, :dropoff => @truck.dropoff.place), "data-turbo" => "false", class: "mx-2", style: "width: 3.75rem;" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-retweet text-primary fa-lg"></span></p>
-      <p class="action-text"><small>Одново</small></p>
-      <% end %>
-    <% end %>
-
-  <% else %>
-    <%= link_to "tel:#{@truck.user.phone_number}", class: "mx-2", style: "width: 3.75rem;" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-phone text-primary fa-lg"></span></p>
-      <p class="action-text"><small>Јави се</small></p>
-    <% end %>
-    <%= link_to "viber://contact?number=%2B#{@truck.user.phone_number[1..-1]}", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-viber fa-lg" style="color: rgb(89, 38, 124)"></span></p>
-      <p class="action-text"><small>Viber</small></p>
-    <% end %>
-    <%= link_to "https://wa.me/#{@truck.user.phone_number}?text=Zdravo%20#{@truck.user.first_name}!%0AVo%20vrska%20za%20oglasot%20na%20relacija%20#{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple},%20za%20#{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.%0ALink:%20#{request.original_url}%0APozdrav!", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-whatsapp fa-lg" style="color: #128c7e"></span></p>
-      <p class="action-text"><small>WhatsApp</small></p>
-    <% end %>
-    <%= link_to "mailto:#{@truck.user.email}?subject=#{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple}&body=Zdravo%20#{@truck.user.first_name}!%0AVo%20vrska%20za%20oglasot%20na%20relacija%20#{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple},%20za%20#{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.%0ALink:%20#{request.original_url}%0APozdrav!", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
-      <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-envelope text-primary fa-lg"></span></p>
-      <p class="action-text"><small>Е-маил</small></p>
-    <% end %>
+  <%= link_to "tel:#{@truck.user.phone_number}", class: "mx-2", style: "width: 3.75rem;" do %>
+    <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-phone text-primary fa-lg"></span></p>
+    <p class="action-text"><small>Јави се</small></p>
+  <% end %>
+  <%= link_to "viber://contact?number=%2B#{@truck.user.phone_number[1..-1]}", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
+    <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-viber fa-lg" style="color: rgb(89, 38, 124)"></span></p>
+    <p class="action-text"><small>Viber</small></p>
+  <% end %>
+  <%= link_to "https://wa.me/#{@truck.user.phone_number}?text=Zdravo%20#{@truck.user.first_name}!%0AVo%20vrska%20za%20oglasot%20na%20relacija%20#{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple},%20za%20#{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.%0ALink:%20#{request.original_url}%0APozdrav!", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
+    <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-whatsapp fa-lg" style="color: #128c7e"></span></p>
+    <p class="action-text"><small>WhatsApp</small></p>
+  <% end %>
+  <%= link_to "mailto:#{@truck.user.email}?subject=#{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple}&body=Zdravo%20#{@truck.user.first_name}!%0AVo%20vrska%20za%20oglasot%20na%20relacija%20#{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple},%20za%20#{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.%0ALink:%20#{request.original_url}%0APozdrav!", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
+    <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-envelope text-primary fa-lg"></span></p>
+    <p class="action-text"><small>Е-маил</small></p>
   <% end %>
 </div>

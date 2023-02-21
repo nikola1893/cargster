@@ -1,9 +1,9 @@
-<div class="container px-3 py-4 mt-2">
+<div class="container col-lg-5 mx-auto px-3 py-4 mt-2">
   <div class="bg-white rounded-4 shadow-sm p-4">
   <%= link_to root_path do %>
     <p class="" style="width: 2rem;"><span class="fa fa-solid fa-arrow-left text-primary"></span></p>
   <% end %>
-  <p class="display-6 fw-bolder">Регистрација</p>
+  <h3 class="fw-bolder mb-3">Регистрација</h3>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
     <%= f.error_notification %>
 
@@ -26,7 +26,7 @@
     <p><small>Со креирање на сметка вие се согласувате со нашите <%= link_to "Услови за користење", terms_path, class:"text-primary" %></small></p>
 
     <div class="form-actions">
-      <%= f.button :submit, "Регистрација", class: "btn btn-primary w-100 text-white btn-lg mt-3 mb-4" %>
+      <%= f.button :submit, "Регистрација", class: "btn btn-primary w-100 text-white mt-3 mb-4" %>
     </div>
   <% end %>
   <%= render "devise/shared/links" %>

@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     if user_signed_in?
-      redirect_to loads_path
+      redirect_to trucks_path
     else
       @page_name = "Kаргстер"
     end

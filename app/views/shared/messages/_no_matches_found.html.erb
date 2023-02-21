@@ -1,3 +1,7 @@
-<div class="px-4 m-3 bg-white rounded-4 py-3 mt-2"><p class="text-muted">😔 Нема ниеден товар што одговара на оваа објава.</p>
-  <%= mail_to '', 'Сподели по е-маил', subject: 'Hello', body: 'How are you?', class:"btn btn-primary text-white w-100" %>
+<div class="p-4 bg-white rounded-4 my-2">
+  <p class="fw-bolder mb-1"><small>Не се пронајдени резултати.</small></p>
+  <p class="text-muted mb-1"><small>Можеби сè уште нема многу корисници на платформата. Ве молиме поканете ги вашите индустриски партнери да се придружат</small></p>
+  <p class="text-muted"><small></small></p>
+
+  <%= render 'shared/prefilled_email' %>
 </div>

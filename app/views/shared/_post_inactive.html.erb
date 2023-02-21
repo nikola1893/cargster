@@ -1,0 +1,21 @@
+<% if @truck.type == "Truck" %>
+  <%= link_to "Активирај", new_truck_path(
+    :truck_type => @truck.truck_type,
+    :length => @truck.length,
+    :weight => @truck.weight,
+    :comment => @truck.comment,
+    :pickup => @truck.pickup.place,
+    :dropoff => @truck.dropoff.place
+  ), "data-turbo" => "false",
+  class: "btn btn-sm text-primary bg-info mt-3 w-100", style: "border-radius: 0.5rem;" %>
+<% else %>
+  <%= link_to "Активирај", new_load_path(
+    :truck_type => @truck.truck_type,
+    :length => @truck.length,
+    :weight => @truck.weight,
+    :comment => @truck.comment,
+    :pickup => @truck.pickup.place,
+    :dropoff => @truck.dropoff.place
+  ), "data-turbo" => "false",
+  class: "btn btn-sm text-primary bg-info mt-3 w-100", style: "border-radius: 0.5rem;" %>
+<% end %>
