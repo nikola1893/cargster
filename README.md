@@ -3,15 +3,10 @@
 
 www.cargster.co
 ## Intro & Goal
-The Goal of this app is to revolutionize the freight forwarding industry on the Balkans with a simple, user-friendly web app that connects carriers with shippers. Our app is more than just a listing page for trucks and loads. We are working on creating a community of industry professionals, where they can easily connect and collaborate.
+The Goal of this app is to simplify the transportation industry on the Balkans with a simple, user-friendly web app that connects carriers with shippers. This app is more than just a listing page for trucks and loads. We are working on creating a community of industry professionals, where they can easily connect and collaborate.
 ## Who’s it for?
 - **Small carriers** - companies and individuals providing shipping services with small fleets of trucks or vans.
 - **Shippers** - businesses that need to transport goods, mostly SME’s.
-## Why build it?
-- Nowadays, most of the freight-forwarding operations are done the old way by email and word of mouth, which is highly inefficient.
-- I have personally experienced the inefficiencies of the current process, having been in the industry since I was young and knowing all the pain points for the users and what they want.
-- There is low competition in this space, making it a ripe opportunity for innovation.
-- The technical risk is low, and the app provides a solution for an existing problem that saves time and improves efficiency.
 ## What is it?
 ### Glossary
 - **Truck search** - a posting for available truck
