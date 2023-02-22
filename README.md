@@ -70,7 +70,7 @@ We understand that mose of the users searches are recurring, they can avoid havi
 
 ### Why mobile first?
 At our core, we understand that our users are busy people who are always on the go. As small and medium-sized enterprises, they don't have the time or resources to dedicate to a complicated logistics system because they aren't operating on such a scale. Many of our users are already using mobile apps like WhatsApp and Viber for their business communication, so we wanted to make our app just as easy and accessible.
-### Questions
+### Feedbacks and ideas
 
 nikola@cargster.co
 
