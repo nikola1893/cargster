@@ -30,6 +30,7 @@ The Index View (homepage) displays the list of the current user recent searches,
 ### Detailed View
 The Detailed View displays information about the search but expanded with other details.
 ```ruby
+# app/views/post/show
 if @post.user == current_user
   if @post.status?
     render "edit_btn"
