@@ -16,9 +16,10 @@ The Goal of this app is to simplify the transportation industry on the Balkans w
 - **Small carriers** - companies and individuals providing shipping services with small fleets of trucks or vans.
 - **Shippers** - businesses that need to transport goods, mostly SME’s.
 ## What is it?
-### Glossary
-- **Truck search** - a posting for available truck
-- **Load search** - a posting for available load
+### DB Schema
+
+<img width="100%" alt="Screenshot 2023-02-22 at 11 53 26" src="https://user-images.githubusercontent.com/76739673/220599890-ba4009c5-006d-4897-874e-c1fbb980985b.png">
+
 ### User types
 - **Registered users** - people that have registered and completed their profile, they can search for both available trucks and loads.
 ### Index View
@@ -77,8 +78,4 @@ Additionally, they must complete their profile with:
 - Full name
 - Mobile number
 - Company Name, full address, VAT, company id.
-
-## DB Schema
-
-<img width="100%" alt="Screenshot 2023-02-22 at 11 53 26" src="https://user-images.githubusercontent.com/76739673/220599890-ba4009c5-006d-4897-874e-c1fbb980985b.png">
 
