@@ -2,6 +2,14 @@
 *"Effortlessly find the right carrier or forwarder for your specific needs"*
 
 www.cargster.co
+## Tech stack
+- Rails 7.0.4
+- Ruby 3.1.2
+- Postgres
+- Bootstrap 5
+- MapboxGL
+- Postmark
+- Heroku
 ## Intro & Goal
 The Goal of this app is to simplify the transportation industry on the Balkans with a simple, user-friendly web app that connects carriers with shippers. This app is more than just a listing page for trucks and loads. We are working on creating a community of industry professionals, where they can easily connect and collaborate.
 ## Who’s it for?
@@ -69,3 +77,8 @@ Additionally, they must complete their profile with:
 - Full name
 - Mobile number
 - Company Name, full address, VAT, company id.
+
+## DB Schema
+
+<img width="100%" alt="Screenshot 2023-02-22 at 11 53 26" src="https://user-images.githubusercontent.com/76739673/220599890-ba4009c5-006d-4897-874e-c1fbb980985b.png">
+
