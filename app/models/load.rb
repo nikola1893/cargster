@@ -16,6 +16,6 @@ class Load < Post
       end
     end
 
-    return truck_matches
+    return truck_matches.flatten
   end
 end

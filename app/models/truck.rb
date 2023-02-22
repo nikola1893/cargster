@@ -10,12 +10,12 @@ class Truck < Post
         self.dropoff.overlap?(l.dropoff) ||
         self.dropoff.region == l.dropoff.region) &&
         [-3,-2,-1,0,1,2,3].include?((l.loading_date - self.loading_date).to_i) &&
-        l.length >= self.length &&
+        l.length <= self.length &&
         l.truck_type & self.truck_type != []
         l_matches << l
       end
     end
-    return l_matches
+    return l_matches.flatten
   end
 
 end

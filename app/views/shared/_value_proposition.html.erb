@@ -1,20 +1,22 @@
-<div class="mt-5 pt-2">
-  <p class="my-4 text-center"><%= image_tag "logoo.png" , class:"", style: "border-radius: 0.75rem; width: 3.5rem; zoom: 150%;" %></p>
-  <h1 class="fw-bolder text-center" style=""><span class="">Едноставна</span> шпедиција.</span></h1>
-  <h5 class="text-muted text-center mb-4">
-  Без мака пронајдете го вистинскиот превозник или испраќач за вашите
-  специфични потреби.
-  </h5>
-  <p class="text-center"><%= link_to "Регистрација", new_user_registration_path, class: "px-4 btn btn-lg btn-primary rounded-4 text-white" %></p>
-  <p class="text-center text-muted mb-5"><%= link_to "Најави се", new_user_session_path, class: "text-muted mb-5 btn" %></p>
-</div>
-<div class="fixed-bottom p-4 text-center">
-  <small>
-  <%= mail_to "nikola@cargster.co", "Контакт" %>
-  -
-  <%= link_to "Пoлитика на приватност", privacy_path %>
-  -
-  <%= link_to "Услови на користење", terms_path %>
-  <p class="my-2">© Cargster 2023</p>
-  </small>
+<%= image_tag "bg.svg", class:"position-absolute h-100 w-100", style: "z-index: -1;" %>
+<div class="col-lg-8 mx-auto">
+  <div class="mt-5 pt-2">
+    <p class="my-4 text-center"><%= image_tag "logoo.png" , class:"", style: "border-radius: 0.75rem; width: 3rem; zoom: 150%;" %></p>
+    <h1 class="fw-bolder px-2 text-center">Едноставна шпедиција</h1>
+    <h5 class="text-muted px-2 text-center my-4">
+    Без мака пронајдете го вистинскиот превозник или испраќач за вашите
+    специфични потреби.
+    </h5>
+    <p class="text-center mt-5"><%= link_to "Регистрација", new_user_registration_path, class: "px-4 btn btn-lg btn-primary text-white shadow-lg" %></p>
+    <p class="text-center text-muted mb-5"><%= link_to "Најави се", new_user_session_path, class: "text-muted mb-5 btn" %></p>
+  </div>
+  <div class="fixed-bottom mb-4 text-center">
+    <small>
+    <%= mail_to "nikola@cargster.co", "Контакт" %>
+    /
+    <%= link_to "Пoлитика на приватност", privacy_path %>
+    /
+    <%= link_to "Услови за користење", terms_path %>
+    </small>
+  </div>
 </div>

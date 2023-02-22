@@ -1,4 +1,4 @@
-<div class=" mt-3 mb-2 rounded-3 sticky-top px-4 py-3" style="background-color: #F4F4F4">
+<div class="col-lg-5 mx-auto mb-2 rounded-3 sticky-top px-4 pt-4 pb-3" style="background-color: #F4F4F4">
   <div class="d-flex justify-content-between align-items-center">
     <%= link_to root_path do %>
       <%= image_tag "logo_zoom.jpeg", style: "width: 2rem; border-radius: 0.5rem;", class: "" %>
@@ -17,24 +17,40 @@
     %></p>
     <% if current_page?(new_truck_path) %>
       <%= link_to truck_templates_path, class:"text-primary" do %>
-        <i class="fa fa-solid fa-lg fa-bolt"></i>
+        <i class="fa fa-solid fa-lg fa-clock-rotate-left"></i>
       <% end %>
     <% elsif current_page?(new_load_path) %>
       <%= link_to load_templates_path, class:"text-primary" do %>
-        <i class="fa fa-solid fa-lg fa-bolt"></i>
+        <i class="fa fa-solid fa-lg fa-clock-rotate-left"></i>
       <% end %>
     <% else %>
     <div class="nav-item dropdown">
-      <i type="button" class="fa fa-solid fa-plus fa-lg text-primary" data-bs-toggle="dropdown" aria-expanded="false">
+      <i type="button" class="fa fa-solid fa-bars fa-lg text-primary" data-bs-toggle="dropdown" aria-expanded="false">
       </i>
-      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <%= link_to "Објави возило", new_truck_path, class: "dropdown-item" %>
+      <div class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="navbarDropdown">
+        <%= link_to root_path, class: "dropdown-item" do %>
+          <i class="fa fa-solid fa-magnifying-glass"></i> Пребарувај
+        <% end %>
         <hr class="dropdown-divider">
-        <%= link_to "Објави товар", new_load_path, class: "dropdown-item" %>
+        <%= link_to  truck_templates_path, class: "dropdown-item" do %>
+          <i class="fa fa-solid fa-clock-rotate-left"></i> Шаблони
+        <% end %>
         <hr class="dropdown-divider">
-        <%= link_to "Профил", profile_path, class: "dropdown-item" %>
+        <%= link_to profile_path, class: "dropdown-item" do %>
+          <i class="fa fa-solid fa-user"></i> Профил
+        <% end %>
         <hr class="dropdown-divider">
-        <%= link_to "Одјави се" ,destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+        <%= mail_to '',
+          subject: 'Придружете ми се како ран корисник на Cargster.co',
+          body: "Здраво!\r\n\r\nСакав да ве известам за Cargster.co, нова платформа која го поедноставува процесот на размена на товар.\r\n\r\nКако професионалец во индустријата, мислам дека оваа апликација ќе биде вредна алатка за подобрување на комуникацијата и ефикасноста во индустријата.\r\n\r\nМожете да се регистрирате за Cargster.co бесплатно користејќи ја оваа врска:\r\n\r\nhttps://www.cargster.co/users/sign_up\r\n\r\nАјде да работиме заедно за да ја подобриме транспортната индустрија.\r\n\r\nПоздрав.",
+          class:"dropdown-item" do
+        %>
+          <i class="fa fa-solid fa-paper-plane"></i> Покани корисник
+        <% end %>
+        <hr class="dropdown-divider">
+        <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" do %>
+          <i class="fa fa-solid fa-right-from-bracket"></i> Одјави се
+        <% end %>
       </div>
     </div>
     <% end %>

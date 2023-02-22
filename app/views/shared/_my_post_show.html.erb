@@ -1,0 +1,55 @@
+<div class="px-3 border border-2 pt-4 pb-3 mb-3" style="border-radius: 0.75rem;">
+  <div class="d-flex px-1 justify-content-between">
+    <div class="d-flex text-truncate" style="width: 50%">
+      <p class="m-0"><%= image_tag "countries/#{@truck.pickup.country}.svg", style: "width: 1.15rem; border-radius: 2rem; margin-bottom: 0.15rem; margin-right: 0.3rem;" %></p>
+      <p class="my-0 fw-bolder text-truncate"><%= @truck.pickup.simple %></p>
+    </div>
+    <div class="d-flex justify-content-end text-truncate" style="width: 50%">
+      <p class="m-0 text-end fw-bolder text-truncate"><%= @truck.dropoff.simple %></p>
+      <p class="m-0"><%= image_tag "countries/#{@truck.dropoff.country}.svg", style: "width: 1.15rem; border-radius: 1rem; margin-bottom: 0.15rem; margin-left: 0.3rem;" %></p>
+    </div>
+  </div>
+
+  <p class="mt-2 px-1 text-muted mb-0"><small>
+    <%= @truck.loading_date.try(:strftime, ("%b %e")) %>;
+    <% @truck.truck_type.drop(1).each do |truck| %>
+      <%= truck %>;
+    <% end %>
+    <%= @truck.length %> m;
+    <% if @truck.weight? %>
+      <%= @truck.weight.to_i %> t;
+    <% end %>
+  </small></p>
+
+  <% if policy(@truck).edit? %>
+    <% if @truck.status? %>
+      <div class="row mt-2 g-2">
+        <div class="col-lg-4">
+          <% if @truck.type == "Load" %>
+          <%= link_to edit_load_path, "data-turbo" => "false", class: "btn btn-sm bg-info border-0 text-truncate btn-outline-primary w-100", style: "border-radius: 0.25rem;" do %>
+            <i class="fa fa-solid fa-pen text-primary"></i>
+          <% end %>
+          <% else %>
+          <%= link_to "Измени филтри", edit_truck_path, "data-turbo" => "false", class: "btn btn-sm bg-info border-0 text-truncate btn-outline-primary w-100", style: "border-radius: 0.25rem;" %>
+          <% end %>
+        </div>
+        <div class="col-lg-4">
+          <%= mail_to("", "Сподели по е-пошта",
+            :subject => "#{@truck.type == "Load" ? "Барам камион" : "Барам товар"}",
+            :body => "Здраво!\r\n\r\nБарам #{@truck.type == "Truck" ? "товар" : "камион" } од #{@truck.pickup.simple} до #{@truck.dropoff.simple}.\r\n\r\nПовеќе детали најдете овде 👇🏻\r\n\r\n#{request.original_url}\r\n\r\nПоздрав,\r\n\r\n#{current_user.first_name}\r\n\r\nОвој мејл го генерирав автоматски преку Cargster.co",
+            class: "btn btn-sm bg-info border-0 btn-outline-primary text-truncate w-100", style: "border-radius: 0.25rem;")
+          %>
+        </div>
+        <div class="col-lg-4">
+          <% if @truck.type == "Load" %>
+          <%= link_to "Деактивирај", change_load_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class:"btn btn-sm bg-warning text-danger border-0 btn-danger text-truncate w-100", style: "border-radius: 0.25rem;" %>
+          <% else %>
+          <%= link_to "Деактивирај", change_truck_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class:"btn btn-sm bg-warning text-danger border-0 btn-danger text-truncate w-100", style: "border-radius: 0.25rem;" %>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <%= render 'shared/post_inactive' %>
+    <% end %>
+  <% end %>
+</div>

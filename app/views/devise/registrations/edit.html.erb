@@ -1,9 +1,12 @@
-<div class="container px-4 my-3">
+<div class="container col-lg-5 mx-auto px-4 my-3">
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
-    <p class="text-muted"><small>Вие сте единствено одговорни за обезбедување точни и целосни информации при
-   пополнување на вашиот профил.</small></p>
+    <p class="p-4 bg-warning text-danger" style="border-radius: 0.75rem;">
+      <small>Ве молиме имајте на ум дека немаме начин да ја провериме точноста
+      на информациите што ги давате, затоа е важно да приложите
+      точни информации.
+      </small></p>
     <div class="form-inputs">
       <div class="row">
         <div class="col-6">
@@ -19,7 +22,7 @@
         </div>
       </div>
       <%= f.input :phone_number,
-                  label: "Телефонски број",
+                  label: "Мобилен број",
                   required: true,
                   placeholder: "пр. +38971329396",
                   hint: "Почнувајки со +",

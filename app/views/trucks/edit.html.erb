@@ -1,5 +1,5 @@
 
-<div class="container px-4 mb-3">
+<div class="container col-lg-5 mx-auto px-4 mb-4">
 
   <%= simple_form_for(@post, method: :patch, multipart: true) do |f| %>
 
@@ -47,7 +47,7 @@
 
     <%= f.input :comment, label:"Comment", id: "textarea", placeholder: "Add more specifics about this post" %>
 
-    <%= f.submit 'Create', class: "btn btn-lg btn-primary w-100 text-white" %>
+    <%= f.submit 'Барај', class: "btn btn-lg btn-primary w-100 text-white" %>
 
   <% end %>
 

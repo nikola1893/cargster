@@ -1,7 +1,7 @@
 class TrucksController < ApplicationController
 
   def new
-    @page_name = "Објави возило"
+    @page_name = "Барај товар"
     @post = Truck.new
     @post.build_pickup
     @post.build_dropoff
@@ -12,16 +12,30 @@ class TrucksController < ApplicationController
   def show
     @truck = Truck.find(params[:id])
     if @truck.user == current_user
-      @page_name = "Мое возило"
+      @page_name = "Барај товар"
       @suggested_loads = @truck.loading_matches
     else
       @page_name = "Преглед на возило"
     end
+    if !@truck.status?
+      # alert user that post is inactive
+      flash.now[:alert] = "Барањето не е активно"
+    end
     authorize @truck
+    last_refers
+  end
+
+  def last_refers
+    @referers = session[:referers] || []
+    @referers.push(request.referer)
+    @referers = @referers.last(10)
+    session[:referers] = @referers
+    @referer = @referers.find { |url| url.to_s.include?("loads") }
   end
 
   def index
-    @page_name = "Мои огласи"
+    Post.update_status_if_start_date_in_past
+    @page_name = "Пребарувај"
     @trucks = Truck.eager_load(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
   end
 
@@ -34,7 +48,7 @@ class TrucksController < ApplicationController
     # set dropoff_place to dropoff place
     @post.dropoff_place = @post.dropoff.place
     if @post.save
-      redirect_to truck_path(@post), notice: "Објавата за возило е успешна!"
+      redirect_to truck_path(@post), notice: "Активно барање за товар"
     else
       render :new
     end
@@ -42,7 +56,7 @@ class TrucksController < ApplicationController
   end
 
   def edit
-    @page_name = "Измени објава"
+    @page_name = "Барај товар"
     @post = Truck.find(params[:id])
     authorize @post
   end
@@ -65,7 +79,7 @@ class TrucksController < ApplicationController
   end
 
   def truck_templates
-    @page_name = "Шаблони за возила"
+    @page_name = "Најчести барања"
     @trucks = Truck.includes(:pickup, :dropoff).where(id: Truck.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
   end
 

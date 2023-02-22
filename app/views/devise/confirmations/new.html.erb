@@ -1,9 +1,9 @@
-<div class="container px-3 py-4 mt-2">
+<div class="container col-lg-5 mx-auto px-3 py-4 mt-2">
   <div class="bg-white rounded-4 shadow-sm p-4">
   <%= link_to root_path do %>
     <p class="" style="width: 2rem;"><span class="fa fa-solid fa-arrow-left text-primary"></span></p>
   <% end %>
-  <p class="display-6 fw-bolder">Препрати линк</p>
+  <h3 class="fw-bolder mb-3">Прими линк за потврда одново</h3>
   <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
   <%= f.full_error :confirmation_token %>

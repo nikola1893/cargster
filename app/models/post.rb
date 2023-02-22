@@ -9,12 +9,6 @@ class Post < ApplicationRecord
   validates :loading_date, :truck_type, :length, presence: true
   validates :length, numericality: { greater_than: 0, less_than: 16 }
 
-  def distance
-    d = Geocoder::Calculations.distance_between(self.pickup.place, self.dropoff.place)
-    by_road = d*1.275
-    return by_road.round
-  end
-
   def ago
     # when the post was created - now
     miliseconds = (Time.now - created_at)
@@ -38,6 +32,10 @@ class Post < ApplicationRecord
       return "Пред #{days.round} дена"
       end
     end
+  end
+
+  def self.update_status_if_start_date_in_past
+    where(status: true).where("loading_date < ?", Time.zone.now).update_all(status: false)
   end
 
 end

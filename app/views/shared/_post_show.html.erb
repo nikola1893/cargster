@@ -1,17 +1,10 @@
-<div class="px-4">
-  <div class="mx-1">
-  <hr style="margin-top: -0.15rem;">
-  <p class="fw-bolder" style= "margin-left: 2.5rem;"><small>Опис</small></p>
-  <div class="d-flex">
-    <% if @truck.status == true %>
-      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-circle text-primary"></span></p>
-      <p class="mx-3 text-primary">Огласот е активен</p>
-    <% else %>
-      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-circle text-danger"></span></p>
-      <p class="mx-3 text-danger">Огласот е неактивен</p>
+<div class="mx-1 px-2">
+  <div class="d-flex justify-content-between">
+    <p class="fw-bolder"><small><%= @truck.status ? "Активно барање" : "Неактивно барање" %></small></p>
+    <% if policy(@truck).edit? %>
+    <p class="m-0"><small><%= link_to "Деактивирај", change_load_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class: "text-danger", style: "" %></small></p>
     <% end %>
   </div>
-
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-calendar-days text-primary"></span></p>
     <p class="mx-3"><%= @truck.loading_date.try(:strftime, "%d %B") %></p>
@@ -41,7 +34,7 @@
     <p class="mx-3"><%= @truck.length %> метри</p>
   </div>
 
-   <% if @truck.weight? %>
+    <% if @truck.weight? %>
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-weight-scale text-primary"></span></p>
     <p class="mx-3"><%= @truck.weight %> тони</p>
@@ -55,8 +48,7 @@
   </div>
   <% end %>
   <% if @truck.user != current_user %>
-    <hr style="margin-top: 0.3rem;">
-    <p class="fw-bolder" style= "margin-left: 2.5rem;"><small>НАЛОГОДАВАЧ</small></p>
+    <p class="fw-bolder" style= ""><small>Налогодавач</small></p>
     <div class="d-flex">
       <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-user text-primary"></span></p>
       <p class="mx-3"><%= @truck.user.first_name %> <%= @truck.user.last_name %></p>
@@ -82,5 +74,4 @@
       <p class="mx-3"><%= @truck.user.coc %> (MБ) <br> <%= @truck.user.vat %> (ДБ)</p>
     </div>
   <% end %>
-  </div>
 </div>

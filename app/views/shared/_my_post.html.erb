@@ -1,9 +1,9 @@
 <div class="bg-white pt-4 pb-3 px-4 mb-3 shadow-sm" style="border-radius: 1rem;">
   <div class="d-flex justify-content-between align-items-center">
     <% if t.status? %>
-    <p class="tag-pill-status fw-bold text-black bg-info border border-primary border-1"><small>АКТИВЕН</small></p>
+    <p class="tag-pill-status fw-bold text-black bg-info border border-primary border-1"><small>АКТИВНО</small></p>
     <% else %>
-    <p class="tag-pill-status fw-bold text-black bg-warning border border-danger border-1"><small>РЕШЕН</small></p>
+    <p class="tag-pill-status fw-bold text-black bg-warning border border-danger border-1"><small>НЕАКТИВНО</small></p>
     <% end %>
     <p class="text-muted text-end"><small><%= t.ago %></small></p>
   </div>
@@ -26,6 +26,5 @@
   <% if t.weight.present? %>
   <p class="tag-pill"><small><%= t.weight.to_i %><%= "t" %></small></p>
   <% end %>
-  <p class="tag-pill"><small><%= number_with_delimiter(t.distance, :delimiter => '.') %> km</small></p>
   </div>
 </div>
