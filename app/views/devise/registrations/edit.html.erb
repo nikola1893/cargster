@@ -24,9 +24,9 @@
       <%= f.input :phone_number,
                   label: "Мобилен број",
                   required: true,
-                  placeholder: "пр. +38971329396",
-                  hint: "Почнувајки со +",
-                  input_html: { type: 'number', pattern: '\d*' } %>
+                  placeholder: "00",
+                  hint: "Почнувајки со 00",
+                  input_html: { value: "00", type: 'number', pattern: '\d*' } %>
       <%= f.input :company,
                   label: "Компанија",
                   required: true %>

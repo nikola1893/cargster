@@ -11,7 +11,9 @@ class Load < Post
         self.dropoff.region == t.dropoff.region) &&
         [-3,-2,-1,0,1,2,3].include?((t.loading_date - self.loading_date).to_i) &&
         t.length >= self.length &&
-        t.truck_type & self.truck_type != []
+        # check if any truck type is in the load truck type array
+        t.truck_type & self.truck_type != [""] &&
+        t.truck_type & self.truck_type != [""]
         truck_matches << t
       end
     end

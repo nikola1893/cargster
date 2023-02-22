@@ -27,24 +27,32 @@
         <div class="col-lg-4">
           <% if @truck.type == "Load" %>
           <%= link_to edit_load_path, "data-turbo" => "false", class: "btn btn-sm bg-info border-0 text-truncate btn-outline-primary w-100", style: "border-radius: 0.25rem;" do %>
-            <i class="fa fa-solid fa-pen text-primary"></i>
+            <i class="fa fa-solid fa-pen text-primary"></i> Измени филтри
           <% end %>
           <% else %>
-          <%= link_to "Измени филтри", edit_truck_path, "data-turbo" => "false", class: "btn btn-sm bg-info border-0 text-truncate btn-outline-primary w-100", style: "border-radius: 0.25rem;" %>
+          <%= link_to edit_truck_path, "data-turbo" => "false", class: "btn btn-sm bg-info border-0 text-truncate btn-outline-primary w-100", style: "border-radius: 0.25rem;" do %>
+            <i class="fa fa-solid fa-pen text-primary"></i> Измени филтри
+          <% end %>
           <% end %>
         </div>
         <div class="col-lg-4">
-          <%= mail_to("", "Сподели по е-пошта",
+          <%= mail_to("",
             :subject => "#{@truck.type == "Load" ? "Барам камион" : "Барам товар"}",
             :body => "Здраво!\r\n\r\nБарам #{@truck.type == "Truck" ? "товар" : "камион" } од #{@truck.pickup.simple} до #{@truck.dropoff.simple}.\r\n\r\nПовеќе детали најдете овде 👇🏻\r\n\r\n#{request.original_url}\r\n\r\nПоздрав,\r\n\r\n#{current_user.first_name}\r\n\r\nОвој мејл го генерирав автоматски преку Cargster.co",
-            class: "btn btn-sm bg-info border-0 btn-outline-primary text-truncate w-100", style: "border-radius: 0.25rem;")
+            class: "btn btn-sm bg-info border-0 btn-outline-primary text-truncate w-100", style: "border-radius: 0.25rem;") do
           %>
+            <i class="fa fa-solid fa-envelope text-primary"></i> Испрати мејл
+          <% end %>
         </div>
         <div class="col-lg-4">
           <% if @truck.type == "Load" %>
-          <%= link_to "Деактивирај", change_load_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class:"btn btn-sm bg-warning text-danger border-0 btn-danger text-truncate w-100", style: "border-radius: 0.25rem;" %>
+          <%= link_to change_load_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class:"btn btn-sm bg-warning text-danger border-0 btn-danger text-truncate w-100", style: "border-radius: 0.25rem;" do %>
+            <i class="fa fa-solid fa-times text-danger"></i> Деактивирај
+          <% end %>
           <% else %>
-          <%= link_to "Деактивирај", change_truck_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class:"btn btn-sm bg-warning text-danger border-0 btn-danger text-truncate w-100", style: "border-radius: 0.25rem;" %>
+          <%= link_to change_truck_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class:"btn btn-sm bg-warning text-danger border-0 btn-danger text-truncate w-100", style: "border-radius: 0.25rem;" do %>
+            <i class="fa fa-solid fa-times text-danger"></i> Деактивирај
+          <% end %>
           <% end %>
         </div>
       </div>

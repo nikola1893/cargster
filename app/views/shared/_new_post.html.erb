@@ -9,7 +9,7 @@
                 item_wrapper_class: 'tag-item', collection: [ "Церада", "Мега", "Хладнњача", "Цистерна", "Комбе", "Тандем", "АДР", "Камион(под 7.5т)" ] %>
     <div class="row">
       <div class="col-6 n-top">
-        <%= f.input :length, label: "Должина", placeholder: "Метри" %>
+        <%= f.input :length, label: "Должина", placeholder: "Метри", input_html: { type: 'number', pattern: '\d+(\,\d+)?' } %>
       </div>
       <div class="col-6 n-top">
         <%= f.input :weight, label: "Тежина", placeholder: "Тони" %>
@@ -41,7 +41,7 @@
         address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
       %>
     <% end %>
-    <%= f.input :comment, label:"Коментар", id: "textarea", placeholder: "Нешто повеќе во врска со објавата" %>
+    <%= f.input :comment, label:"Коментар", id: "textarea", placeholder: "Пр: Цена, Бр. камион, Референтен број или слично" %>
     <%= f.submit 'Барај', class: "btn btn-lg btn-primary w-100 text-white" %>
   <% end %>
 </div>
