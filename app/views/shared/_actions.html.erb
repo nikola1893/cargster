@@ -7,11 +7,19 @@
     <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-viber fa-lg" style="color: rgb(89, 38, 124)"></span></p>
     <p class="action-text"><small>Viber</small></p>
   <% end %>
-  <%= link_to "https://wa.me/#{@truck.user.phone_number}?text=Zdravo%20#{@truck.user.first_name}!%0AVo%20vrska%20za%20oglasot%20na%20relacija%20#{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple},%20za%20#{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.%0ALink:%20#{request.original_url}%0APozdrav!", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
+  <%= link_to "https://wa.me/#{@truck.user.phone_number}?text=Здраво%20#{@truck.user.first_name}!%0A%0AГледам%20имате%20#{ @truck.type == "Truck" ? "возило" : "товар" }%20на%20релација #{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple},%20за%20#{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.%0A->%20#{request.original_url}%0A%0A
+Јас%20имам%20#{ @truck.type == "Truck" ? "товар" : "возило" }%20што%20ќе%20ви%20одговара%0A->%20#{@referer}%0A%0A#{current_user.first_name},%20#{current_user.company}", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
     <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-whatsapp fa-lg" style="color: #128c7e"></span></p>
     <p class="action-text"><small>WhatsApp</small></p>
   <% end %>
-  <%= link_to "mailto:#{@truck.user.email}?subject=#{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple}&body=Zdravo%20#{@truck.user.first_name}!%0AVo%20vrska%20za%20oglasot%20na%20relacija%20#{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple},%20za%20#{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.%0ALink:%20#{request.original_url}%0APozdrav!", target: "_blank", class: "mx-2", style: "width: 3.75rem;" do %>
+  <%= mail_to "#{@truck.user.email}",
+    subject: "#{@truck.pickup.simple} - #{@truck.dropoff.simple}",
+    body: "Здраво #{@truck.user.first_name}!\r\n\r\nГледам имате #{ @truck.type == "Truck" ? "возило" : "товар" } на релација #{@truck.pickup.simple} - #{@truck.dropoff.simple}, за #{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.\r\n👉🏻 #{request.original_url}\r\n
+Јас имам #{ @truck.type == "Truck" ? "товар" : "возило" } што ќе ви одговара\r\n\
+👉🏻 #{@referer}\r\n\r\n#{current_user.first_name}, #{current_user.company}",
+    target: "_blank",
+    class: "mx-2",
+    style: "width: 3.75rem;" do %>
     <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-envelope text-primary fa-lg"></span></p>
     <p class="action-text"><small>Е-маил</small></p>
   <% end %>

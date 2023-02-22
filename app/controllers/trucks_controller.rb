@@ -22,6 +22,15 @@ class TrucksController < ApplicationController
       flash.now[:alert] = "Барањето не е активно"
     end
     authorize @truck
+    last_refers
+  end
+
+  def last_refers
+    @referers = session[:referers] || []
+    @referers.push(request.referer)
+    @referers = @referers.last(10)
+    session[:referers] = @referers
+    @referer = @referers.find { |url| url.to_s.include?("loads") }
   end
 
   def index
