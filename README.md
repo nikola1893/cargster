@@ -1,5 +1,5 @@
 # Cargster
-*"Effortlessly find the right carrier or forwarder for your specific needs"*
+*"Effortlessly find the right carrier or shipper for your specific needs"*
 
 www.cargster.co
 
