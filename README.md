@@ -32,16 +32,16 @@ The Detailed View displays information about the search but expanded with other 
 ```ruby
 if @post.user == current_user
   if @post.status?
-    render "edit_search_btn"
-    render "share_search_btn"
+    render "edit_btn"
+    render "share_btn"
     render "deactivate_btn"
-    if !@post.matches.nil?
-      render "matches"
-    else
+    if @post.matches.nil?
       render "invite_btn"
+    else
+      render "matches"
     end
   else
-    render "reactivate_post_btn"
+    render "reactivate_btn"
   end
 else
   render "contact_buttons"
