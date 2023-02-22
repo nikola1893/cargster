@@ -26,7 +26,9 @@
       <div class="row mt-2 g-2">
         <div class="col-lg-4">
           <% if @truck.type == "Load" %>
-          <%= link_to "Измени филтри", edit_load_path, "data-turbo" => "false", class: "btn btn-sm bg-info border-0 text-truncate btn-outline-primary w-100", style: "border-radius: 0.25rem;" %>
+          <%= link_to edit_load_path, "data-turbo" => "false", class: "btn btn-sm bg-info border-0 text-truncate btn-outline-primary w-100", style: "border-radius: 0.25rem;" do %>
+            <i class="fa fa-solid fa-pen text-primary"></i>
+          <% end %>
           <% else %>
           <%= link_to "Измени филтри", edit_truck_path, "data-turbo" => "false", class: "btn btn-sm bg-info border-0 text-truncate btn-outline-primary w-100", style: "border-radius: 0.25rem;" %>
           <% end %>

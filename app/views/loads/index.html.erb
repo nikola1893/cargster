@@ -13,6 +13,8 @@
           <%= render 'shared/my_post', t: t %>
         <% end %>
       <% end %>
+    <% else %>
+      <%= render 'shared/messages/you_dont_have_any_posts_yet' %>
     <% end %>
   <% end %>
   <%= will_paginate @loads, list_classes: %w(pagination justify-content-center) %>
