@@ -10,9 +10,6 @@ The Goal of this app is to revolutionize the transportation industry with a simp
 - **Shippers** - small businesses that need to transport goods.
 - **Cargo brokers** - individuals who act as intermediaries between shippers and carriers. They arrange transportation and logistics services on behalf of their clients, typically for a fee.
 ## What is it?
-### DB Schema
-
-<img width="100%" alt="Screenshot 2023-02-22 at 11 53 26" src="https://user-images.githubusercontent.com/76739673/220599890-ba4009c5-006d-4897-874e-c1fbb980985b.png">
 
 ### User types
 - **Registered users** - people that have registered and completed their profile, they can search for both available trucks and loads.
@@ -58,6 +55,10 @@ Each search must contain:
 We understand that mose of the users searches are recurring, they can avoid having to repeat the search process for each date, which can be time-consuming and inconvenient.
 
 <img width="100%" alt="Quick_search_cargster" src="https://user-images.githubusercontent.com/76739673/220422853-84462b4e-91d5-4f0e-b3d5-0be83cc12a38.png">
+
+### DB Schema
+
+<img width="100%" alt="Screenshot 2023-02-22 at 11 53 26" src="https://user-images.githubusercontent.com/76739673/220599890-ba4009c5-006d-4897-874e-c1fbb980985b.png">
 
 ## Tech stack
 - Rails 7.0.4
