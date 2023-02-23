@@ -55,9 +55,9 @@ Each search must contain:
   
 ### Quick search
 
-<img width="100%" alt="Quick_search_cargster" src="https://user-images.githubusercontent.com/76739673/220422853-84462b4e-91d5-4f0e-b3d5-0be83cc12a38.png">
-
 We understand that mose of the users searches are recurring, they can avoid having to repeat the search process for each date, which can be time-consuming and inconvenient.
+
+<img width="100%" alt="Quick_search_cargster" src="https://user-images.githubusercontent.com/76739673/220422853-84462b4e-91d5-4f0e-b3d5-0be83cc12a38.png">
 
 ## Tech stack
 - Rails 7.0.4
