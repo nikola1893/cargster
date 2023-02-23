@@ -25,11 +25,11 @@ Every user must register with Email. Additionally, they must complete their prof
 
 ### Index View
 
+The Index View (homepage) displays the list of the current user recent searches, both active and inactive ones. 
+
 <img width="100%" alt="Index_cargster" src="https://user-images.githubusercontent.com/76739673/220407383-7a7c2671-38e5-487f-adb9-bac9ea03389c.png">
 
 *status
-
-The Index View (homepage) displays the list of the current user recent searches, both active and inactive ones. 
 
 ### Detailed View
 The Detailed View displays information about the search but expanded with other details.
