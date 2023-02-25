@@ -2,7 +2,7 @@
   <% if @truck.user == current_user %>
     <%= render 'shared/my_post_show' %>
     <% if @truck.status? %>
-      <p class="text-muted text-center"><small>—— Резултати од барањето ——</small></p>
+      <p class="text-muted text-center" style="font-size: 0.85rem;">—— ПОНУДА НА ТОВАР ——</p>
       <% if @suggested_loads.length == 0 %>
         <%= render 'shared/messages/no_matches_found' %>
       <% else %>

@@ -7,7 +7,7 @@
       <p class="w-100 btn mb-3 text-white btn-primary"><i class="fa fa-solid fa-search"></i> Барај товар</p>
     <% end %>
     <% if @trucks.length != 0 %>
-      <p class="text-center text-muted"><small>—— Неодамнешни барања ——</small></p>
+      <p class="text-muted text-center" style="font-size: 0.85rem;">—— НЕОДАМНЕШНИ БАРАЊА ——</p>
       <% @trucks.each do |t| %>
         <%= link_to truck_path(t) do %>
           <%= render 'shared/my_post', t: t %>
