@@ -1,4 +1,4 @@
-<div class="px-3 border border-2 pt-4 pb-3 mb-3" style="border-radius: 0.75rem;">
+<div class="px-3 border <%= @truck.status? ? "border-info" : "" %> border-2 pt-3 pb-3 mb-3" style="border-radius: 0.75rem;">
   <div class="d-flex px-1 justify-content-between">
     <div class="d-flex text-truncate" style="width: 50%">
       <p class="m-0"><%= image_tag "countries/#{@truck.pickup.country}.svg", style: "width: 1.15rem; border-radius: 2rem; margin-bottom: 0.15rem; margin-right: 0.3rem;" %></p>
