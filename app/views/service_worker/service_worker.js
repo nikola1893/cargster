@@ -1,3 +1,7 @@
+importScripts(
+"https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js"
+);
+
 function onInstall(event) {
   console.log('[Serviceworker]', "Installing!", event);
 }
