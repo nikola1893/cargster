@@ -53,10 +53,12 @@
       <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-user text-primary"></span></p>
       <p class="mx-3"><%= @truck.user.first_name %> <%= @truck.user.last_name %></p>
     </div>
+    <% if @truck.user.company.present? %>
     <div class="d-flex">
       <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-building text-primary"></span></p>
       <p class="mx-3"><%= @truck.user.company %></p>
     </div>
+    <% end %>
     <div class="d-flex">
       <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-envelope text-primary"></span></p>
       <p class="mx-3"><%= @truck.user.email %></p>
@@ -65,13 +67,17 @@
       <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-phone text-primary"></span></p>
       <p class="mx-3"><%= @truck.user.phone_number %></p>
     </div>
+    <% if @truck.user.address == "" %>
     <div class="d-flex">
       <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-location-arrow text-primary"></span></p>
       <p class="mx-3"><%= @truck.user.address %></p>
     </div>
+    <% end %>
+    <% if @truck.user.coc.present? || @truck.user.vat.present? %>
     <div class="d-flex">
       <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-book text-primary"></span></p>
-      <p class="mx-3"><%= @truck.user.coc %> (MБ) <br> <%= @truck.user.vat %> (ДБ)</p>
+      <p class="mx-3"><%= @truck.user.coc %> <br> <%= @truck.user.vat %></p>
     </div>
+    <% end %>
   <% end %>
 </div>

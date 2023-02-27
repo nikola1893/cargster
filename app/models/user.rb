@@ -9,11 +9,7 @@ class User < ApplicationRecord
   def profile_complete?
     first_name.present? &&
     last_name.present? &&
-    address.present? &&
-    phone_number.present? &&
-    company.present? &&
-    coc.present? &&
-    vat.present?
+    phone_number.present?
   end
 
   def welcome_email_not_sent?

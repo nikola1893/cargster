@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :loads, only: [:show, :index, :new, :create, :edit, :update]
   resources :trucks, only: [:show, :index, :new, :create, :edit, :update]
+  get "/service-worker.js" => "service_worker#service_worker"
+  get "/manifest.json" => "service_worker#manifest"
   get "profile", to: "pages#profile"
   get '/truck_templates', to: 'trucks#truck_templates'
   get '/load_templates', to: 'loads#load_templates'
