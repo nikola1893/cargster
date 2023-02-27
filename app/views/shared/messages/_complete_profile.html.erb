@@ -1,7 +1,9 @@
-<div class="p-4 m-1 bg-white mt-2" style="border-radius: 0.75rem;">
+<div class="p-4 mb-4 bg-white mt-2" style="border-radius: 0.75rem;">
+  <% if current_page?(loads_path) || current_page?(trucks_path) %>
+    <p class="fw-bolder mb-1">Добредојде!</p>
+  <% end %>
   <p class="text-muted"><small>
-  Преостанува уште да го комплетирајте вашиот профил, со тоа ќе ја зголемите
-  довербата на нашата платформа.
+    Дополнително, комплетирајте го вашиот профил со цел да бидете легитимни кога ќе барате возило или кога ќе бидете барани од други корисници.
   </small></p>
   <%= link_to 'Комплетирај профил', edit_user_registration_path, class:"btn btn-primary text-white w-100" %>
 </div>
