@@ -3,7 +3,7 @@
     <%= f.error_notification %>
     <%= f.error_notification alert: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <%= f.input :loading_date, placeholder: "Loading date", html5: true, label: "Датум на утовар", input_html: {class: "picker"} %>
+    <%= f.input :loading_date, placeholder: "Loading date", html5: true, label: "Датум на утовар", input_html: {class: "picker", min: "#{Date.today}"} %>
 
     <%= f.input :truck_type, label: "Тип на возило", as: :check_boxes, input_html: { class: "tag-selector" },
                 item_wrapper_class: 'tag-item', collection: [ "Церада", "Мега", "Хладнњача", "Цистерна", "Комбе", "Тандем", "АДР", "Камион(под 7.5т)" ] %>

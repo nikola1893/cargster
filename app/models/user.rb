@@ -12,6 +12,10 @@ class User < ApplicationRecord
     phone_number.present?
   end
 
+  def has_one_blank_attribute?
+    self.attributes.values.any?(&:blank?)
+  end
+
   def welcome_email_not_sent?
     if welcome_email_sent == false
       return true
