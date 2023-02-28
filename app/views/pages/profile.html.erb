@@ -1,6 +1,6 @@
 
 <div class="col-lg-5 mx-auto px-4">
-  <%= render 'shared/messages/complete_profile' if current_user.has_one_blank_attribute? %>
+  <%= render 'shared/messages/complete_profile' if current_user.blank_attributes? %>
   <% if current_user.profile_complete? %>
   <div class="d-flex">
     <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-user text-primary"></span></p>

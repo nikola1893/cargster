@@ -1,13 +1,13 @@
 <div class="px-4 mt-2 mb-1 d-flex justify-content-center align-items-center">
-  <%= link_to "tel:#{@truck.user.phone_number}", class: "mx-2", style: "width: 3.75rem;" do %>
+  <%= link_to "tel:+#{@truck.user.phone_number[2..-1]}", class: "mx-2", style: "width: 3.75rem;" do %>
     <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-solid fa-phone text-primary fa-lg"></span></p>
     <p class="action-text"><small>Јави се</small></p>
   <% end %>
-  <%= link_to "viber://contact?number=%2B#{@truck.user.phone_number[1..-1]}", class: "mx-2", style: "width: 3.75rem;" do %>
+  <%= link_to "viber://contact?number=%2B#{@truck.user.phone_number[2..-1]}", class: "mx-2", style: "width: 3.75rem;" do %>
     <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-viber fa-lg" style="color: rgb(89, 38, 124)"></span></p>
     <p class="action-text"><small>Viber</small></p>
   <% end %>
-  <%= link_to "https://wa.me/#{@truck.user.phone_number}?text=Здраво%20#{@truck.user.first_name}!%0A%0AГледам%20имате%20#{ @truck.type == "Truck" ? "возило" : "товар" }%20на%20релација #{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple},%20за%20#{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.%0A->%20#{request.original_url}%0A%0A
+  <%= link_to "https://wa.me/+#{@truck.user.phone_number[2..-1]}?text=Здраво%20#{@truck.user.first_name}!%0A%0AГледам%20имате%20#{ @truck.type == "Truck" ? "возило" : "товар" }%20на%20релација #{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple},%20за%20#{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.%0A->%20#{request.original_url}%0A%0A
 Јас%20имам%20#{ @truck.type == "Truck" ? "товар" : "возило" }%20што%20ќе%20ви%20одговара%0A->%20#{@referer}%0A%0A#{current_user.first_name},%20#{current_user.company}", class: "mx-2", style: "width: 3.75rem;" do %>
     <p class="bg-white shadow-sm text-center p-3 rounded-4"><span class="fa fa-brands fa-solid fa-whatsapp fa-lg" style="color: #128c7e"></span></p>
     <p class="action-text"><small>WhatsApp</small></p>
