@@ -16,16 +16,16 @@
           <%= f.input :weight, label: "Тежина", placeholder: "Тони" %>
         </div>
       </div>
-      <script>
-        addEventListener("load", () => {
-          var suggestionLists = document.getElementsByClassName("suggestions");
-          setTimeout(() => {
-            for (var i = 0; i < suggestionLists.length; i++) {
-              suggestionLists[i].style.display = "none"
-          }
-          }, 1000);
-        });
-      </script>
+        <script>
+          addEventListener("load", () => {
+            var suggestionLists = document.getElementsByClassName("suggestions");
+            setTimeout(() => {
+              for (var i = 0; i < suggestionLists.length; i++) {
+                suggestionLists[i].style.display = "none"
+            }
+            }, 1000);
+          });
+        </script>
       </div>
       <div class="col-lg-6">
       <%= f.simple_fields_for :pickup, @post.pickup do |build| %>
