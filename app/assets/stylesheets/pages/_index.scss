@@ -89,7 +89,7 @@
 }
 
 textarea.form-control {
-  min-height: 6rem;
+  min-height: 3rem;
 }
 
 .suggestions {
@@ -117,23 +117,6 @@ textarea.form-control {
 a {
   text-decoration: none;
   color: black;
-}
-
-.actions-buttons {
-  width: 3rem;
-  background-color: white;
-  margin: auto;
-  // padding: auto;
-  height: 3rem;
-  border-radius: 25%;
-}
-
-.action-text {
-  font-size: 0.75rem;
-  text-align: center;
-  margin-top: -0.5rem;
-  // text muted
-  color: #757575;
 }
 
 .n-top {
@@ -171,31 +154,4 @@ a {
   cursor: auto;
   background-color: #fff;
   border-color: #dee2e6;
-}
-
-.modal {
-  width: 400px;
-  max-width: 90%;
-  margin: 0 auto;
-}
-
-.modal-background {
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100;
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 101;
 }

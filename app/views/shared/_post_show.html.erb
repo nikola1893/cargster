@@ -1,82 +1,86 @@
-<div class="mx-1 px-2">
-  <div class="d-flex justify-content-between">
-    <p class="fw-bolder"><small><%= @truck.status ? "Активно барање" : "Неактивно барање" %></small></p>
-    <% if policy(@truck).edit? %>
-    <p class="m-0"><small><%= link_to "Деактивирај", change_load_status_path(@truck), data: { turbo_confirm: 'Оваа акција не можете да ја вратите. Дали сте сигурни?', turbo_method: :patch }, class: "text-danger", style: "" %></small></p>
-    <% end %>
-  </div>
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-calendar-days text-primary"></span></p>
-    <p class="mx-3"><%= @truck.loading_date.try(:strftime, "%d %B") %></p>
-  </div>
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="border p-4">
+      <p class="fw-bolder"><small>Инфо</small></p>
 
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary"></span></p>
-    <p class="mx-3"><%= @truck.pickup.place %> </p>
-  </div>
+      <div class="d-flex">
+        <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-calendar-days text-primary"></span></p>
+        <p class="mx-3"><%= @truck.loading_date.try(:strftime, "%d %B") %></p>
+      </div>
 
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary" style="transform: scaleX(-1);"></span></p>
-    <p class="mx-3"><%= @truck.dropoff.place %></p>
-  </div>
+      <div class="d-flex">
+        <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary"></span></p>
+        <p class="mx-3"><%= @truck.pickup.place %> </p>
+      </div>
 
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck text-primary"></span></p>
-    <p class="mx-3">
-      <% @truck.truck_type.drop(1).each do |type| %>
-        <%= type %>;
+      <div class="d-flex">
+        <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck-ramp-box text-primary" style="transform: scaleX(-1);"></span></p>
+        <p class="mx-3"><%= @truck.dropoff.place %></p>
+      </div>
+
+      <div class="d-flex">
+        <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-truck text-primary"></span></p>
+        <p class="mx-3">
+          <% @truck.truck_type.drop(1).each do |type| %>
+            <%= type %>;
+          <% end %>
+        </p>
+      </div>
+
+      <div class="d-flex">
+        <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-ruler-horizontal text-primary"></span></p>
+        <p class="mx-3"><%= @truck.length %> метри</p>
+      </div>
+
+        <% if @truck.weight? %>
+      <div class="d-flex">
+        <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-weight-scale text-primary"></span></p>
+        <p class="mx-3"><%= @truck.weight %> тони</p>
+      </div>
       <% end %>
-    </p>
-  </div>
 
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-ruler-horizontal text-primary"></span></p>
-    <p class="mx-3"><%= @truck.length %> метри</p>
+      <% if @truck.comment? %>
+      <div class="d-flex">
+        <p class="text-center" style="width: 1.5rem;"><span class="fa mx-1 fa-solid fa-comment text-primary"></span></p>
+        <p class="mx-3"><%= @truck.comment %></p>
+      </div>
+      <% end %>
+    </div>
   </div>
-
-    <% if @truck.weight? %>
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa fa-solid fa-weight-scale text-primary"></span></p>
-    <p class="mx-3"><%= @truck.weight %> тони</p>
-  </div>
-  <% end %>
-
-  <% if @truck.comment? %>
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="fa mx-1 fa-solid fa-comment text-primary"></span></p>
-    <p class="mx-3"><%= @truck.comment %></p>
-  </div>
-  <% end %>
   <% if @truck.user != current_user %>
-    <p class="fw-bolder" style= ""><small>Налогодавач</small></p>
-    <div class="d-flex">
-      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-user text-primary"></span></p>
-      <p class="mx-3"><%= @truck.user.first_name %> <%= @truck.user.last_name %></p>
-    </div>
-    <% if @truck.user.company.present? %>
-    <div class="d-flex">
-      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-building text-primary"></span></p>
-      <p class="mx-3"><%= @truck.user.company %></p>
-    </div>
-    <% end %>
-    <div class="d-flex">
-      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-envelope text-primary"></span></p>
-      <p class="mx-3"><%= @truck.user.email %></p>
-    </div>
-    <div class="d-flex">
-      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-phone text-primary"></span></p>
-      <p class="mx-3"><%= @truck.user.phone_number %></p>
-    </div>
-    <% if @truck.user.address == "" %>
-    <div class="d-flex">
-      <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-location-arrow text-primary"></span></p>
-      <p class="mx-3"><%= @truck.user.address %></p>
-    </div>
-    <% end %>
-    <% if @truck.user.coc.present? || @truck.user.vat.present? %>
-    <div class="d-flex">
-      <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-book text-primary"></span></p>
-      <p class="mx-3"><%= @truck.user.coc %> <br> <%= @truck.user.vat %></p>
+    <div class="col-lg-6">
+      <div class="border mb-3 p-4">
+        <p class="fw-bolder" style= ""><small>Контакт</small></p>
+        <div class="d-flex">
+          <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-user text-primary"></span></p>
+          <p class="mx-3"><%= @truck.user.first_name %> <%= @truck.user.last_name %></p>
+        </div>
+        <% if @truck.user.company.present? %>
+        <div class="d-flex">
+          <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-building text-primary"></span></p>
+          <p class="mx-3"><%= @truck.user.company %></p>
+        </div>
+        <% end %>
+        <div class="d-flex">
+          <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-envelope text-primary"></span></p>
+          <p class="mx-3"><%= @truck.user.email %></p>
+        </div>
+        <div class="d-flex">
+          <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-phone text-primary"></span></p>
+          <p class="mx-3"><%= @truck.user.phone_number %></p>
+        </div>
+        <% if @truck.user.address == "" %>
+        <div class="d-flex">
+          <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-location-arrow text-primary"></span></p>
+          <p class="mx-3"><%= @truck.user.address %></p>
+        </div>
+        <% end %>
+        <% if @truck.user.coc.present? || @truck.user.vat.present? %>
+        <div class="d-flex">
+          <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-book text-primary"></span></p>
+          <p class="mx-3"><%= @truck.user.coc %> <br> <%= @truck.user.vat %></p>
+        </div>
+      </div>
     </div>
     <% end %>
   <% end %>

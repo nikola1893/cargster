@@ -16,6 +16,9 @@ class TrucksController < ApplicationController
       @suggested_loads = @truck.loading_matches
     else
       @page_name = "Преглед на возило"
+      if @truck.status?
+        flash.now[:notice] = "Ова барање е активно"
+      end
     end
     if !@truck.status?
       # alert user that post is inactive
@@ -79,7 +82,7 @@ class TrucksController < ApplicationController
   end
 
   def truck_templates
-    @page_name = "Најчести барања"
+    @page_name = "Брзо пребарување"
     @trucks = Truck.includes(:pickup, :dropoff).where(id: Truck.group(:comment, :length, :weight, :pickup_place, :dropoff_place, :truck_type).select("min(id)"), user_id: current_user.id).order(created_at: :desc)
   end
 
