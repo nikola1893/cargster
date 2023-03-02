@@ -1,32 +1,34 @@
 
-<div class="col-lg-5 mx-auto px-4">
+<div class="col-lg-9 mx-auto px-4">
   <%= render 'shared/messages/complete_profile' if current_user.blank_attributes? %>
   <% if current_user.profile_complete? %>
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-user text-primary"></span></p>
-    <p class="mx-3"><%= @user.first_name %> <%= @user.last_name %></p>
-  </div>
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-building text-primary"></span></p>
-    <p class="mx-3"><%= @user.company %></p>
-  </div>
-  <% end %>
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-envelope text-primary"></span></p>
-    <p class="mx-3"><%= @user.email %></p>
-  </div>
-  <% if current_user.profile_complete? %>
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-phone text-primary"></span></p>
-    <p class="mx-3"><%= @user.phone_number %></p>
-  </div>
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-location-arrow text-primary"></span></p>
-    <p class="mx-3"><%= @user.address %></p>
-  </div>
-  <div class="d-flex">
-    <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-book text-primary"></span></p>
-    <p class="mx-3"><%= @user.coc %> (MБ) <br> <%= @user.vat %> (ДБ)</p>
+  <div class="d-lg-flex w-100">
+    <div class="d-flex">
+      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-user text-primary"></span></p>
+      <p class="mx-3"><%= @user.first_name %> <%= @user.last_name %></p>
+    </div>
+    <div class="d-flex">
+      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-building text-primary"></span></p>
+      <p class="mx-3"><%= @user.company %></p>
+    </div>
+    <% end %>
+    <div class="d-flex">
+      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-envelope text-primary"></span></p>
+      <p class="mx-3"><%= @user.email %></p>
+    </div>
+    <% if current_user.profile_complete? %>
+    <div class="d-flex">
+      <p class="text-center" style="width: 1.5rem;"><span class="text-center fa fa-solid fa-phone text-primary"></span></p>
+      <p class="mx-3"><%= @user.phone_number %></p>
+    </div>
+    <div class="d-flex">
+      <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-location-arrow text-primary"></span></p>
+      <p class="mx-3"><%= @user.address %></p>
+    </div>
+    <div class="d-flex">
+      <p class="text-center" style="width: 1.5rem;"><span class="mx-1 text-center fa fa-solid fa-book text-primary"></span></p>
+      <p class="mx-3"><%= @user.coc %> (MБ) <br> <%= @user.vat %> (ДБ)</p>
+    </div>
   </div>
   <% end %>
 </div>

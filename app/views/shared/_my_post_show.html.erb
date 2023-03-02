@@ -41,7 +41,7 @@
             :body => "Здраво!\r\n\r\nБарам #{@truck.type == "Truck" ? "товар" : "камион" } од #{@truck.pickup.simple} до #{@truck.dropoff.simple}.\r\n\r\nПовеќе детали најдете овде 👇🏻\r\n\r\n#{request.original_url}\r\n\r\nПоздрав,\r\n\r\n#{current_user.first_name}\r\n\r\nОвој мејл го генерирав автоматски преку Cargster.co",
             class: "btn btn-sm bg-info border-0 btn-outline-primary text-truncate w-100", style: "border-radius: 0.25rem;") do
           %>
-            <i class="fa fa-solid fa-envelope text-primary"></i> Испрати мејл
+            <i class="fa fa-solid fa-envelope text-primary"></i> Сподели по е-пошта
           <% end %>
         </div>
         <div class="col-lg-4">

@@ -2,46 +2,50 @@
   <%= simple_form_for @post do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification alert: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-    <%= f.input :loading_date, placeholder: "Loading date", html5: true, label: "Датум на утовар", input_html: {class: "picker", min: "#{Date.today}"} %>
-
-    <%= f.input :truck_type, label: "Тип на возило", as: :check_boxes, input_html: { class: "tag-selector" },
-                item_wrapper_class: 'tag-item', collection: [ "Церада", "Мега", "Хладнњача", "Цистерна", "Комбе", "Тандем", "АДР", "Камион(под 7.5т)" ] %>
     <div class="row">
-      <div class="col-6 n-top">
-        <%= f.input :length, label: "Должина", placeholder: "Метри", input_html: { type: 'number', pattern: '\d+(\,\d+)?' } %>
-      </div>
-      <div class="col-6 n-top">
-        <%= f.input :weight, label: "Тежина", placeholder: "Тони" %>
-      </div>
-    </div>
-    <script>
-      addEventListener("load", () => {
-        var suggestionLists = document.getElementsByClassName("suggestions");
-        setTimeout(() => {
-          for (var i = 0; i < suggestionLists.length; i++) {
-            suggestionLists[i].style.display = "none"
-        }
-        }, 1000);
-      });
-    </script>
+      <div class="col-lg-6">
+      <%= f.input :loading_date, placeholder: "Loading date", html5: true, label: "Датум на утовар", input_html: {class: "picker", min: "#{Date.today}"} %>
 
-    <%= f.simple_fields_for :pickup, @post.pickup do |build| %>
-      <%= build.input :place, label: "Преферирано место на утовар",
-        input_html: {data: {address_autocomplete_target: "address"}, class:"d-none", },
-        wrapper_html: {data: {controller: "address-autocomplete",
-        address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-      %>
-    <% end %>
+      <%= f.input :truck_type, label: "Тип на возило", as: :check_boxes, input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item', collection: [ "Церада", "Мега", "Хладнњача", "Цистерна", "Комбе", "Тандем", "АДР", "Камион(под 7.5т)" ] %>
+      <div class="row">
+        <div class="col-6 n-top">
+          <%= f.input :length, label: "Должина", placeholder: "Метри", input_html: { type: 'number', pattern: '\d+(\,\d+)?' } %>
+        </div>
+        <div class="col-6 n-top">
+          <%= f.input :weight, label: "Тежина", placeholder: "Тони" %>
+        </div>
+      </div>
+      <script>
+        addEventListener("load", () => {
+          var suggestionLists = document.getElementsByClassName("suggestions");
+          setTimeout(() => {
+            for (var i = 0; i < suggestionLists.length; i++) {
+              suggestionLists[i].style.display = "none"
+          }
+          }, 1000);
+        });
+      </script>
+      </div>
+      <div class="col-lg-6">
+      <%= f.simple_fields_for :pickup, @post.pickup do |build| %>
+        <%= build.input :place, label: "Преферирано место на утовар",
+          input_html: {data: {address_autocomplete_target: "address"}, class:"d-none", },
+          wrapper_html: {data: {controller: "address-autocomplete",
+          address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+        %>
+      <% end %>
 
-    <%= f.simple_fields_for :dropoff, @post.dropoff do |build| %>
-      <%= build.input :place, label: "Преферирано место на истовар",
-        input_html: {data: {address_autocomplete_target: "address"}, class:"d-none"},
-        wrapper_html: {data: {controller: "address-autocomplete",
-        address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-      %>
-    <% end %>
+      <%= f.simple_fields_for :dropoff, @post.dropoff do |build| %>
+        <%= build.input :place, label: "Преферирано место на истовар",
+          input_html: {data: {address_autocomplete_target: "address"}, class:"d-none"},
+          wrapper_html: {data: {controller: "address-autocomplete",
+          address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+        %>
+      <% end %>
     <%= f.input :comment, label:"Коментар", id: "textarea", placeholder: "Пр: Цена, Бр. камион, Референтен број или слично" %>
-    <%= f.submit 'Барај', class: "btn btn-lg btn-primary w-100 text-white" %>
+    </div>
+    </div>
+    <%= f.submit 'Барај', class: " mt-2 btn btn-primary w-100 text-white" %>
   <% end %>
 </div>

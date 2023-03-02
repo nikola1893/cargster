@@ -1,44 +1,56 @@
-<div class="container col-lg-5 mx-auto px-4 my-3">
+<div class="container col-lg-9 mx-auto px-4 my-3">
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
     <p class="text-muted px-2"><small>Полиљата означени со * се задолжителни</small></p>
-    <div class="form-inputs">
-      <div class="row">
-        <div class="col-6">
-          <%= f.input :first_name,
-                      label: "Име",
-                      required: true,
-                      autofocus: true %>
+    <div class="form-inputs row">
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-6">
+            <%= f.input :first_name,
+                        label: "Име",
+                        required: true,
+                        autofocus: true %>
+          </div>
+          <div class="col-6">
+            <%= f.input :last_name,
+                        label: "Презиме",
+                        required: true %>
+          </div>
         </div>
-        <div class="col-6">
-          <%= f.input :last_name,
-                      label: "Презиме",
-                      required: true %>
+        <%= f.input :phone_number,
+                    label: "Мобилен број",
+                    required: true,
+                    placeholder: "00",
+                    hint: "Почнувајки со 00",
+                    input_html: { type: 'number', pattern: '\d*' } %>
+        <%= f.input :current_password,
+                    label: "Тековна лозинка",
+                    hint: "ни треба вашата сегашна лозинка за да се зачуваат промените",
+                    required: true,
+                    input_html: { autocomplete: "current-password" } %>
+      </div>
+      <div class="col-lg-6">
+        <%= f.input :company,
+                    label: "Компанија"%>
+        <%= f.input :address,
+                    label: "Целосна адреса"%>
+        <div class="row">
+          <div class="col-lg-6">
+            <%= f.input :coc,
+                      label: "Матичен број на компанија"%>
+          </div>
+          <div class="col-lg-6">
+            <%= f.input :vat,
+                      label: "Даночен број на компанија"%>
+          </div>
+        </div>
+        <div class="d-none">
+        <%= f.input :email,
+                    label: "Тековна е-пошта",
+                    input_html: { autocomplete: "current-email" } %>
         </div>
       </div>
-      <%= f.input :phone_number,
-                  label: "Мобилен број",
-                  required: true,
-                  placeholder: "00",
-                  hint: "Почнувајки со 00",
-                  input_html: { type: 'number', pattern: '\d*' } %>
-      <%= f.input :company,
-                  label: "Компанија"%>
-      <%= f.input :address,
-                  label: "Целосна адреса"%>
-      <%= f.input :coc,
-                  label: "Матичен број на компанија"%>
-      <%= f.input :vat,
-                  label: "Даночен број на компанија"%>
-      <%= f.input :email,
-                  label: "Тековна е-пошта",
-                  input_html: { autocomplete: "current-email" } %>
-      <%= f.input :current_password,
-                  label: "Тековна лозинка",
-                  hint: "ни треба вашата сегашна лозинка за да се зачуваат промените",
-                  required: true,
-                  input_html: { autocomplete: "current-password" } %>
       <a href="#collapse" class="btn text-center w-100 text-muted" data-bs-toggle="collapse">Промени лозинка</a>
       <div class="collapse" id="collapse">
       <%= f.input :password,
@@ -51,11 +63,12 @@
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
       </div>
-    </div>
+
 
     <div class="form-actions">
       <%= f.button :submit, "Ажурирај", class: "btn btn-primary w-100 text-white my-3 btn-lg" %>
     </div>
+
   <% end %>
 
 </div>
