@@ -1,13 +1,13 @@
 <div class="row mb-3 g-3">
   <div class="col-lg-3">
-  <%= link_to "Јави се", "tel:+#{@truck.user.phone_number[2..-1]}", class:"w-100 btn bg-light shadow-sm btn-sm text-primary rounded-3" %>
+  <%= link_to "Јави се", "tel:+#{@truck.user.phone_number[2..-1]}", class:"w-100 btn bg-light shadow-sm btn-sm text-primary rounded-4" %>
   </div>
   <div class="col-lg-3">
-  <%= link_to "Viber", "viber://contact?number=%2B#{@truck.user.phone_number[2..-1]}", class: "btn bg-light shadow-sm btn-sm text-primary rounded-3 w-100" %>
+  <%= link_to "Viber", "viber://contact?number=%2B#{@truck.user.phone_number[2..-1]}", class: "btn bg-light shadow-sm btn-sm text-primary rounded-4 w-100" %>
   </div>
   <div class="col-lg-3">
   <%= link_to "Whatsapp", "https://wa.me/+#{@truck.user.phone_number[2..-1]}?text=Здраво%20#{@truck.user.first_name}!%0A%0AГледам%20имате%20#{ @truck.type == "Truck" ? "возило" : "товар" }%20на%20релација #{@truck.pickup.simple}%20-%20#{@truck.dropoff.simple},%20за%20#{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.%0A->%20#{request.original_url}%0A%0A
-Јас%20имам%20#{ @truck.type == "Truck" ? "товар" : "возило" }%20што%20ќе%20ви%20одговара%0A->%20#{@referer}%0A%0A#{current_user.first_name},%20#{current_user.company}", class: "btn bg-light shadow-sm btn-sm text-primary rounded-3 w-100" %>
+Јас%20имам%20#{ @truck.type == "Truck" ? "товар" : "возило" }%20што%20ќе%20ви%20одговара%0A->%20#{@referer}%0A%0A#{current_user.first_name},%20#{current_user.company}", class: "btn bg-light shadow-sm btn-sm text-primary rounded-4 w-100" %>
   </div>
   <div class="col-lg-3">
   <%= mail_to "#{@truck.user.email}",
@@ -16,7 +16,7 @@
     body: "Здраво #{@truck.user.first_name}!\r\n\r\nГледам имате #{ @truck.type == "Truck" ? "возило" : "товар" } на релација #{@truck.pickup.simple} - #{@truck.dropoff.simple}, за #{@truck.loading_date.try(:strftime, ("%b %e, %a"))}.\r\n👉🏻 #{request.original_url}\r\n
 Јас имам #{ @truck.type == "Truck" ? "товар" : "возило" } што ќе ви одговара\r\n\
 👉🏻 #{@referer}\r\n\r\n#{current_user.first_name}, #{current_user.company}",
-    class: "btn bg-light shadow-sm btn-sm text-primary rounded-3 w-100"
+    class: "btn bg-light shadow-sm btn-sm text-primary rounded-4 w-100"
     %>
   </div>
 </div>

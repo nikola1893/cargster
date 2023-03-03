@@ -6,13 +6,16 @@
     <%= link_to new_truck_path do %>
       <p class="w-100 btn mb-3 text-white btn-primary"><i class="fa fa-solid fa-search"></i> Барај товар</p>
     <% end %>
+    <%= render 'shared/users' %>
     <% if @trucks.length != 0 %>
-      <p class="text-muted text-center" style="font-size: 0.85rem;">—— НЕОДАМНЕШНИ БАРАЊА ——</p>
+      <div class="border p-3 mb-4 rounded-4">
+      <p class="fw-bolder px-2"><small>Твои неодамнешни барања</small></p>
       <% @trucks.each do |t| %>
         <%= link_to truck_path(t) do %>
           <%= render 'shared/my_post', t: t %>
         <% end %>
       <% end %>
+      </div>
     <% end %>
   <% end %>
   <%= will_paginate @trucks, list_classes: %w(pagination justify-content-center) %>
