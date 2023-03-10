@@ -29,7 +29,11 @@
       </i>
       <div class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="navbarDropdown">
         <%= link_to root_path, class: "dropdown-item" do %>
-          <i class="fa fa-solid fa-magnifying-glass"></i> Пребарувај
+          <i class="fa fa-solid fa-list"></i> Денешни објави
+        <% end %>
+        <hr class="dropdown-divider">
+        <%= link_to trucks_path, class: "dropdown-item" do %>
+          <i class="fa fa-solid fa-magnifying-glass"></i> Мои барања
         <% end %>
         <hr class="dropdown-divider">
         <%= link_to  truck_templates_path, class: "dropdown-item" do %>
