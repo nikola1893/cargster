@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :loads, only: [:show, :index, :new, :create, :edit, :update]
   resources :trucks, only: [:show, :index, :new, :create, :edit, :update]
   get "profile", to: "pages#profile"
+  get "all_trucks", to: "pages#all_trucks"
+  get "all_loads", to: "pages#all_loads"
   get '/truck_templates', to: 'trucks#truck_templates'
   get '/load_templates', to: 'loads#load_templates'
   get "/privacy", to: "pages#privacy"

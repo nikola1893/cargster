@@ -1,0 +1,16 @@
+<div class="px-3 col-lg-9 mx-auto">
+  <%= render 'shared/home_tabs' %>
+  <% if !current_user.profile_complete? %>
+    <%= render 'shared/messages/complete_profile' %>
+  <% else %>
+    <%= link_to new_load_path do %>
+      <p class="w-100 btn mb-3 text-white btn-primary"><i class="fa fa-solid fa-search"></i> Филтрирај</p>
+    <% end %>
+    <% @trucks.each do |t| %>
+      <%= link_to truck_path(t) do %>
+        <%= render 'shared/post', t: t %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= will_paginate @trucks, list_classes: %w(pagination justify-content-center) %>
+</div>

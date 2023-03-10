@@ -29,9 +29,8 @@ class LoadsController < ApplicationController
 
   def index
     Post.update_status_if_start_date_in_past
-    @page_name = "Пребарувај"
+    @page_name = "Мои барања"
     @loads = Load.eager_load(:pickup, :dropoff).where(user_id: current_user.id).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
-    @users = User.order(created_at: :desc).last(10)
   end
 
 
